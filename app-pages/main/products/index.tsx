@@ -24,6 +24,7 @@ export const Products = async () => {
                 _id: "$categoryInfo._id",
                 categoryName: {$first: "$categoryInfo.name"},
                 categoryOrder: {$first: "$categoryInfo.order"},
+                showGroupTitle: { $first: "$categoryInfo.showGroupTitle" },
                 products: {$push: "$$ROOT"}
             }
         },
