@@ -973,6 +973,10 @@
       {
         "size": "100 мл",
         "price": 7
+      },
+      {
+        "size": "Бутылка",
+        "price": 52.5
       }
     ],
     "image": "",
@@ -989,7 +993,7 @@
         "price": 10
       },
       {
-        "price": 52.5,
+        "price": 75.0,
         "size": "Бутылка"
       }
     ],
@@ -1005,6 +1009,10 @@
       {
         "size": "100 мл",
         "price": 11.5
+      },
+      {
+        "size": "Бутылка 1.5л",
+        "price": 172.5
       }
     ],
     "image": "",
@@ -1015,16 +1023,26 @@
   {
     "name": "Cava Maset Vintage (испания)",
     "description": "Игристое белое брют",
-    "prices": [],
+    "prices": [
+      {
+        "size": "Бутылка",
+        "price": 102.00
+      }
+    ],
     "image": "",
     "categories": [
       "Алкашка-1"
     ]
   },
   {
-    "name": "Legende de louis vallon cremant (франция)",
+    "name": "Legende de louis vallon cremant (Франция)",
     "description": "Игристое белое брют",
-    "prices": [],
+    "prices": [
+      {
+        "size": "Бутылка",
+        "price": 112.60
+      }
+    ],
     "image": "",
     "categories": [
       "Алкашка-1"
@@ -1037,6 +1055,10 @@
       {
         "size": "100 мл",
         "price": 7.2
+      },
+      {
+        "size": "Бутылка",
+        "price": 54.00
       }
     ],
     "image": "",
@@ -1047,14 +1069,19 @@
   {
     "name": "Perlino asti docg dolce (Италия)",
     "description": "Игристое белое сладкое",
-    "prices": [],
+    "prices": [
+      {
+        "size": "Бутылка",
+        "price": 69.00
+      }
+    ],
     "image": "",
     "categories": [
       "Алкашка-1"
     ]
   },
   {
-    "name": "Reschke Bull Trader (австралия)",
+    "name": "Reschke Bull Trader (Австралия)",
     "description": "Белое сухое",
     "prices": [
       {
@@ -1140,7 +1167,12 @@
   {
     "name": "Reschke Vitulus Cabernet Sauvignon (Австралия)",
     "description": "Красное сухое",
-    "prices": [],
+    "prices": [
+      {
+        "size": "Бутылка",
+        "price": 115.2
+      }
+    ],
     "image": "",
     "categories": [
       "Алкашка-1"
@@ -1149,7 +1181,12 @@
   {
     "name": "Cuoriarsi Salento Aleatico (Италия)",
     "description": "Красное п/сладкое",
-    "prices": [],
+    "prices": [
+      {
+        "size": "Бутылка 0,5л",
+        "price": 104.70
+      }
+    ],
     "image": "",
     "categories": [
       "Алкашка-1"
@@ -1437,11 +1474,33 @@
   },
   {
     "name": "Светлое разливное Аливария живое (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "330 мл",
         "price": 3.6
+      },
+      {
+        "size": "500 мл",
+        "price": 5.4
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое разливное 1664 Blanc (РБ)",
+    "description": "",
+    "prices": [
+      {
+        "size": "330 мл",
+        "price": 5.7
+      },
+      {
+        "size": "500 мл",
+        "price": 8.6
       }
     ],
     "image": "",
@@ -1451,7 +1510,7 @@
   },
   {
     "name": "Светлое Аливария Богемское Паровое (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "500 мл",
@@ -1465,7 +1524,7 @@
   },
   {
     "name": "Светлое Holsten light (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "450 мл",
@@ -1479,7 +1538,7 @@
   },
   {
     "name": "Светлое Holsten Export (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "450 мл",
@@ -1493,7 +1552,7 @@
   },
   {
     "name": "Светлое Горьковская Пивоварня American Pale Ale (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "450 мл",
@@ -1507,7 +1566,7 @@
   },
   {
     "name": "Светлое Аливария пшеничное (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "500 мл",
@@ -1521,7 +1580,7 @@
   },
   {
     "name": "Светлое Grimbergen Blanche (Франция)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "330 мл",
@@ -1535,7 +1594,7 @@
   },
   {
     "name": "Темное Аливария Портер (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "450 мл",
@@ -1549,7 +1608,7 @@
   },
   {
     "name": "Темное Grimbergen Ambree (Франция)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "330 мл",
@@ -1563,7 +1622,7 @@
   },
   {
     "name": "Светлое 1664 Blanc безалкогольный (РБ)",
-    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "description": "",
     "prices": [
       {
         "size": "460 мл",
@@ -1763,7 +1822,7 @@
     "prices": [
       {
         "size": "400 мл",
-        "price": 4.8
+        "price": 4.0
       }
     ],
     "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
@@ -1772,15 +1831,15 @@
     ]
   },
   {
-    "name": "Чай облепиха-апельсин",
-    "description": "",
+    "name": "Чай в чайнике",
+    "description": "Травяной",
     "prices": [
       {
-        "size": "200 мл",
-        "price": 7.6
+        "size": "400 мл",
+        "price": 4.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3562-3566-4665-b431-643436346534/-/resize/218x/-/format/webp/_3.png.webp",
+    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
     "categories": [
       "Чай"
     ]
@@ -1800,15 +1859,15 @@
     ]
   },
   {
-    "name": "Чай в чайнике",
-    "description": "Травяной",
+    "name": "Чай облепиха-апельсин",
+    "description": "",
     "prices": [
       {
-        "size": "400 мл",
-        "price": 4.5
+        "size": "200 мл",
+        "price": 7.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
+    "image": "https://optim.tildacdn.biz/tild3562-3566-4665-b431-643436346534/-/resize/218x/-/format/webp/_3.png.webp",
     "categories": [
       "Чай"
     ]
