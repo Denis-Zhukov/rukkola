@@ -6,6 +6,7 @@ import {Footer} from "./footer";
 import {CartButton} from "@/components/cart-button";
 import {CartModal} from "@/components/cart-modal";
 import {ScrollToFooterButton} from "@/components/scroll-footer-button";
+import {ProductModal} from "@/components/product-modal";
 
 export const Main = () => {
     return <div className={styles.wrapper}>
@@ -27,5 +28,7 @@ export const Main = () => {
         <CartModal/>
 
         <Footer/>
+
+        <ProductModal/>
     </div>
 }
