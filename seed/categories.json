@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Пицца",
+    "order": 0,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Роллы",
+    "order": 1,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Горячее",
+    "order": 2,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Закуски и салаты",
+    "order": 3,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Супы",
+    "order": 4,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Десерты",
+    "order": 5,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Напитки",
+    "order": 6,
+    "isMenuItem": true,
+    "showGroupTitle": true
+  },
+  {
+    "name": "Алкашка-1",
+    "order": 7,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  },
+  {
+    "name": "Алкашка-2",
+    "order": 8,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  },
+  {
+    "name": "Алкашка-3",
+    "order": 9,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  },
+  {
+    "name": "Кофе",
+    "order": 10,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  },
+  {
+    "name": "Чай",
+    "order": 11,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  },
+  {
+    "name": "Другие напитки",
+    "order": 12,
+    "isMenuItem": false,
+    "showGroupTitle": false
+  }
+]
