@@ -13,37 +13,16 @@ import { Box, Button, Flex, Text, Image, Icon } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { FiShoppingCart } from "react-icons/fi";
+import {CartItem, getCart, setCart} from "@/lib/local-storage";
 
 const MotionBox = motion(Box);
-
-const CART_KEY = "localCart";
-const CART_TTL = 24 * 60 * 60 * 1000;
-
-const getCart = () => {
-    try {
-        const raw = localStorage.getItem(CART_KEY);
-        if (!raw) return [];
-        const data = JSON.parse(raw);
-        const now = Date.now();
-        const filtered = data.filter((item: any) => now - item.timestamp < CART_TTL);
-        localStorage.setItem(CART_KEY, JSON.stringify(filtered));
-        return filtered;
-    } catch {
-        return [];
-    }
-};
-
-const setCart = (items: any[]) => {
-    localStorage.setItem(CART_KEY, JSON.stringify(items));
-    window.dispatchEvent(new Event("storage"));
-};
 
 export const CartModal = () => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
 
-    const [items, setItems] = useState<any[]>([]);
+    const [items, setItems] = useState<CartItem[]>([]);
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {

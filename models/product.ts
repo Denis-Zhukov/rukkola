@@ -10,7 +10,8 @@ export interface IProduct extends Document {
     description: string
     prices: PortionPrice[]
     image: string
-    categories: mongoose.Types.ObjectId[] // <-- теперь массив
+    categories: mongoose.Types.ObjectId[]
+    hidden?: boolean
     createdAt?: Date
     updatedAt?: Date
 }
@@ -29,7 +30,8 @@ const ProductSchema = new Schema<IProduct>(
         description: { type: String, required: false },
         prices: { type: [PortionPriceSchema], required: false },
         image: { type: String, required: false },
-        categories: [{ type: Schema.Types.ObjectId, ref: 'Category', required: false }]
+        categories: [{ type: Schema.Types.ObjectId, ref: 'Category', required: false }],
+        hidden: { type: Boolean, required: false, default: false },
     },
     { timestamps: true }
 )

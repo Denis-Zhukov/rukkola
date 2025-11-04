@@ -1,15 +1,21 @@
 import {Product} from "@/components/product";
-import {SimpleGrid, Heading, Box, Text, Separator} from "@chakra-ui/react";
+import {SimpleGrid, Heading, Box} from "@chakra-ui/react";
 import {IProduct, Product as ProductDb} from "@/models/product";
 import {connectToDatabase} from "@/lib/mongoose";
-import {ICategory} from "@/models/category";
-import {Divider} from "@chakra-ui/layout";
 
 export const Products = async () => {
     await connectToDatabase();
 
     const categoriesWithProducts = await ProductDb.aggregate([
-        {$unwind: "$categories"},
+        {
+            $match: {
+                $or: [
+                    { hidden: { $exists: false } },
+                    { hidden: false }
+                ]
+            }
+        },
+        { $unwind: "$categories" },
         {
             $lookup: {
                 from: "categories",
@@ -18,17 +24,17 @@ export const Products = async () => {
                 as: "categoryInfo"
             }
         },
-        {$unwind: "$categoryInfo"},
+        { $unwind: "$categoryInfo" },
         {
             $group: {
                 _id: "$categoryInfo._id",
-                categoryName: {$first: "$categoryInfo.name"},
-                categoryOrder: {$first: "$categoryInfo.order"},
+                categoryName: { $first: "$categoryInfo.name" },
+                categoryOrder: { $first: "$categoryInfo.order" },
                 showGroupTitle: { $first: "$categoryInfo.showGroupTitle" },
-                products: {$push: "$$ROOT"}
+                products: { $push: "$$ROOT" }
             }
         },
-        {$sort: {categoryOrder: 1}}
+        { $sort: { categoryOrder: 1 } }
     ]);
 
     const productsWithoutCategory = await ProductDb.find({

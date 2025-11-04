@@ -5,26 +5,9 @@ import {motion, AnimatePresence} from "framer-motion";
 import {Box, Badge, IconButton} from "@chakra-ui/react";
 import {FiShoppingCart, FiX} from "react-icons/fi";
 import {useRouter, usePathname, useSearchParams} from "next/navigation";
+import {getCart} from "@/lib/local-storage";
 
 const MotionBox = motion(Box);
-
-const CART_KEY = "localCart";
-const CART_TTL = 24 * 60 * 60 * 1000;
-
-const getCart = () => {
-    try {
-        const raw = localStorage.getItem(CART_KEY);
-        if (!raw) return [];
-        const data = JSON.parse(raw);
-        const now = Date.now();
-
-        const filtered = data.filter((item: any) => now - item.timestamp < CART_TTL);
-        localStorage.setItem(CART_KEY, JSON.stringify(filtered));
-        return filtered;
-    } catch {
-        return [];
-    }
-};
 
 export const CartButton = () => {
     const [count, setCount] = useState(0);
