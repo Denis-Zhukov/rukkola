@@ -57,22 +57,28 @@ export const Navbar = () => {
         handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [navHeight, items]); // navHeight в зависимостях — важно!
+    }, [navHeight, items]);
 
-    // === ЗАГРУЗКА ПУНКТОВ ===
     useEffect(() => {
         getNavItems().then((items) => setItems(items));
     }, []);
 
     const handleClick = (id: string) => {
         const section = document.getElementById(id);
-        if (section && navRef.current) {
-            const offset = navRef.current.offsetHeight + 45;
-            window.scrollTo({
-                top: section.offsetTop - offset,
-                behavior: "smooth",
-            });
+
+        if (!section) {
+            console.error(`[Navbar] No section found for id: ${id}`);
+            return;
         }
+
+        if (!navRef.current) return;
+
+        const offset = navRef.current.offsetHeight + 45;
+
+        window.scrollTo({
+            top: section.offsetTop - offset,
+            behavior: "smooth",
+        });
     };
 
     const cartIsOpen = searchParams.get("cart") === "true";
@@ -80,7 +86,6 @@ export const Navbar = () => {
 
     return (
         <Box position="relative" zIndex="10">
-            {/* РЕЗЕРВ МЕСТА — ТОЛЬКО КОГДА fixed */}
             {isFixed && <Box height={`${navHeight}px`} />}
 
             <AnimatePresence>
