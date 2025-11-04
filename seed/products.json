@@ -1,0 +1,2094 @@
+[
+  {
+    "name": "Хачапури",
+    "description": "Соус бешамель, сыр чеддер, имеретинский, сулугуни, масло сливочное, желток",
+    "prices": [
+      {
+        "size": "420 г",
+        "price": 23.1
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3762-3364-4138-b537-346431366330/-/resize/212x/-/format/webp/_39.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Мясная",
+    "description": "Соус томатный, ветчина, салями, охотничьи колбаски, сыр моцарелла, свежая зелень",
+    "prices": [
+      {
+        "size": "550 г",
+        "price": 29
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3531-3631-4935-a263-626336313932/-/resize/218x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "С пармской ветчиной и буррато",
+    "description": "Соус томатный, сыр моцарелла, пармская ветчина, сыр буррато, чесночное масло",
+    "prices": [
+      {
+        "size": "400 г",
+        "price": 41.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6232-3339-4065-b039-353632366638/-/resize/216x/-/format/webp/__.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "С буррато и трюфельным соусом",
+    "description": "Соус бешамель, соус нью-йорк, соус трюфельный, сыр моцарелла, буррато , свежая зелень, сыр пармезан",
+    "prices": [
+      {
+        "size": "500 г",
+        "price": 43
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6232-3739-4965-b331-616366373039/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Брезаолла трюфель",
+    "description": "Соус томатный, сыр моцарелла, шампиньоны, брезаолла, соус трюфельный, свежая зелень",
+    "prices": [
+      {
+        "size": "500 г",
+        "price": 32.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3962-3935-4536-b662-653636393530/-/resize/218x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Пинца жульен",
+    "description": "Соус бешамель, сыр моцарелла,шампиньоны, курица, свежая зелень, сыр пармезан",
+    "prices": [
+      {
+        "size": "500 г",
+        "price": 36.4
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3830-6562-4731-b834-636163303830/-/resize/218x/-/format/webp/_61.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Пинца с говядиной",
+    "description": "Cоус бешамель, говядина, охотничьи колбаски, болгарский перец, шампиньоны, сыр моцарелла, луковый мармелад",
+    "prices": [
+      {
+        "size": "650 г",
+        "price": 45.2
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3235-3964-4539-a334-373038336463/-/resize/220x/-/format/webp/_86.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Тар-тар",
+    "description": "Cоус бешамель, сыр моцарелла, грибы шампиньоны, говядина тар-тар, трюфельный майонез, сыр пармезан",
+    "prices": [
+      {
+        "size": "500 г",
+        "price": 43
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6365-3138-4664-a534-643965366430/-/resize/218x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "с креветкой и сёмгой",
+    "description": "Cоус бешамель, креветка, сыр моцарелла, масло чесночное, листья салата, помидоры, соус цезарь, сёмга, сыр пармезан",
+    "prices": [
+      {
+        "size": "590 г",
+        "price": 48
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3033-6665-4165-b664-396132653239/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Пицца"
+    ]
+  },
+  {
+    "name": "Ролл калифорния с крабом",
+    "description": "Нори, рис, краб, авокадо, лосось в соусе спайси, кремчиз, чука, икра тобико, соус сладкий васаби, кунжут",
+    "prices": [
+      {
+        "size": "300 г",
+        "price": 39
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6264-6462-4930-b632-663439313333/-/resize/224x/-/format/webp/_92.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл с креветкой и лососем",
+    "description": "Нори, рис, креветка, соус спайси, кремчиз, авокадо, лосось в соусе спайси, лосось, икра лососевая",
+    "prices": [
+      {
+        "size": "270 г",
+        "price": 41
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3430-3963-4539-b734-613763663539/-/resize/224x/-/format/webp/_94.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл с тар-таром из тунца",
+    "description": "Рис, лосось, имбирь, тар-тар из тунца в соусе спайси, кунжутный соус, икра тобико",
+    "prices": [
+      {
+        "size": "270 г",
+        "price": 37.2
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3637-3661-4233-b236-636332373335/-/resize/218x/-/format/webp/_73.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Филадельфия",
+    "description": "Рис, нори, кремчиз, лосось в соусе спайси, угорно-трюфельный соус, авокадо, икра тобико",
+    "prices": [
+      {
+        "size": "255 г",
+        "price": 38.1
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3663-6638-4563-b330-613263613731/-/resize/216x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Осидзуси с лососем",
+    "description": "Рис, кремчиз, авокадо, лосось с соусом спайси, икра тобико",
+    "prices": [
+      {
+        "size": "190 г",
+        "price": 25
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3438-6131-4165-a264-386634633034/-/resize/216x/-/format/webp/_1_7.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Осидзуси с говядиной",
+    "description": "Рис, говядина тар-тар, соус шрирача, паста трюфельная, сыцыми, приправа лук жареный",
+    "prices": [
+      {
+        "size": "210 г",
+        "price": 28.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6163-6435-4639-a666-353638393339/-/resize/216x/-/format/webp/_1_8.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Осидзуси с угрем",
+    "description": "Рис, кремчиз, огурец, угорь, соус угорьно-трюфельный, соус терияки",
+    "prices": [
+      {
+        "size": "215 г",
+        "price": 28.4
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3037-3862-4763-a339-653463306463/-/resize/216x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл темпура с креветкой",
+    "description": "Рис, нори, томленый лосось в соусе террияки, креветки, кремчиз, соус сладкий васаби, икра тобико",
+    "prices": [
+      {
+        "size": "325 г",
+        "price": 37.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3235-3734-4135-b935-386234666535/-/resize/220x/-/format/webp/_66.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл запеченный бонито",
+    "description": "Рис, нори, томленый лосось в соусе террияки, креветки, кремчиз, соус сладкий васаби, икра тобико",
+    "prices": [
+      {
+        "size": "270 г",
+        "price": 29.2
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6634-6463-4532-a131-643038343631/-/resize/222x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл запеч. с угрем и крабом",
+    "description": "Маменори, рис, лосось в спайси соусе, краб, угорь, авокадо, паста трюфельная, соус терияки, кунжут, хрустики",
+    "prices": [
+      {
+        "size": "250 г",
+        "price": 39.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3533-3866-4138-b964-373239376137/-/resize/224x/-/format/webp/_91.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл с тунцом и тар-таром из огурца",
+    "description": "Нори, рис, тунец, чука, огурец, имбирь, соус спайси, паста угорьно-трюфельная, тобико, кунжут",
+    "prices": [
+      {
+        "size": "190 г",
+        "price": 22.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6165-3562-4433-b633-346164376230/-/resize/220x/-/format/webp/_1_14.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Ролл темпура с тунцом",
+    "description": "Нори, рис, кремчиз, тунец, трюфельный майонез, чука, имбирь, моцарелла, терияки, соус кунжутный, кунжут",
+    "prices": [
+      {
+        "size": "300 г",
+        "price": 31.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3465-6539-4439-b237-663835653132/-/resize/220x/-/format/webp/_1_14.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Хенд-ролл с лососем",
+    "description": "Нори, рис, огурец, лосось в соусе спайси, соус кунжутный, икра тобико",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 13.8
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6562-3430-4361-a135-313366613830/-/resize/214x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Хенд-ролл с креветкой",
+    "description": "Нори, рис, креветки темпура, авокадо, сладкий васаби, икра тобико",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 12.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6565-3338-4233-b037-633639383239/-/resize/216x/-/format/webp/_28.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Хенд-ролл с угрем",
+    "description": "Нори, рис, копченый угорь, соус трюфельный",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 18
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3836-6637-4337-b763-336133343630/-/resize/224x/-/format/webp/_1_3.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Онигири с тунцом",
+    "description": "Нори, рис, тунец, чука, соус терияки, семена кунжута, перец чили",
+    "prices": [
+      {
+        "size": "215 г",
+        "price": 19.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3739-6437-4162-b736-386130336639/-/resize/220x/-/format/webp/_1_12.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Онигири с креветкой",
+    "description": "Нори, рис, огурец, креветка спайси, соус , авокадо, манго, имбирь, васаби, икра тобико",
+    "prices": [
+      {
+        "size": "240 г",
+        "price": 19.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3363-6566-4561-b532-613134376131/-/resize/224x/-/format/webp/_1_12.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Онигири с семгой",
+    "description": "Нори, рис, семга, спайси, соус , соус кунжутный,чука, кремчиз, икра тобико, кунжут",
+    "prices": [
+      {
+        "size": "205 г",
+        "price": 19.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6633-6531-4562-b530-393932386335/-/resize/220x/-/format/webp/_1_12.png.webp",
+    "categories": [
+      "Роллы"
+    ]
+  },
+  {
+    "name": "Говядина с овощами в перечном соусе",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 г",
+        "price": 34.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3339-3034-4130-b763-643631656537/-/resize/214x/-/format/webp/__.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Карри с жареным рисом",
+    "description": "Курица, шампиньоны, брокколи, фасоль стручковая, морковь, паста карри, кокосовое молоко, жареные рисовые шарики",
+    "prices": [
+      {
+        "size": "350 г",
+        "price": 23.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6338-3664-4632-a565-656332663761/-/resize/214x/-/format/webp/___.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "description": "Креветки, сёмга, шампиньоны, паста карри, жареные рисовые шарики, кунжут",
+    "prices": [
+      {
+        "size": "350 г",
+        "price": 39
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3064-3762-4465-b136-393166353964/-/resize/220x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Креветки темпура",
+    "description": "Креветки темпура, соус сладкий васаби, икра тобико",
+    "prices": [
+      {
+        "size": "150 г",
+        "price": 30.8
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6465-6632-4032-b733-373563386634/-/resize/216x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Жареный тофу",
+    "description": "Тофу, соус сладкий чили, листья салата, грибы шиитаке",
+    "prices": [
+      {
+        "size": "230 г",
+        "price": 23.1
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6438-6537-4561-b637-323061346263/-/resize/220x/-/format/webp/_93.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Паста с креветкой и семгой",
+    "description": "Лапша пшеничная, креветки, сёмга, соус имбирный, паста том ям, соус устричный, икра тобико",
+    "prices": [
+      {
+        "size": "350 г",
+        "price": 33.9
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6262-3664-4234-b030-303137356137/-/resize/218x/-/format/webp/_1_7.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Чар-сиу с битыми огурцами",
+    "description": "Рулет из свинины в глазури с трюфельной пастой, паприкой, битые огурцы, картофельные дольки",
+    "prices": [
+      {
+        "size": "260 г",
+        "price": 26.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3162-3434-4839-a132-346538356466/-/resize/212x/-/format/webp/_91.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Пад-тай с курицей",
+    "description": "Рисовая лапша с курицей в соусе падтай, скрэмбл, болгарский перец, стручковая фасоль, острый перец, арахис, кинза, чили",
+    "prices": [
+      {
+        "size": "380 г",
+        "price": 26.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3663-3161-4330-a334-653563623562/-/resize/216x/-/format/webp/__.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Пад-тай с креветкой",
+    "description": "Рисовая лапша с креветкой в соусе падтай, скрэмбл, болгарский перец, стручковая фасоль, острый перец, арахис, кинза, чили",
+    "prices": [
+      {
+        "size": "390 г",
+        "price": 39.9
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6535-6634-4239-a237-616131633639/-/resize/216x/-/format/webp/__.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Токпокки с колбасками",
+    "description": "Токпокки, колбаски охотничьи, соус аль-помидор, приправа лук жареный",
+    "prices": [
+      {
+        "size": "410 г",
+        "price": 33.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3532-3432-4133-b335-363937396534/-/resize/222x/-/format/webp/_1_14.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Токпокки карбонара",
+    "description": "Токпокки, ветчина, соус бешамель, сыр чеддер",
+    "prices": [
+      {
+        "size": "295 г",
+        "price": 30.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6139-3361-4438-b862-366161653236/-/resize/222x/-/format/webp/_1_15.png.webp",
+    "categories": [
+      "Горячее"
+    ]
+  },
+  {
+    "name": "Суп рамен",
+    "description": "Токпокки, ветчина, соус бешамель, сыр чеддер",
+    "prices": [
+      {
+        "size": "490 г",
+        "price": 23.8
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3065-6232-4538-b534-383832356431/-/resize/214x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Супы"
+    ]
+  },
+  {
+    "name": "Суп рамен с морепродуктами",
+    "description": "Морепродукты, пшеничная лапша, грибы шиитаке, кинза",
+    "prices": [
+      {
+        "size": "430 г",
+        "price": 31.8
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6161-3166-4164-b061-363738303738/-/resize/214x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Супы"
+    ]
+  },
+  {
+    "name": "Мини закуска \"Оливки ким-чи\"",
+    "description": "Оливки, перец острый, соус ким-чи, масло оливковое, масло кунжутное",
+    "prices": [
+      {
+        "size": "75 г",
+        "price": 10
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3436-3735-4939-b533-326337303864/-/resize/220x/-/format/webp/_1_7.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Мини закуска \"битые огурцы\"",
+    "description": "Огурцы, чеснок, перец чили, уксус рисовый, соус соевый, масло кунжутное, соус мирин, мед, соус ким-чи, имбирь",
+    "prices": [
+      {
+        "size": "150 г",
+        "price": 7.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3262-3262-4161-b736-306163363861/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Поке с курицей терияки",
+    "description": "Курица Терияки, микс салата, бобы эдамаме, чука, огурец, рисовые шарики",
+    "prices": [
+      {
+        "size": "350 г",
+        "price": 26.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3930-3338-4734-a663-386637303361/-/resize/214x/-/format/webp/___.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Поке с лососем",
+    "description": "Лосось в соусе спайси, микс салата, бобы эдамаме, авокадо, салат чукка, рисовые шарики",
+    "prices": [
+      {
+        "size": "360 г",
+        "price": 36.4
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3962-3264-4161-b939-333839343439/-/resize/214x/-/format/webp/__.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Овощной ролл с лососем",
+    "description": "Рисовая бумага, листья салата, болгарский перец, свежий огурец, лосось в соусе спайси, соус терияки",
+    "prices": [
+      {
+        "size": "160 г",
+        "price": 23.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6631-6532-4561-b939-366238323739/-/resize/214x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Овощной ролл с тунцом",
+    "description": "Рисовая бумага, листья салата, свежий огурец, салат чукка, тунец, соус кунжутный, стружка тунца",
+    "prices": [
+      {
+        "size": "170 г",
+        "price": 24.2
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6464-6365-4161-b038-303462313438/-/resize/226x/-/format/webp/_75.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Овощной ролл с угрём",
+    "description": "Рисовая бумага, листья салата, свежий огурец, томаты, угорь, соус угорьно-трюфельный, нори хрустящие",
+    "prices": [
+      {
+        "size": "190 г",
+        "price": 33.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3433-3663-4263-a564-653362373735/-/resize/226x/-/format/webp/_79.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Салат с баклажаном",
+    "description": "Баклажан в соусе терияки, салат из свежих томатов с синим луком, пряное масло, сыр адыгейский",
+    "prices": [
+      {
+        "size": "190 г",
+        "price": 23.1
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3431-3435-4133-b866-623031363233/-/resize/236x/-/format/webp/_80.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Куриный попкорн",
+    "description": "Курица во фритюре, соус шрирача, соус сеульский с арахисом, сыцыми, лук зеленый, перец чили",
+    "prices": [
+      {
+        "size": "220 г",
+        "price": 20.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3361-6666-4039-b037-323636666238/-/resize/222x/-/format/webp/_1_5.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Тартар из говядины",
+    "description": "Выдержанная говядина, огурец, лук, каперсы, перепелиный желток, французская горчица, листья салата",
+    "prices": [
+      {
+        "size": "140 г",
+        "price": 38.3
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3661-3236-4230-b031-613765393037/-/resize/218x/-/format/webp/_1_7.png.webp",
+    "categories": [
+      "Закуски и салаты"
+    ]
+  },
+  {
+    "name": "Яблочная тарта с мороженым",
+    "description": "Тесто слоёное, яблоки, корица, солёная карамель, мороженое, ягодный соус",
+    "prices": [
+      {
+        "size": "150 г",
+        "price": 14
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3063-3166-4266-a530-613638326334/-/resize/216x/-/format/webp/photo.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Десерт павлова",
+    "description": "Безе, ягодный гель, сливочный крем, свежие ягоды",
+    "prices": [
+      {
+        "size": "120 г",
+        "price": 13.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild6162-3030-4062-b736-383834373066/-/resize/222x/-/format/webp/_1_1.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Моти карамельный",
+    "description": "Рисовое тесто, сливочный крем, соленая карамель, тесто катаифи, паста фисташковая",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 12
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3066-3133-4164-b136-353033646237/-/resize/220x/-/format/webp/_1_11.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Моти шоколадный",
+    "description": "Рисовое тесто, шоколадный крем, соленая карамель",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 12
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3166-6134-4264-b732-343933343663/-/resize/222x/-/format/webp/_1_10.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Моти манго",
+    "description": "Рисовое тесто, сливочный крем, соус манго, соус маракуйя",
+    "prices": [
+      {
+        "size": "100 г",
+        "price": 12
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3332-6566-4732-b839-336565303962/-/resize/218x/-/format/webp/_1_9.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Десерт семифредо",
+    "description": "Мороженое, орехи Пекан, вяленая клюква",
+    "prices": [
+      {
+        "size": "95 г",
+        "price": 14.7
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3435-3432-4865-a430-343433656464/-/resize/220x/-/format/webp/_1_13.png.webp",
+    "categories": [
+      "Десерты"
+    ]
+  },
+  {
+    "name": "Глинтвейн",
+    "description": "Горячее красное вино с пряностями и корицей",
+    "prices": [
+      {
+        "size": "265 мл",
+        "price": 7.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Апероль шприц",
+    "description": "Апероль, шипучее вино, газ.вода, апельсин",
+    "prices": [
+      {
+        "size": "280 мл",
+        "price": 20.4
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Амортенция",
+    "description": "Текила, фреша лимон, пюре клюквы, спрайт",
+    "prices": [
+      {
+        "size": "150 мл",
+        "price": 14.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Слизерин",
+    "description": "Текила, соус киви, фреш лимон, спрайт",
+    "prices": [
+      {
+        "size": "180 мл",
+        "price": 23.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Базиликовый удар",
+    "description": "Джин, фреш лимона, базилик",
+    "prices": [
+      {
+        "size": "130 мл",
+        "price": 14.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Тундра",
+    "description": "Апероль, соус, фреш лимона, газированная вода",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 21.6
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Мохито",
+    "description": "Ром, газированная вода, пюре лайма, лимон, мята",
+    "prices": [
+      {
+        "size": "280 мл",
+        "price": 19
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Белое облако",
+    "description": "Ром, сок, сироп клубника, кокосовая пена",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 16.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Карибский порн-стар",
+    "description": "Ром, сироп, фреш лимона, кокосовая пена",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 17
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Porn star",
+    "description": "Водка, вино игристое, фреш лимона, сироп маракуйя",
+    "prices": [
+      {
+        "size": "180 мл",
+        "price": 17.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Пивной персиковый",
+    "description": "Пиво пшеничное, сироп персиковый, лайм, лимон, лёд",
+    "prices": [
+      {
+        "size": "580 мл",
+        "price": 16.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Martini Extra Dry",
+    "description": "",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 18
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Лимончелло",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 3.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Напитки"
+    ]
+  },
+  {
+    "name": "Brut Millesimato Toso (Италия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "100 мл",
+        "price": 7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Get Lost sparkling orange (юар)",
+    "description": "Игристое белое брют",
+    "prices": [
+      {
+        "size": "100 мл",
+        "price": 10
+      },
+      {
+        "price": 52.5,
+        "size": "Бутылка"
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Sanmartino millesimato undici extra dry (Италия)",
+    "description": "Игристое белое брют",
+    "prices": [
+      {
+        "size": "100 мл",
+        "price": 11.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Cava Maset Vintage (испания)",
+    "description": "Игристое белое брют",
+    "prices": [],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Legende de louis vallon cremant (франция)",
+    "description": "Игристое белое брют",
+    "prices": [],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "LVDOVICVS XIV (Франция)",
+    "description": "Игристое белое п/сухое",
+    "prices": [
+      {
+        "size": "100 мл",
+        "price": 7.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Perlino asti docg dolce (Италия)",
+    "description": "Игристое белое сладкое",
+    "prices": [],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Reschke Bull Trader (австралия)",
+    "description": "Белое сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 13.8
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Chilano Sauvignon Blanc (Чили)",
+    "description": "Белое сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 8.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Casa Ermelinda Freitas Gewurztraminer (Португалия)",
+    "description": "Белое сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 17.8
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "J.Meyer Gewurztraminer (Германия)",
+    "description": "Белое п/сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 8.9
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Max Mann Riesling Rheinhessen (Германия)",
+    "description": "Белое п/сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 8.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Chilano Merlot (Чили)",
+    "description": "Красное сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 9.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Reschke Vitulus Cabernet Sauvignon (Австралия)",
+    "description": "Красное сухое",
+    "prices": [],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Cuoriarsi Salento Aleatico (Италия)",
+    "description": "Красное п/сладкое",
+    "prices": [],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Stonehaven Stepping Stone Rose (Австралия)",
+    "description": "Розовое сухое",
+    "prices": [
+      {
+        "size": "125 мл",
+        "price": 12.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-1"
+    ]
+  },
+  {
+    "name": "Водка (РБ)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 2.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Водка Danzka (Германия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 6.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Водка Danzka Crankcase (Германия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 6.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Sake Choya (Япония)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 7.8
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Виски johnnie Walker red label (Шотландия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 29
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Виски Jim Beam Kentucky (США)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 9.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Виски Glenmorangie (Великобритания)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 23.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Виски Laphroaid PX (Великобритания)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 33.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Джин Tanqueray london dry (Великобритания)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 11.3
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Коньяк асканели (Грузия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 6
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Коньяк Martell VS (Франция)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 19.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Коньяк Mauxion selection XO (Франция)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 23.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Текила Sierra tequila blanco (Мексика)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 9
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ром Captain Morgan White (Великобритания)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 7.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ром Captain Morgan Dark (Великобритания)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 7.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ликер Becherovka (Чехия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 9.9
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ликер Italicus rosolio di bergamotto (Италия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 25.8
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ликер Gamondi Sambuca (Италия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 13.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Ликер Кофейный (Чехия)",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 10
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-2"
+    ]
+  },
+  {
+    "name": "Светлое разливное Аливария живое (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "330 мл",
+        "price": 3.6
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Аливария Богемское Паровое (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "500 мл",
+        "price": 7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Holsten light (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "450 мл",
+        "price": 7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Holsten Export (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "450 мл",
+        "price": 7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Горьковская Пивоварня American Pale Ale (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "450 мл",
+        "price": 6.7
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Аливария пшеничное (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "500 мл",
+        "price": 7.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое Grimbergen Blanche (Франция)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "330 мл",
+        "price": 12.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Темное Аливария Портер (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "450 мл",
+        "price": 7.1
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Темное Grimbergen Ambree (Франция)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "330 мл",
+        "price": 12.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Светлое 1664 Blanc безалкогольный (РБ)",
+    "description": "!!! ТУТ НАДО ПОМЕНЯТЬ MONGO DB",
+    "prices": [
+      {
+        "size": "460 мл",
+        "price": 9.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Алкашка-3"
+    ]
+  },
+  {
+    "name": "Эспрессо",
+    "description": "",
+    "prices": [
+      {
+        "size": "30 мл",
+        "price": 3
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Американо",
+    "description": "",
+    "prices": [
+      {
+        "size": "100 мл",
+        "price": 3
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Капучино на коровьем или альтернативном молоке",
+    "description": "",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 6.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Латте на коровьем или альтернативном молоке",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 мл",
+        "price": 6.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Флэт уайт на коровьем или альтернативном молоке",
+    "description": "",
+    "prices": [
+      {
+        "size": "270 мл",
+        "price": 11.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Кофе \"Бамбл\"",
+    "description": "Эспрессо, лёд, апельсиновый сок, на выбор: сироп \"солёная карамель\" или сироп со вкусом ореха макадамия",
+    "prices": [
+      {
+        "size": "500 мл",
+        "price": 10.3
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Флэт уайт на коровьем или альтернативном молоке",
+    "description": "",
+    "prices": [
+      {
+        "size": "270 мл",
+        "price": 11.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "BOMBON",
+    "description": "Эспрессо, сгущеное молоко, пенка из взбитого молока",
+    "prices": [
+      {
+        "size": "120 мл",
+        "price": 5.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Эспрессо тоник",
+    "description": "Эспрессо, швепс, лёд, по желанию ломтик лимона или лайма",
+    "prices": [
+      {
+        "size": "500 мл",
+        "price": 7.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Кокосовый раф",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 мл",
+        "price": 13.2
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Халвичный раф",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 мл",
+        "price": 14.5
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Тыквенно-пряный латте",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 мл",
+        "price": 11.6
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Сироп в ассортименте",
+    "description": "",
+    "prices": [
+      {
+        "size": "10 мл",
+        "price": 1.8
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Кофе"
+    ]
+  },
+  {
+    "name": "Чай в чайнике",
+    "description": "Зеленый, черный",
+    "prices": [
+      {
+        "size": "400 мл",
+        "price": 4.8
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
+    "categories": [
+      "Чай"
+    ]
+  },
+  {
+    "name": "Чай облепиха-апельсин",
+    "description": "",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 7.6
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3562-3566-4665-b431-643436346534/-/resize/218x/-/format/webp/_3.png.webp",
+    "categories": [
+      "Чай"
+    ]
+  },
+  {
+    "name": "Чай имбирный",
+    "description": "",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 5.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3431-6237-4865-b463-326232623034/-/resize/218x/-/format/webp/_2.png.webp",
+    "categories": [
+      "Чай"
+    ]
+  },
+  {
+    "name": "Чай в чайнике",
+    "description": "Травяной",
+    "prices": [
+      {
+        "size": "400 мл",
+        "price": 4.5
+      }
+    ],
+    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
+    "categories": [
+      "Чай"
+    ]
+  },
+  {
+    "name": "Вода питьевая Бонаква",
+    "description": "газ/негаз",
+    "prices": [
+      {
+        "size": "500 мл",
+        "price": 4.1
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Морс клюквенный",
+    "description": "",
+    "prices": [
+      {
+        "size": "250 мл",
+        "price": 5.6
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Морс облепиховый",
+    "description": "",
+    "prices": [
+      {
+        "size": "250 мл",
+        "price": 8.3
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Виридиан",
+    "description": "Пюре киви, лимон, мята, чиа, газ.вода",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 12.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Форест грин",
+    "description": "Пюре груша-фейхоа-зелёный чай, лимон, мята, чиа, фреш лимона, газ.вода",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 12.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Зеленое яблоко",
+    "description": "Сироп зелёное яблоко, лимон, мята, чиа, газ.вода",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 12.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Рози Браун",
+    "description": "Сироп клубника, сироп маракуйя, огурец, клубника, фреш лимона, газ.вода",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 12.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Мохито б/а",
+    "description": "Пюре лайма, лимон, мята, газ.вода",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 12.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Джин тоник",
+    "description": "Джин б/а, швепс, лимон",
+    "prices": [
+      {
+        "size": "170 мл",
+        "price": 9.0
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Негрони",
+    "description": "Джин б/а, биттер б/а, вермут б/а, апельсин",
+    "prices": [
+      {
+        "size": "120 мл",
+        "price": 20.50
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Кровь и песок",
+    "description": "Виски б/а, вермут б/а, сироп клубника",
+    "prices": [
+      {
+        "size": "150 мл",
+        "price": 22.00
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Виски кола",
+    "description": "Виски б/а, кока-кока, лимон",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 14.40
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Гарибальди",
+    "description": "Биттер б/а, сок апельсиновый, апельсин",
+    "prices": [
+      {
+        "size": "200 мл",
+        "price": 12.50
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Вермут б/а",
+    "description": "",
+    "prices": [
+      {
+        "size": "135 мл",
+        "price": 20.50
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Джин б/а",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 7.30
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Виски б/а",
+    "description": "",
+    "prices": [
+      {
+        "size": "50 мл",
+        "price": 7.30
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Глинтвейн б/а",
+    "description": "",
+    "prices": [
+      {
+        "size": "300 мл",
+        "price": 7.50
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Кола, Фанта, Спрайт",
+    "description": "",
+    "prices": [
+      {
+        "size": "330 мл",
+        "price": 4.00
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Сок Rich",
+    "description": "Апельсин, вишня, яблоко, томат",
+    "prices": [
+      {
+        "size": "250 мл",
+        "price": 3.80
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  },
+  {
+    "name": "Лимонад облепиха-тыква",
+    "description": "",
+    "prices": [
+      {
+        "size": "350 мл",
+        "price": 8.50
+      }
+    ],
+    "image": "",
+    "categories": [
+      "Другие напитки"
+    ]
+  }
+]
