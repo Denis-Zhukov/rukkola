@@ -157,6 +157,7 @@ export const  NotFound=()=> {
                 {/* КНОПКА "НА ГЛАВНУЮ" */}
                 <MotionButton
                     as={Link}
+                    // @ts-expect-error - норм)
                     href="/"
                     leftIcon={<FiHome />}
                     mt={4}
