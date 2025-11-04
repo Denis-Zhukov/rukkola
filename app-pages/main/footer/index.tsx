@@ -1,7 +1,10 @@
 "use client";
 
 import { Box, Flex, Text, Icon, Stack, Link } from "@chakra-ui/react";
-import { Phone, Clock, MapPin } from "lucide-react";
+import { Phone, Clock, MapPin, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 export const Footer = () => {
     return (
@@ -15,7 +18,6 @@ export const Footer = () => {
             borderTop="1px solid rgba(255,255,255,0.08)"
             boxShadow="0 -6px 24px rgba(0,0,0,0.35)"
             color="gray.200"
-            transition="opacity 0.6s ease, transform 0.6s ease"
         >
             <Flex
                 direction={{ base: "column", md: "row" }}
@@ -32,35 +34,51 @@ export const Footer = () => {
                         <Text fontWeight="semibold" color="teal.200">
                             Адрес:
                         </Text>
-                        <Link
+                        <MotionLink
                             href="https://www.google.com/maps/search/?api=1&query=ул.+Советская,+60,+новый+универмаг,+Руккола"
                             fontWeight="medium"
-                            color="gray.200"
-                            _hover={{ color: "teal.300", textDecoration: "underline" }}
+                            color="gray.100"
+                            cursor="pointer"
+                            display="inline-flex"
+                            alignItems="center"
+                            gap={1}
+                            _hover={{ color: "teal.300" }}
+                            whileHover={{ x: 2 }}
+                            transition={{ duration: 0.2 }}
                         >
                             ул. Советская, 60
-                        </Link>
-                        <Text color="gray.400">(новый универмаг)</Text>
+                            <Icon as={ArrowUpRight} boxSize={3} opacity={0.7} />
+                        </MotionLink>
+                        <Text color="gray.400" fontSize="sm">(новый универмаг)</Text>
                     </Box>
                 </Stack>
 
+                {/* Телефон */}
                 <Stack direction="row" align="flex-start">
                     <Icon as={Phone} color="teal.300" mt={1} boxSize={5} />
                     <Box>
                         <Text fontWeight="semibold" color="teal.200">
                             Телефон:
                         </Text>
-                        <Link
+                        <MotionLink
                             href="tel:+375447703003"
                             fontWeight="medium"
-                            color="gray.200"
-                            _hover={{ color: "teal.300", textDecoration: "underline" }}
+                            color="gray.100"
+                            cursor="pointer"
+                            display="inline-flex"
+                            alignItems="center"
+                            gap={1}
+                            _hover={{ color: "teal.300" }}
+                            whileHover={{ x: 2 }}
+                            transition={{ duration: 0.2 }}
                         >
                             +375 (44) 770-30-03
-                        </Link>
+                            <Icon as={ArrowUpRight} boxSize={3} opacity={0.7} />
+                        </MotionLink>
                     </Box>
                 </Stack>
 
+                {/* Время работы */}
                 <Stack direction="row" align="flex-start">
                     <Icon as={Clock} color="teal.300" mt={1} boxSize={5} />
                     <Box>
@@ -68,7 +86,7 @@ export const Footer = () => {
                             Время работы:
                         </Text>
                         <Text color="gray.200">12:00 — 23:00</Text>
-                        <Text color="gray.400">без выходных</Text>
+                        <Text color="gray.400" fontSize="sm">без выходных</Text>
                     </Box>
                 </Stack>
             </Flex>

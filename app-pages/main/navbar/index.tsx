@@ -1,11 +1,11 @@
 'use client';
 
-import {useEffect, useRef, useState} from "react";
-import {Button, HStack, Box} from "@chakra-ui/react";
-import {motion, AnimatePresence} from "framer-motion";
-import {getNavItems} from "./actions";
+import { useEffect, useRef, useState } from "react";
+import { Button, HStack, Box } from "@chakra-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
+import { getNavItems } from "./actions";
 import styles from "./style.module.css";
-import {useSearchParams} from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const MotionBox = motion(Box);
 
@@ -14,41 +14,54 @@ export const Navbar = () => {
     const [isFixed, setIsFixed] = useState(false);
     const [active, setActive] = useState<string | null>(null);
     const [navHeight, setNavHeight] = useState(0);
-    const [items, setItems] = useState<Array<{ id: string; name: string; }>>([]);
+    const [items, setItems] = useState<Array<{ id: string; name: string }>>([]);
     const searchParams = useSearchParams();
 
+    // === ИЗМЕРЯЕМ ВЫСОТУ СРАЗУ ПРИ МОНТИРОВАНИИ ===
     useEffect(() => {
-        if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+        const updateHeight = () => {
+            if (navRef.current) {
+                setNavHeight(navRef.current.offsetHeight);
+            }
+        };
 
+        updateHeight();
+        window.addEventListener("resize", updateHeight);
+
+        return () => window.removeEventListener("resize", updateHeight);
+    }, [items]); // Пересчитываем, если пункты изменились
+
+    // === СКРОЛЛ + АКТИВНЫЙ ПУНКТ ===
+    useEffect(() => {
         const handleScroll = () => {
             const y = window.scrollY;
-            const threshold = 200;
+            const threshold = 400;
             setIsFixed(y > threshold);
 
             const scrollPos = y + window.innerHeight / 3;
             let current: string | null = null;
 
             items.forEach((it) => {
-                const id = it.id;
-                const section = document.getElementById(id);
+                const section = document.getElementById(it.id);
                 if (section) {
                     const top = section.offsetTop;
                     const bottom = top + section.offsetHeight;
-                    if (scrollPos >= top && scrollPos < bottom) current = id;
+                    if (scrollPos >= top && scrollPos < bottom) current = it.id;
                 }
             });
 
             setActive(current);
         };
 
-        window.addEventListener("scroll", handleScroll, {passive: true});
+        window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [navHeight, items]); // navHeight в зависимостях — важно!
 
+    // === ЗАГРУЗКА ПУНКТОВ ===
     useEffect(() => {
-        getNavItems().then((items) => setItems(items))
+        getNavItems().then((items) => setItems(items));
     }, []);
 
     const handleClick = (id: string) => {
@@ -67,7 +80,8 @@ export const Navbar = () => {
 
     return (
         <Box position="relative" zIndex="10">
-            {isFixed && <Box height={`${navHeight}px`}/>}
+            {/* РЕЗЕРВ МЕСТА — ТОЛЬКО КОГДА fixed */}
+            {isFixed && <Box height={`${navHeight}px`} />}
 
             <AnimatePresence>
                 <MotionBox
@@ -92,10 +106,10 @@ export const Navbar = () => {
                     }
                     py={4}
                     borderBottom={isFixed ? "1px solid rgba(255,255,255,0.08)" : "none"}
-                    initial={{opacity: 0, y: -20}}
-                    animate={{opacity: 1, y: 0}}
-                    exit={{opacity: 0, y: -20}}
-                    transition={{duration: 0.4, ease: "easeOut"}}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                     <HStack wrap="wrap" justify="center" className={styles.selector}>
                         {items.map((it) => {
@@ -113,36 +127,40 @@ export const Navbar = () => {
                                     borderRadius="full"
                                     fontWeight="medium"
                                     color={isActive ? "teal.300" : "gray.200"}
-                                    bg={isActive ? "rgba(56,178,172,0.18)" : "transparent"}
+                                    bg="transparent"
                                     transition="all 0.3s ease"
                                     _hover={{
-                                        bg: "rgba(56,178,172,0.15)",
                                         color: "teal.200",
                                         transform: "translateY(-2px)",
-                                        boxShadow: "0 6px 14px rgba(56,178,172,0.15)",
                                     }}
                                     _active={{
-                                        bg: "rgba(56,178,172,0.25)",
                                         color: "teal.100",
                                     }}
                                     position="relative"
+                                    overflow="hidden"
                                     onClick={() => handleClick(id)}
                                 >
                                     {title}
+
+                                    {/* КРАСИВЫЙ АКТИВНЫЙ ФОН */}
                                     {isActive && (
                                         <motion.div
                                             layoutId="active-pill"
                                             style={{
                                                 position: "absolute",
-                                                bottom: "-2px",
-                                                left: "50%",
-                                                width: "50%",
-                                                height: "2px",
-                                                borderRadius: "2px",
-                                                background: "linear-gradient(90deg, #38B2AC, #81E6D9)",
-                                                transform: "translateX(-50%)",
+                                                inset: 0,
+                                                borderRadius: "full",
+                                                background: "linear-gradient(90deg, rgba(56,178,172,0.25), rgba(129,230,217,0.2))",
+                                                backdropFilter: "blur(4px)",
+                                                border: "1px solid rgba(56,178,172,0.3)",
+                                                boxShadow: "0 0 12px rgba(56,178,172,0.25)",
+                                                zIndex: -1,
                                             }}
-                                            transition={{duration: 0.25}}
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 300,
+                                                damping: 30,
+                                            }}
                                         />
                                     )}
                                 </Button>
