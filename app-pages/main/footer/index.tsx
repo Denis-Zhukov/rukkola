@@ -1,12 +1,16 @@
 "use client";
 
-import { Box, Flex, Text, Icon, Stack, Link } from "@chakra-ui/react";
-import { Phone, Clock, MapPin, ArrowUpRight } from "lucide-react";
+import { Box, Flex, Text, Icon, Stack, Link, Button } from "@chakra-ui/react";
+import { Phone, Clock, MapPin, ArrowUpRight, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 const MotionLink = motion(Link);
 
 export const Footer = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
         <Box
             as="footer"
@@ -18,7 +22,26 @@ export const Footer = () => {
             borderTop="1px solid rgba(255,255,255,0.08)"
             boxShadow="0 -6px 24px rgba(0,0,0,0.35)"
             color="gray.200"
+            position="relative"
         >
+            <Box
+                position="absolute"
+                top={-6}
+                right={6}
+            >
+                <Button
+                    colorScheme="teal"
+                    borderRadius="full"
+                    w={12}
+                    h={12}
+                    p={0}
+                    onClick={scrollToTop}
+                    _hover={{ bg: "teal.400" }}
+                >
+                    <Icon as={ArrowUp} boxSize={5} />
+                </Button>
+            </Box>
+
             <Flex
                 direction={{ base: "column", md: "row" }}
                 justify="space-between"
@@ -27,7 +50,6 @@ export const Footer = () => {
                 maxW="6xl"
                 mx="auto"
             >
-                {/* Адрес */}
                 <Stack direction="row" align="flex-start">
                     <Icon as={MapPin} color="teal.300" mt={1} boxSize={5} />
                     <Box>
@@ -53,7 +75,6 @@ export const Footer = () => {
                     </Box>
                 </Stack>
 
-                {/* Телефон */}
                 <Stack direction="row" align="flex-start">
                     <Icon as={Phone} color="teal.300" mt={1} boxSize={5} />
                     <Box>
@@ -78,7 +99,6 @@ export const Footer = () => {
                     </Box>
                 </Stack>
 
-                {/* Время работы */}
                 <Stack direction="row" align="flex-start">
                     <Icon as={Clock} color="teal.300" mt={1} boxSize={5} />
                     <Box>
