@@ -3,26 +3,23 @@ import mongoose from 'mongoose'
 const MONGODB_URI = process.env.MONGODB_URI as string
 
 if (!MONGODB_URI) {
-    throw new Error('⚠️ Добавь MONGODB_URI в .env.local')
+    throw new Error('Добавь MONGODB_URI в .env.local')
 }
 
-// Определяем интерфейс для кеша соединения
 interface MongooseCache {
     conn: typeof mongoose | null
     promise: Promise<typeof mongoose> | null
 }
 
-declare global {
-    // eslint-disable-next-line no-var
-    var mongooseCache: MongooseCache | undefined
-}
-
-const cached: MongooseCache = global.mongooseCache ?? {
+// Используем globalThis вместо global
+const cached: MongooseCache = (globalThis as any).mongooseCache ?? {
     conn: null,
     promise: null,
 }
 
-global.mongooseCache = cached
+if (!(globalThis as any).mongooseCache) {
+    (globalThis as any).mongooseCache = cached
+}
 
 export async function connectToDatabase() {
     if (cached.conn) return cached.conn

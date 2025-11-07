@@ -11,13 +11,16 @@
     "seed:build": "tsc --project tsconfig.seed.json && node dist/seed/index.js"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.11.1",
     "@chakra-ui/layout": "^2.3.1",
     "@chakra-ui/modal": "^2.3.1",
     "@chakra-ui/react": "^3.28.0",
     "@emotion/react": "^11.14.0",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.548.0",
+    "mongodb": "^6.20.0",
     "mongoose": "^8.19.2",
     "next": "16.0.0",
     "next-auth": "^5.0.0-beta.30",
