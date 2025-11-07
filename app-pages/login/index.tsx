@@ -1,0 +1,352 @@
+"use client";
+
+import {
+    Flex,
+    Box,
+    Heading,
+    Text,
+    Input,
+    Button,
+} from "@chakra-ui/react";
+import {FiUser, FiLock, FiEye, FiEyeOff, FiAlertCircle} from "react-icons/fi";
+import {motion, AnimatePresence} from "framer-motion";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {z} from "zod";
+import {signIn} from "next-auth/react";
+import {useState} from "react";
+import {useRouter} from "next/navigation";
+
+const MotionBox = motion(Box);
+const MotionButton = motion(Button);
+
+const loginSchema = z.object({
+    login: z.string().min(3, "Логин должен содержать не менее 3 символов"),
+    password: z.string().min(5, "Пароль должен быть не менее 5 символов"),
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
+
+export const LoginPage = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
+    const router = useRouter();
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors},
+    } = useForm<LoginFormData>({
+        resolver: zodResolver(loginSchema),
+    });
+
+    const showNotification = (message: string, type: "success" | "error") => {
+        setNotification({message, type});
+        setTimeout(() => setNotification(null), 4000);
+    };
+
+    const onSubmit = async (data: LoginFormData) => {
+        setIsLoading(true);
+        try {
+            const result = await signIn("credentials", {
+                login: data.login,
+                password: data.password,
+                redirect: false,
+            });
+
+            if (result?.error) {
+                showNotification("Неверный логин или пароль", "error");
+            } else {
+                showNotification("Успешно! Вы вошли", "success");
+                setTimeout(() => router.push("/"), 1500);
+            }
+        } catch {
+            showNotification("Ошибка сервера", "error");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <Flex
+            minH="100vh"
+            align="center"
+            justify="center"
+            bg="gray.900"
+            position="relative"
+            overflow="hidden"
+        >
+            {[...Array(6)].map((_, i) => (
+                <MotionBox
+                    key={i}
+                    position="absolute"
+                    w="300px"
+                    h="300px"
+                    borderRadius="full"
+                    filter="blur(80px)"
+                    opacity={0.15}
+                    bg={`hsl(${i * 60}, 70%, 60%)`}
+                    initial={{x: Math.random() * 1000 - 500, y: Math.random() * 1000 - 500}}
+                    animate={{
+                        x: [null, Math.random() * 400 - 200],
+                        y: [null, Math.random() * 400 - 200],
+                    }}
+                    transition={{
+                        duration: 15 + i * 2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut",
+                    }}
+                />
+            ))}
+
+            <AnimatePresence>
+                {notification && (
+                    <MotionBox
+                        key="notif"
+                        initial={{opacity: 0, y: -50, scale: 0.8}}
+                        animate={{opacity: 1, y: 0, scale: 1}}
+                        exit={{opacity: 0, scale: 0.8}}
+                        position="fixed"
+                        top={6}
+                        left="50%"
+                        transform="translateX(-50%)"
+                        zIndex={9999}
+                        px={8}
+                        py={4}
+                        bg={notification.type === "success" ? "teal.500" : "red.500"}
+                        color="white"
+                        borderRadius="full"
+                        boxShadow="0 20px 40px rgba(0,0,0,0.4)"
+                        fontWeight="semibold"
+                        textAlign="center"
+                        minW="320px"
+                        backdropFilter="blur(10px)"
+                        border="1px solid rgba(255,255,255,0.1)"
+                    >
+                        {notification.message}
+                    </MotionBox>
+                )}
+            </AnimatePresence>
+
+            <MotionBox
+                initial={{opacity: 0, scale: 0.9, y: 50}}
+                animate={{opacity: 1, scale: 1, y: 0}}
+                transition={{duration: 0.8, ease: "easeOut"}}
+                w="full"
+                maxW="md"
+                mx={4}
+                p={10}
+                bg="rgba(30, 30, 40, 0.7)"
+                backdropFilter="blur(20px)"
+                borderRadius="3xl"
+                border="1px solid rgba(255, 255, 255, 0.1)"
+                boxShadow="0 25px 50px rgba(0, 0, 0, 0.5)"
+                position="relative"
+                overflow="hidden"
+                _before={{
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: "2px",
+                    bgGradient: "linear(to-r, teal.400, cyan.400)",
+                    filter: "blur(1px)",
+                }}
+            >
+                <Flex direction="column" gap={8} align="center">
+                    <Heading
+                        fontSize={{base: "3xl", md: "4xl"}}
+                        fontWeight="extrabold"
+                        letterSpacing="tight"
+                        color="teal.300"
+                        position="relative"
+                        _hover={{
+                            transform: "translateY(-2px)",
+                            color: "cyan.300",
+                        }}
+                        transition="all 0.3s ease"
+                        _after={{
+                            content: '""',
+                            position: "absolute",
+                            bottom: "-8px",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            width: "60px",
+                            height: "3px",
+                            bgGradient: "linear(to-r, teal.400, cyan.400)",
+                            borderRadius: "full",
+                        }}
+                    >
+                        Вход в систему
+                    </Heading>
+
+                    <Flex as="form" direction="column" gap={6} w="full" onSubmit={handleSubmit(onSubmit)}>
+                        {/* ЛОГИН */}
+                        <MotionBox initial={{opacity: 0, x: -50}} animate={{opacity: 1, x: 0}} transition={{delay: 0.3}}>
+                            <Flex direction="column" gap={2}>
+                                <Box position="relative">
+                                    <Box position="absolute" left={4} top="50%" transform="translateY(-50%)"
+                                         color="gray.400" zIndex={1}>
+                                        <FiUser size={20}/>
+                                    </Box>
+                                    <Input
+                                        {...register("login")}
+                                        type="text"
+                                        placeholder="Логин"
+                                        pl={16}
+                                        pr={4}
+                                        py={7}
+                                        bg="rgba(40, 40, 50, 0.6)"
+                                        border="1px solid"
+                                        borderColor={errors.login ? "red.400" : "rgba(255, 255, 255, 0.1)"}
+                                        color="white"
+                                        fontSize="md"
+                                        _placeholder={{color: "gray.500"}}
+                                        _focus={{
+                                            bg: "rgba(50, 50, 60, 0.8)",
+                                            borderColor: errors.login ? "red.400" : "teal.400",
+                                            boxShadow: errors.login
+                                                ? "0 0 0 1px red.400, 0 0 20px rgba(248, 113, 113, 0.4)"
+                                                : "0 0 0 1px teal.400, 0 0 20px rgba(56, 178, 172, 0.4)",
+                                            transform: "translateY(-2px)",
+                                        }}
+                                        borderRadius="xl"
+                                        transition="all 0.3s ease"
+                                    />
+                                </Box>
+
+                                {errors.login && (
+                                    <MotionBox
+                                        initial={{height: 0, opacity: 0, y: -10}}
+                                        animate={{height: "auto", opacity: 1, y: 0}}
+                                        transition={{duration: 0.3, ease: "easeOut"}}
+                                        overflow="hidden"
+                                        pl={4}
+                                        mt={1}
+                                    >
+                                        <Flex align="center" gap={1.5}>
+                                            <Box as={FiAlertCircle} color="red.400" fontSize="xs"
+                                                 filter="drop-shadow(0 0 4px rgba(248, 113, 113, 0.6))"/>
+                                            <Text fontSize="xs" color="red.400" fontWeight="medium"
+                                                  textShadow="0 0 8px rgba(248, 113, 113, 0.4)">
+                                                {errors.login.message}
+                                            </Text>
+                                        </Flex>
+                                    </MotionBox>
+                                )}
+                            </Flex>
+                        </MotionBox>
+
+                        {/* ПАРОЛЬ */}
+                        <MotionBox initial={{opacity: 0, x: 50}} animate={{opacity: 1, x: 0}} transition={{delay: 0.4}}>
+                            <Flex direction="column" gap={2}>
+                                <Box position="relative">
+                                    <Box position="absolute" left={4} top="50%" transform="translateY(-50%)"
+                                         color="gray.400" zIndex={1}>
+                                        <FiLock size={20}/>
+                                    </Box>
+                                    <Input
+                                        {...register("password")}
+                                        type={showPassword ? "text" : "password"}
+                                        placeholder="Пароль"
+                                        pl={16}
+                                        pr={14}
+                                        py={7}
+                                        bg="rgba(40, 40, 50, 0.6)"
+                                        border="1px solid"
+                                        borderColor={errors.password ? "red.400" : "rgba(255, 255, 255, 0.1)"}
+                                        color="white"
+                                        fontSize="md"
+                                        _placeholder={{color: "gray.500"}}
+                                        _focus={{
+                                            bg: "rgba(50, 50, 60, 0.8)",
+                                            borderColor: errors.password ? "red.400" : "teal.400",
+                                            boxShadow: errors.password
+                                                ? "0 0 0 1px red.400, 0 0 20px rgba(248, 113, 113, 0.4)"
+                                                : "0 0 0 1px teal.400, 0 0 20px rgba(56, 178, 172, 0.4)",
+                                            transform: "translateY(-2px)",
+                                        }}
+                                        borderRadius="xl"
+                                        transition="all 0.3s ease"
+                                    />
+                                    <Button
+                                        position="absolute"
+                                        top="50%"
+                                        right={3}
+                                        transform="translateY(-50%)"
+                                        size="sm"
+                                        variant="ghost"
+                                        color="gray.400"
+                                        _hover={{color: "teal.300"}}
+                                        p={1}
+                                        borderRadius="full"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <FiEyeOff size={18}/> : <FiEye size={18}/>}
+                                    </Button>
+                                </Box>
+
+                                {errors.password && (
+                                    <MotionBox
+                                        initial={{height: 0, opacity: 0, y: -10}}
+                                        animate={{height: "auto", opacity: 1, y: 0}}
+                                        transition={{duration: 0.3, ease: "easeOut"}}
+                                        overflow="hidden"
+                                        pl={4}
+                                        mt={1}
+                                    >
+                                        <Flex align="center" gap={1.5}>
+                                            <Box as={FiAlertCircle} color="red.400" fontSize="xs"
+                                                 filter="drop-shadow(0 0 4px rgba(248, 113, 113, 0.6))"/>
+                                            <Text fontSize="xs" color="red.400" fontWeight="medium"
+                                                  textShadow="0 0 8px rgba(248, 113, 113, 0.4)">
+                                                {errors.password.message}
+                                            </Text>
+                                        </Flex>
+                                    </MotionBox>
+                                )}
+                            </Flex>
+                        </MotionBox>
+
+                        <MotionButton
+                            type="submit"
+                            w="full"
+                            py={7}
+                            bgGradient="linear(to-r, teal.500, cyan.500)"
+                            color="white"
+                            fontWeight="bold"
+                            fontSize="lg"
+                            borderRadius="full"
+                            boxShadow="0 10px 30px rgba(56, 178, 172, 0.4)"
+                            _hover={{
+                                bgGradient: "linear(to-r, teal.400, cyan.400)",
+                                boxShadow: "0 15px 35px rgba(56, 178, 172, 0.5)",
+                                transform: "translateY(-2px)",
+                            }}
+                            _active={{transform: "translateY(0px)"}}
+                            whileTap={{scale: 0.95}}
+                            disabled={isLoading}
+                        >
+                            <AnimatePresence mode="wait">
+                                {isLoading ? (
+                                    <motion.span key="loading" initial={{opacity: 0}} animate={{opacity: 1}}
+                                                 exit={{opacity: 0}}>
+                                        Входим...
+                                    </motion.span>
+                                ) : (
+                                    <motion.span key="login" initial={{opacity: 0}} animate={{opacity: 1}}
+                                                 exit={{opacity: 0}}>
+                                        Войти
+                                    </motion.span>
+                                )}
+                            </AnimatePresence>
+                        </MotionButton>
+                    </Flex>
+                </Flex>
+            </MotionBox>
+        </Flex>
+    );
+};

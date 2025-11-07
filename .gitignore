@@ -2,6 +2,7 @@
 
 # dependencies
 data
+.idea
 /node_modules
 /.pnp
 .pnp.*
