@@ -22,7 +22,6 @@ export const ScrollToFooterButton = () => {
             bg="blackAlpha.900"
             color="white"
         >
-            {/* Верхний градиент */}
             <Box
                 position="absolute"
                 top={0}
@@ -42,25 +41,6 @@ export const ScrollToFooterButton = () => {
                 mx="auto"
                 pos="relative"
             >
-                {/* Заголовок */}
-                <MotionBox
-                    initial={{ y: -16, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    <Text
-                        fontSize={{ base: "xl", md: "2xl" }}
-                        fontWeight="bold"
-                        lineHeight="shorter"
-                        bgGradient="linear(to-r, teal.300, teal.500)"
-                        bgClip="text"
-                    >
-                        Контакты внизу
-                    </Text>
-                </MotionBox>
-
-                {/* Твой любимый текст */}
                 <MotionBox
                     initial={{ y: -12, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
@@ -69,7 +49,7 @@ export const ScrollToFooterButton = () => {
                 >
                     <Text
                         fontSize={{ base: "sm", md: "md" }}
-                        color="gray.400"
+                        color="gray.200"
                         maxW="lg"
                         fontWeight="medium"
                     >

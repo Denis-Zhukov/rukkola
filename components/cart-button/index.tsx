@@ -39,8 +39,8 @@ export const CartButton = () => {
             {(count > 0 || isOpen) && (
                 <MotionBox
                     position="fixed"
-                    bottom="28px"
-                    right="28px"
+                    bottom="56px"
+                    right="56px"
                     zIndex="1000"
                     initial={{opacity: 0, scale: 0.8, y: 20}}
                     animate={{opacity: 1, scale: 1, y: 0}}
