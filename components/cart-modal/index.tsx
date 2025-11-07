@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {
     Modal,
     ModalOverlay,
@@ -9,10 +9,10 @@ import {
     ModalBody,
     ModalCloseButton,
 } from "@chakra-ui/modal";
-import { Box, Button, Flex, Text, Image, Icon } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { FiShoppingCart } from "react-icons/fi";
+import {Box, Button, Flex, Text, Image, Icon} from "@chakra-ui/react";
+import {motion, AnimatePresence} from "framer-motion";
+import {useSearchParams, usePathname, useRouter} from "next/navigation";
+import {FiShoppingCart} from "react-icons/fi";
 import {CartItem, getCart, setCart} from "@/lib/local-storage";
 
 const MotionBox = motion(Box);
@@ -36,7 +36,7 @@ export const CartModal = () => {
     const handleClose = () => {
         const params = new URLSearchParams(searchParams.toString());
         params.delete("cart");
-        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+        router.push(`${pathname}?${params.toString()}`, {scroll: false});
     };
 
     const handleRemove = (index: number) => {
@@ -51,6 +51,12 @@ export const CartModal = () => {
         setCart([]);
     };
 
+    const closeCart = () => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete("cart");
+        router.replace(`${pathname}?${params.toString()}`, {scroll: false});
+    };
+
     const total = items.reduce((sum, item) => sum + (item.price || 0), 0);
 
     return (
@@ -63,7 +69,7 @@ export const CartModal = () => {
                     size="md"
                     motionPreset="scale"
                 >
-                    <ModalOverlay bg="rgba(0,0,0,0.75)" backdropFilter="blur(8px)" />
+                    <ModalOverlay bg="rgba(0,0,0,0.75)" backdropFilter="blur(8px)" onClick={closeCart}/>
 
                     <ModalContent
                         as={motion.div}
@@ -75,9 +81,9 @@ export const CartModal = () => {
                         display="flex"
                         flexDirection="column"
                         overflow="hidden"
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                        initial={{opacity: 0, scale: 0.9, y: 20}}
+                        animate={{opacity: 1, scale: 1, y: 0}}
+                        exit={{opacity: 0, scale: 0.9, y: 10}}
                     >
                         <ModalHeader
                             color="teal.300"
@@ -91,7 +97,7 @@ export const CartModal = () => {
                             Ваша корзина
                         </ModalHeader>
 
-                        <ModalCloseButton color="gray.400" _hover={{ color: "teal.300" }} />
+                        <ModalCloseButton color="gray.400" _hover={{color: "teal.300"}}/>
 
                         <ModalBody px={6} py={3} overflowY="auto" flex="1">
                             {items.length === 0 ? (
@@ -103,7 +109,7 @@ export const CartModal = () => {
                                     color="gray.400"
                                     gap={3}
                                 >
-                                    <Icon as={FiShoppingCart} boxSize={10} color="teal.500" />
+                                    <Icon as={FiShoppingCart} boxSize={10} color="teal.500"/>
                                     <Text>Корзина пуста</Text>
                                 </Flex>
                             ) : (
@@ -118,9 +124,9 @@ export const CartModal = () => {
                                             bg="rgba(255,255,255,0.03)"
                                             borderRadius="lg"
                                             border="1px solid transparent"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.25, delay: i * 0.04 }}
+                                            initial={{opacity: 0, y: 10}}
+                                            animate={{opacity: 1, y: 0}}
+                                            transition={{duration: 0.25, delay: i * 0.04}}
                                             whileHover={{
                                                 borderColor: "rgba(56,178,172,0.3)",
                                                 boxShadow: "0 0 8px rgba(56,178,172,0.2)",
