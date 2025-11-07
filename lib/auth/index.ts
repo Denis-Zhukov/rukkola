@@ -1,25 +1,25 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { connectToDatabase } from "../mongoose";
-import { User } from "@/models/user";
-import type { IUser } from "@/models/user";
+import {connectToDatabase} from "../mongoose";
+import {User} from "@/models/user";
+import type {IUser} from "@/models/user";
 
 export const authConfig = {
     providers: [
         Credentials({
             name: "Credentials",
             credentials: {
-                login: { label: "Логин", type: "text" },
-                password: { label: "Пароль", type: "password" },
+                username: {label: "Логин", type: "text"},
+                password: {label: "Пароль", type: "password"},
             },
             async authorize(credentials) {
                 await connectToDatabase();
 
-                if (!credentials?.login || !credentials?.password) return null;
+                if (!credentials?.username || !credentials?.password) return null;
 
                 const user = (await User.findOne({
-                    email: credentials.login, // если логин = email
+                    username: credentials.username,
                 }).exec()) as IUser | null;
 
                 if (!user) return null;
@@ -32,30 +32,42 @@ export const authConfig = {
 
                 return {
                     id: (user._id as object).toString(),
+                    username: user.username,
                     name: user.name,
-                    email: user.email,
+                    surname: user.surname,
+                    patronymic: user.patronymic,
                     role: user.role,
                 };
             },
         }),
     ],
-    session: { strategy: "jwt" },
-    pages: { signIn: "/login" },
+    session: {strategy: "jwt"},
+    pages: {signIn: "/login"},
     callbacks: {
-        async jwt({ token, user }) {
-            if (user) token.role = (user as IUser).role;
+        async jwt({token, user}) {
+            if (user) {
+                token.id = user.id;
+                token.name = user.name;
+                token.surname = user.surname;
+                token.patronymic = user.patronymic;
+                token.role = user.role;
+            }
             return token;
         },
-        async session({ session, token }) {
-            if (token && session.user) {
+        async session({session, token}) {
+            if (token) {
+                session.user.id = token.id as string;
+                session.user.name = token.name as string;
+                session.user.surname = token.surname as string;
+                session.user.patronymic = token.patronymic as string;
                 session.user.role = token.role as string;
             }
             return session;
-        },
+        }
     },
     secret: process.env.NEXTAUTH_SECRET,
 } satisfies import("next-auth").NextAuthConfig;
 
 const handler = NextAuth(authConfig);
 
-export const { handlers, auth, signIn, signOut } = handler;
+export const {handlers, auth, signIn, signOut} = handler;

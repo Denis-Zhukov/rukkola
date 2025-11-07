@@ -1,3 +1,3 @@
-import {Dashboard} from "@/app-pages/dashboard";
+import {Dashboard} from "../../app-pages/dashboard-main";
 
 export default Dashboard;

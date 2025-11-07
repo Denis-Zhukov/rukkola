@@ -1,12 +1,6 @@
 "use client";
 
-import {
-    Box,
-    Flex,
-    VStack,
-    Text,
-    Icon
-} from "@chakra-ui/react";
+import {Box, Flex, VStack, Text, Icon, IconButton} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 import {
     FiHome,
@@ -14,9 +8,11 @@ import {
     FiUsers,
     FiSettings,
     FiLogOut,
+    FiMenu,
 } from "react-icons/fi";
 import {useRouter, usePathname} from "next/navigation";
 import {signOut} from "next-auth/react";
+import {useState} from "react";
 
 const MotionBox = motion(Box);
 
@@ -27,13 +23,10 @@ const menuItems = [
     {label: "Настройки", icon: FiSettings, path: "/dashboard/settings"},
 ];
 
-export const DashboardLayout = ({
-                                    children,
-                                }: {
-    children: React.ReactNode;
-}) => {
+export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
     const router = useRouter();
     const pathname = usePathname();
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const sidebarBg = "gray.800";
     const activeColor = "teal.400";
@@ -41,14 +34,36 @@ export const DashboardLayout = ({
     const dividerColor = "rgba(255,255,255,0.08)";
 
     return (
-        <Flex minH="100vh" bg="gray.900" color="white">
-            {/* Sidebar */}
-            <MotionBox
-                w="260px"
+        <Flex minH="100vh" bg="gray.900" color="white" flexDir={{base: "column", md: "row"}}>
+            {/* Mobile topbar */}
+            <Flex
+                display={{base: "flex", md: "none"}}
+                justify="space-between"
+                align="center"
                 bg={sidebarBg}
-                p={6}
-                borderRight={`1px solid ${dividerColor}`}
-                display="flex"
+                px={4}
+                py={3}
+                borderBottom={`1px solid ${dividerColor}`}
+            >
+                <Text fontWeight="bold" fontSize="lg" color="teal.300">
+                    🍕 Admin Panel
+                </Text>
+                <IconButton
+                    aria-label="Menu"
+                    variant="ghost"
+                    color="white"
+                    _hover={{bg: "rgba(56,178,172,0.1)"}}
+                    onClick={() => setMobileOpen(!mobileOpen)}>
+                    <FiMenu/>
+                </IconButton>
+            </Flex>
+
+            <MotionBox
+                w={{base: mobileOpen ? "100%" : 0, md: "260px"}}
+                bg={sidebarBg}
+                p={{base: mobileOpen ? 6 : 0, md: 6}}
+                borderRight={{base: "none", md: `1px solid ${dividerColor}`}}
+                display={{base: mobileOpen ? "block" : "none", md: "flex"}}
                 flexDir="column"
                 justifyContent="space-between"
                 initial={{x: -40, opacity: 0}}
@@ -56,7 +71,14 @@ export const DashboardLayout = ({
                 transition={{duration: 0.4}}
             >
                 <VStack align="stretch">
-                    <Box textAlign="center" fontWeight="bold" fontSize="xl" color="teal.300">
+                    <Box
+                        display={{base: "none", md: "block"}}
+                        textAlign="center"
+                        fontWeight="bold"
+                        fontSize="xl"
+                        color="teal.300"
+                        mb={6}
+                    >
                         🍕 Admin Panel
                     </Box>
 
@@ -80,7 +102,10 @@ export const DashboardLayout = ({
                                         transform: "translateX(2px)",
                                     }}
                                     transition="all 0.2s ease"
-                                    onClick={() => router.push(item.path)}
+                                    onClick={() => {
+                                        router.push(item.path);
+                                        setMobileOpen(false);
+                                    }}
                                 >
                                     <Icon as={item.icon} boxSize={5}/>
                                     <Text fontWeight="medium">{item.label}</Text>
@@ -90,7 +115,7 @@ export const DashboardLayout = ({
                     </VStack>
                 </VStack>
 
-                <Box>
+                <Box mt={4}>
                     <Box my={4} h="1px" bg={dividerColor}/>
                     <Flex
                         align="center"
@@ -100,12 +125,9 @@ export const DashboardLayout = ({
                         borderRadius="md"
                         color="gray.400"
                         cursor="pointer"
-                        _hover={{
-                            bg: "rgba(56,178,172,0.1)",
-                            color: "red.300",
-                        }}
+                        _hover={{bg: "rgba(56,178,172,0.1)", color: "red.300"}}
                         transition="all 0.2s ease"
-                        onClick={() => signOut({redirectTo: '/'})}
+                        onClick={() => signOut({redirectTo: "/"})}
                     >
                         <Icon as={FiLogOut} boxSize={5}/>
                         <Text fontWeight="medium">Выйти</Text>
@@ -113,9 +135,10 @@ export const DashboardLayout = ({
                 </Box>
             </MotionBox>
 
-            <Box flex="1" p={10} overflowX="auto">
+            {/* Content */}
+            <Box flex="1" p={{base: 4, md: 10}} overflowX="auto">
                 {children}
             </Box>
         </Flex>
     );
-}
+};

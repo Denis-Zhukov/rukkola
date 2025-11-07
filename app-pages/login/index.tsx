@@ -21,7 +21,7 @@ const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 
 const loginSchema = z.object({
-    login: z.string().min(3, "Логин должен содержать не менее 3 символов"),
+    username: z.string().min(3, "Логин должен содержать не менее 3 символов"),
     password: z.string().min(5, "Пароль должен быть не менее 5 символов"),
 });
 
@@ -50,7 +50,7 @@ export const LoginPage = () => {
         setIsLoading(true);
         try {
             const result = await signIn("credentials", {
-                login: data.login,
+                username: data.username,
                 password: data.password,
                 redirect: false,
             });
@@ -193,7 +193,7 @@ export const LoginPage = () => {
                                         <FiUser size={20}/>
                                     </Box>
                                     <Input
-                                        {...register("login")}
+                                        {...register("username")}
                                         type="text"
                                         placeholder="Логин"
                                         pl={16}
@@ -201,14 +201,14 @@ export const LoginPage = () => {
                                         py={7}
                                         bg="rgba(40, 40, 50, 0.6)"
                                         border="1px solid"
-                                        borderColor={errors.login ? "red.400" : "rgba(255, 255, 255, 0.1)"}
+                                        borderColor={errors.username ? "red.400" : "rgba(255, 255, 255, 0.1)"}
                                         color="white"
                                         fontSize="md"
                                         _placeholder={{color: "gray.500"}}
                                         _focus={{
                                             bg: "rgba(50, 50, 60, 0.8)",
-                                            borderColor: errors.login ? "red.400" : "teal.400",
-                                            boxShadow: errors.login
+                                            borderColor: errors.username ? "red.400" : "teal.400",
+                                            boxShadow: errors.username
                                                 ? "0 0 0 1px red.400, 0 0 20px rgba(248, 113, 113, 0.4)"
                                                 : "0 0 0 1px teal.400, 0 0 20px rgba(56, 178, 172, 0.4)",
                                             transform: "translateY(-2px)",
@@ -218,7 +218,7 @@ export const LoginPage = () => {
                                     />
                                 </Box>
 
-                                {errors.login && (
+                                {errors.username && (
                                     <MotionBox
                                         initial={{height: 0, opacity: 0, y: -10}}
                                         animate={{height: "auto", opacity: 1, y: 0}}
@@ -232,7 +232,7 @@ export const LoginPage = () => {
                                                  filter="drop-shadow(0 0 4px rgba(248, 113, 113, 0.6))"/>
                                             <Text fontSize="xs" color="red.400" fontWeight="medium"
                                                   textShadow="0 0 8px rgba(248, 113, 113, 0.4)">
-                                                {errors.login.message}
+                                                {errors.username.message}
                                             </Text>
                                         </Flex>
                                     </MotionBox>
@@ -337,7 +337,7 @@ export const LoginPage = () => {
                                         Входим...
                                     </motion.span>
                                 ) : (
-                                    <motion.span key="login" initial={{opacity: 0}} animate={{opacity: 1}}
+                                    <motion.span key="username" initial={{opacity: 0}} animate={{opacity: 1}}
                                                  exit={{opacity: 0}}>
                                         Войти
                                     </motion.span>
