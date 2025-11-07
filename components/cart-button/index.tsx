@@ -1,11 +1,11 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import {motion, AnimatePresence} from "framer-motion";
-import {Box, Badge, IconButton} from "@chakra-ui/react";
-import {FiShoppingCart, FiX} from "react-icons/fi";
-import {useRouter, usePathname, useSearchParams} from "next/navigation";
-import {getCart} from "@/lib/local-storage";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Box, Badge, IconButton } from "@chakra-ui/react";
+import { FiShoppingCart, FiX } from "react-icons/fi";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { getCart } from "@/lib/local-storage";
 
 const MotionBox = motion(Box);
 
@@ -31,7 +31,7 @@ export const CartButton = () => {
         const params = new URLSearchParams(searchParams.toString());
         if (isOpen) params.delete("cart");
         else params.set("cart", "true");
-        router.push(`${pathname}?${params.toString()}`, {scroll: false});
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
     return (
@@ -39,12 +39,12 @@ export const CartButton = () => {
             {(count > 0 || isOpen) && (
                 <MotionBox
                     position="fixed"
-                    bottom="56px"
-                    right="56px"
+                    bottom="28px"
+                    right="28px"
                     zIndex="1000"
-                    initial={{opacity: 0, scale: 0.8, y: 20}}
-                    animate={{opacity: 1, scale: 1, y: 0}}
-                    exit={{opacity: 0, scale: 0.8, y: 20}}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: 20 }}
                     transition={{
                         duration: 0.35,
                         type: "spring",
@@ -55,10 +55,10 @@ export const CartButton = () => {
                     <Box position="relative">
                         <MotionBox
                             position="absolute"
-                            inset="-10px"
+                            inset="-12px"
                             borderRadius="full"
                             bg="teal.400"
-                            filter="blur(16px)"
+                            filter="blur(20px)"
                             opacity={0.25}
                             animate={{
                                 scale: [1, 1.05, 1],
@@ -74,52 +74,50 @@ export const CartButton = () => {
                         <IconButton
                             aria-label={isOpen ? "Закрыть корзину" : "Открыть корзину"}
                             borderRadius="full"
-                            size="lg"
+                            size="xl"
                             onClick={toggleCart}
                             bg="linear-gradient(145deg, #1c1f1e, #232826)"
                             color="teal.200"
                             boxShadow="
-                0 6px 12px rgba(0,0,0,0.45),
-                inset 0 -2px 4px rgba(255,255,255,0.05),
-                inset 0 2px 6px rgba(255,255,255,0.05)
-              "
+                                0 6px 12px rgba(0,0,0,0.45),
+                                inset 0 -2px 4px rgba(255,255,255,0.05),
+                                inset 0 2px 6px rgba(255,255,255,0.05)
+                              "
                             _hover={{
                                 transform: "translateY(-3px) scale(1.05)",
                                 color: "teal.100",
                                 boxShadow: `
-                  0 10px 18px rgba(0,0,0,0.6),
-                  inset 0 -3px 6px rgba(255,255,255,0.08),
-                  inset 0 3px 8px rgba(255,255,255,0.08),
-                  0 0 12px rgba(56,178,172,0.4)
-                `,
+                              0 10px 18px rgba(0,0,0,0.6),
+                              inset 0 -3px 6px rgba(255,255,255,0.08),
+                              inset 0 3px 8px rgba(255,255,255,0.08),
+                              0 0 12px rgba(56,178,172,0.4)
+                            `,
                             }}
                             _active={{
                                 transform: "scale(0.96)",
                                 boxShadow: `
-                  0 5px 10px rgba(0,0,0,0.5),
-                  inset 0 2px 4px rgba(0,0,0,0.4)
-                `,
+                                  0 5px 10px rgba(0,0,0,0.5),
+                                  inset 0 2px 4px rgba(0,0,0,0.4)
+                                `,
                             }}
-                            transition="all 0.25s ease">
-                            {isOpen ? (
-                                <FiX size={22}/>
-                            ) : (
-                                <FiShoppingCart size={22}/>
-                            )}
+                            transition="all 0.25s ease"
+                        >
+                            {isOpen ? <FiX size={64} /> : <FiShoppingCart size={64} />}
                         </IconButton>
 
                         <Badge
                             position="absolute"
-                            top="-5px"
-                            right="-5px"
+                            top="-8px"
+                            right="-8px"
+                            onClick={toggleCart}
+                            cursor="pointer"
                             borderRadius="full"
                             bgGradient="linear(to-br, teal.400, green.300)"
                             color="black"
                             fontSize="xs"
-                            px="2"
-                            py="1px"
-                            fontWeight="bold"
-                            boxShadow="0 0 8px rgba(56,178,172,0.6)"
+                            px="3"
+                            py="2px"
+                            boxShadow="0 0 10px rgba(56,178,172,0.6)"
                             as={motion.div}
                         >
                             {count}
