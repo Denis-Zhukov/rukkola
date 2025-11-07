@@ -59,7 +59,7 @@ export const LoginPage = () => {
                 showNotification("Неверный логин или пароль", "error");
             } else {
                 showNotification("Успешно! Вы вошли", "success");
-                setTimeout(() => router.push("/"), 1500);
+                setTimeout(() => router.push("/dashboard"), 1500);
             }
         } catch {
             showNotification("Ошибка сервера", "error");
