@@ -6,6 +6,7 @@ import { Box, Badge, IconButton } from "@chakra-ui/react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { getCart } from "@/lib/local-storage";
+import {CART_QUERY_KEY} from "@/app-pages/menu/config";
 
 const MotionBox = motion(Box);
 
@@ -14,7 +15,7 @@ export const CartButton = () => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const isOpen = searchParams.get("cart") === "true";
+    const isOpen = searchParams.has(CART_QUERY_KEY);
 
     useEffect(() => {
         setCount(getCart().length);

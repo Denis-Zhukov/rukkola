@@ -1,4 +1,4 @@
-import mongoose, {Schema, Document, Model} from 'mongoose'
+import mongoose, {Schema, Document, Model, Types} from 'mongoose'
 import './category';
 
 export interface PortionPrice {
@@ -7,6 +7,7 @@ export interface PortionPrice {
 }
 
 export interface IProduct extends Document {
+    _id: Types.ObjectId
     name: string
     description: string
     prices: PortionPrice[]
