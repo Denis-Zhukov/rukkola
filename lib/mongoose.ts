@@ -11,7 +11,6 @@ interface MongooseCache {
     promise: Promise<typeof mongoose> | null
 }
 
-// Используем globalThis вместо global
 const cached: MongooseCache = (globalThis as any).mongooseCache ?? {
     conn: null,
     promise: null,

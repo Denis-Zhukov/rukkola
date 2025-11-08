@@ -1,4 +1,5 @@
-import mongoose, { Schema, Document, Model } from 'mongoose'
+import mongoose, {Schema, Document, Model} from 'mongoose'
+import './category';
 
 export interface PortionPrice {
     size: string
@@ -18,22 +19,22 @@ export interface IProduct extends Document {
 
 const PortionPriceSchema = new Schema<PortionPrice>(
     {
-        size: { type: String, required: true },
-        price: { type: Number, required: true },
+        size: {type: String, required: true},
+        price: {type: Number, required: true},
     },
-    { _id: false }
+    {_id: false}
 )
 
 const ProductSchema = new Schema<IProduct>(
     {
-        name: { type: String, required: true, trim: true },
-        description: { type: String, required: false },
-        prices: { type: [PortionPriceSchema], required: false },
-        image: { type: String, required: false },
-        categories: [{ type: Schema.Types.ObjectId, ref: 'Category', required: false }],
-        hidden: { type: Boolean, required: false, default: false },
+        name: {type: String, required: true, trim: true},
+        description: {type: String, required: false},
+        prices: {type: [PortionPriceSchema], required: false},
+        image: {type: String, required: false},
+        categories: [{type: Schema.Types.ObjectId, ref: 'Category', required: false}],
+        hidden: {type: Boolean, required: false, default: false},
     },
-    { timestamps: true }
+    {timestamps: true}
 )
 
 export const Product: Model<IProduct> =
