@@ -3,6 +3,7 @@
 import {connectToDatabase} from '@/lib/mongoose'
 import {Product} from '@/models/product'
 import {Types} from "mongoose";
+import {revalidatePath} from "next/cache";
 
 export async function getProducts(page: number = 1, limit: number = 10) {
     await connectToDatabase()
@@ -36,6 +37,8 @@ export async function toggleProductVisibility(productId: string) {
 
     product.hidden = !product.hidden;
     await product.save();
+
+    revalidatePath('/');
 
     return {
         ...product.toObject(),

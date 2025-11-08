@@ -1,6 +1,6 @@
 import {IProduct} from "@/models/product";
 import {Box, Heading, SimpleGrid} from "@chakra-ui/react";
-import {Product} from "@/components/product";
+import {Product} from "./product";
 
 type ProductGroupProps = {
     id?: string;
