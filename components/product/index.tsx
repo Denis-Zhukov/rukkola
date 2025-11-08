@@ -109,7 +109,6 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
         setSelectedPrice(null);
     };
 
-    // КЛИК ПО ИЗОБРАЖЕНИЮ
     const openModal = () => {
         router.push(`?product=${id}`, {scroll: false});
     };
@@ -149,7 +148,6 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
                         src={img}
                         alt={alt ?? ""}
                         fill
-                        unoptimized
                         style={{
                             objectFit: "cover",
                             objectPosition: "center",
@@ -198,11 +196,11 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
                                     ))}
                                     <Flex justify="space-between" mt={2}>
                                         <Button size="sm" borderRadius="full" bg="red.500" color="white"
-                                                _hover={{bg: "red.600"}} onClick={handleCancel}>
+                                                _hover={{bg: "red.600"}} onClick={handleCancel} p={2}>
                                             Отменить
                                         </Button>
                                         <Button size="sm" borderRadius="full" bg="teal.500" color="white"
-                                                _hover={{bg: "teal.600"}} onClick={handleConfirm}>
+                                                _hover={{bg: "teal.600"}} onClick={handleConfirm} p={2}>
                                             Подтвердить
                                         </Button>
                                     </Flex>

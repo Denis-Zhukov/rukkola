@@ -8,7 +8,7 @@
         "price": 23.1
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3762-3364-4138-b537-346431366330/-/resize/212x/-/format/webp/_39.png.webp",
+    "image": "/products/hachapuri-0.webp",
     "categories": [
       "Пицца"
     ]
@@ -22,7 +22,7 @@
         "price": 29
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3531-3631-4935-a263-626336313932/-/resize/218x/-/format/webp/photo.png.webp",
+    "image": "/products/myasnaya-1.webp",
     "categories": [
       "Пицца"
     ]
@@ -36,7 +36,7 @@
         "price": 41.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6232-3339-4065-b039-353632366638/-/resize/216x/-/format/webp/__.png.webp",
+    "image": "/products/s-parmskoy-vetchinoy-i-burrato-2.webp",
     "categories": [
       "Пицца"
     ]
@@ -50,7 +50,7 @@
         "price": 43
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6232-3739-4965-b331-616366373039/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "image": "/products/s-burrato-i-tryufelnym-sousom-3.webp",
     "categories": [
       "Пицца"
     ]
@@ -64,7 +64,7 @@
         "price": 32.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3962-3935-4536-b662-653636393530/-/resize/218x/-/format/webp/photo.png.webp",
+    "image": "/products/brezaolla-tryufel-4.webp",
     "categories": [
       "Пицца"
     ]
@@ -78,7 +78,7 @@
         "price": 36.4
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3830-6562-4731-b834-636163303830/-/resize/218x/-/format/webp/_61.png.webp",
+    "image": "/products/pintsa-zhulen-5.webp",
     "categories": [
       "Пицца"
     ]
@@ -92,7 +92,7 @@
         "price": 45.2
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3235-3964-4539-a334-373038336463/-/resize/220x/-/format/webp/_86.png.webp",
+    "image": "/products/pintsa-s-govyadinoy-6.webp",
     "categories": [
       "Пицца"
     ]
@@ -106,7 +106,7 @@
         "price": 43
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6365-3138-4664-a534-643965366430/-/resize/218x/-/format/webp/_1_6.png.webp",
+    "image": "/products/tar-tar-7.webp",
     "categories": [
       "Пицца"
     ]
@@ -120,7 +120,7 @@
         "price": 48
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3033-6665-4165-b664-396132653239/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "image": "/products/s-krevetkoy-i-syomgoy-8.webp",
     "categories": [
       "Пицца"
     ]
@@ -134,7 +134,7 @@
         "price": 39
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6264-6462-4930-b632-663439313333/-/resize/224x/-/format/webp/_92.png.webp",
+    "image": "/products/roll-kaliforniya-s-krabom-9.webp",
     "categories": [
       "Роллы"
     ]
@@ -148,7 +148,7 @@
         "price": 41
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3430-3963-4539-b734-613763663539/-/resize/224x/-/format/webp/_94.png.webp",
+    "image": "/products/roll-s-krevetkoy-i-lososem-10.webp",
     "categories": [
       "Роллы"
     ]
@@ -162,7 +162,7 @@
         "price": 37.2
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3637-3661-4233-b236-636332373335/-/resize/218x/-/format/webp/_73.png.webp",
+    "image": "/products/roll-s-tar-tarom-iz-tuntsa-11.webp",
     "categories": [
       "Роллы"
     ]
@@ -176,7 +176,7 @@
         "price": 38.1
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3663-6638-4563-b330-613263613731/-/resize/216x/-/format/webp/photo.png.webp",
+    "image": "/products/filadelfiya-12.webp",
     "categories": [
       "Роллы"
     ]
@@ -190,7 +190,7 @@
         "price": 25
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3438-6131-4165-a264-386634633034/-/resize/216x/-/format/webp/_1_7.png.webp",
+    "image": "/products/osidzusi-s-lososem-13.webp",
     "categories": [
       "Роллы"
     ]
@@ -204,7 +204,7 @@
         "price": 28.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6163-6435-4639-a666-353638393339/-/resize/216x/-/format/webp/_1_8.png.webp",
+    "image": "/products/osidzusi-s-govyadinoy-14.webp",
     "categories": [
       "Роллы"
     ]
@@ -218,7 +218,7 @@
         "price": 28.4
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3037-3862-4763-a339-653463306463/-/resize/216x/-/format/webp/_1_6.png.webp",
+    "image": "/products/osidzusi-s-ugrem-15.webp",
     "categories": [
       "Роллы"
     ]
@@ -232,7 +232,7 @@
         "price": 37.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3235-3734-4135-b935-386234666535/-/resize/220x/-/format/webp/_66.png.webp",
+    "image": "/products/roll-tempura-s-krevetkoy-16.webp",
     "categories": [
       "Роллы"
     ]
@@ -246,7 +246,7 @@
         "price": 29.2
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6634-6463-4532-a131-643038343631/-/resize/222x/-/format/webp/photo.png.webp",
+    "image": "/products/roll-zapechennyy-bonito-17.webp",
     "categories": [
       "Роллы"
     ]
@@ -260,7 +260,7 @@
         "price": 39.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3533-3866-4138-b964-373239376137/-/resize/224x/-/format/webp/_91.png.webp",
+    "image": "/products/roll-zapech-s-ugrem-i-krabom-18.webp",
     "categories": [
       "Роллы"
     ]
@@ -274,7 +274,7 @@
         "price": 22.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6165-3562-4433-b633-346164376230/-/resize/220x/-/format/webp/_1_14.png.webp",
+    "image": "/products/roll-s-tuntsom-i-tar-tarom-iz-ogurtsa-19.webp",
     "categories": [
       "Роллы"
     ]
@@ -288,7 +288,7 @@
         "price": 31.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3465-6539-4439-b237-663835653132/-/resize/220x/-/format/webp/_1_14.png.webp",
+    "image": "/products/roll-tempura-s-tuntsom-20.webp",
     "categories": [
       "Роллы"
     ]
@@ -302,7 +302,7 @@
         "price": 13.8
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6562-3430-4361-a135-313366613830/-/resize/214x/-/format/webp/photo.png.webp",
+    "image": "/products/hend-roll-s-lososem-21.webp",
     "categories": [
       "Роллы"
     ]
@@ -316,7 +316,7 @@
         "price": 12.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6565-3338-4233-b037-633639383239/-/resize/216x/-/format/webp/_28.png.webp",
+    "image": "/products/hend-roll-s-krevetkoy-22.webp",
     "categories": [
       "Роллы"
     ]
@@ -330,7 +330,7 @@
         "price": 18
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3836-6637-4337-b763-336133343630/-/resize/224x/-/format/webp/_1_3.png.webp",
+    "image": "/products/hend-roll-s-ugrem-23.webp",
     "categories": [
       "Роллы"
     ]
@@ -344,7 +344,7 @@
         "price": 19.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3739-6437-4162-b736-386130336639/-/resize/220x/-/format/webp/_1_12.png.webp",
+    "image": "/products/onigiri-s-tuntsom-24.webp",
     "categories": [
       "Роллы"
     ]
@@ -358,7 +358,7 @@
         "price": 19.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3363-6566-4561-b532-613134376131/-/resize/224x/-/format/webp/_1_12.png.webp",
+    "image": "/products/onigiri-s-krevetkoy-25.webp",
     "categories": [
       "Роллы"
     ]
@@ -372,7 +372,7 @@
         "price": 19.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6633-6531-4562-b530-393932386335/-/resize/220x/-/format/webp/_1_12.png.webp",
+    "image": "/products/onigiri-s-semgoy-26.webp",
     "categories": [
       "Роллы"
     ]
@@ -386,7 +386,7 @@
         "price": 34.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3339-3034-4130-b763-643631656537/-/resize/214x/-/format/webp/__.png.webp",
+    "image": "/products/govyadina-s-ovoschami-v-perechnom-souse-27.webp",
     "categories": [
       "Горячее"
     ]
@@ -400,7 +400,7 @@
         "price": 23.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6338-3664-4632-a565-656332663761/-/resize/214x/-/format/webp/___.png.webp",
+    "image": "/products/karri-s-zharenym-risom-28.webp",
     "categories": [
       "Горячее"
     ]
@@ -414,7 +414,7 @@
         "price": 39
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3064-3762-4465-b136-393166353964/-/resize/220x/-/format/webp/_1_6.png.webp",
+    "image": "/products/slivochnyy-karri-s-krevetkoy-29.webp",
     "categories": [
       "Горячее"
     ]
@@ -428,7 +428,7 @@
         "price": 30.8
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6465-6632-4032-b733-373563386634/-/resize/216x/-/format/webp/photo.png.webp",
+    "image": "/products/krevetki-tempura-30.webp",
     "categories": [
       "Горячее"
     ]
@@ -442,7 +442,7 @@
         "price": 23.1
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6438-6537-4561-b637-323061346263/-/resize/220x/-/format/webp/_93.png.webp",
+    "image": "/products/zharenyy-tofu-31.webp",
     "categories": [
       "Горячее"
     ]
@@ -456,7 +456,7 @@
         "price": 33.9
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6262-3664-4234-b030-303137356137/-/resize/218x/-/format/webp/_1_7.png.webp",
+    "image": "/products/pasta-s-krevetkoy-i-semgoy-32.webp",
     "categories": [
       "Горячее"
     ]
@@ -470,7 +470,7 @@
         "price": 26.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3162-3434-4839-a132-346538356466/-/resize/212x/-/format/webp/_91.png.webp",
+    "image": "/products/char-siu-s-bitymi-ogurtsami-33.webp",
     "categories": [
       "Горячее"
     ]
@@ -484,7 +484,7 @@
         "price": 26.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3663-3161-4330-a334-653563623562/-/resize/216x/-/format/webp/__.png.webp",
+    "image": "/products/pad-tay-s-kuritsey-34.webp",
     "categories": [
       "Горячее"
     ]
@@ -498,7 +498,7 @@
         "price": 39.9
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6535-6634-4239-a237-616131633639/-/resize/216x/-/format/webp/__.png.webp",
+    "image": "/products/pad-tay-s-krevetkoy-35.webp",
     "categories": [
       "Горячее"
     ]
@@ -512,7 +512,7 @@
         "price": 33.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3532-3432-4133-b335-363937396534/-/resize/222x/-/format/webp/_1_14.png.webp",
+    "image": "/products/tokpokki-s-kolbaskami-36.webp",
     "categories": [
       "Горячее"
     ]
@@ -526,7 +526,7 @@
         "price": 30.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6139-3361-4438-b862-366161653236/-/resize/222x/-/format/webp/_1_15.png.webp",
+    "image": "/products/tokpokki-karbonara-37.webp",
     "categories": [
       "Горячее"
     ]
@@ -540,7 +540,7 @@
         "price": 23.8
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3065-6232-4538-b534-383832356431/-/resize/214x/-/format/webp/photo.png.webp",
+    "image": "/products/sup-ramen-38.webp",
     "categories": [
       "Супы"
     ]
@@ -554,7 +554,7 @@
         "price": 31.8
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6161-3166-4164-b061-363738303738/-/resize/214x/-/format/webp/photo.png.webp",
+    "image": "/products/sup-ramen-s-moreproduktami-39.webp",
     "categories": [
       "Супы"
     ]
@@ -568,7 +568,7 @@
         "price": 10
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3436-3735-4939-b533-326337303864/-/resize/220x/-/format/webp/_1_7.png.webp",
+    "image": "/products/mini-zakuska-olivki-kim-chi-40.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -582,7 +582,7 @@
         "price": 7.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3262-3262-4161-b736-306163363861/-/resize/222x/-/format/webp/_1_6.png.webp",
+    "image": "/products/mini-zakuska-bitye-ogurtsy-41.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -596,7 +596,7 @@
         "price": 26.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3930-3338-4734-a663-386637303361/-/resize/214x/-/format/webp/___.png.webp",
+    "image": "/products/poke-s-kuritsey-teriyaki-42.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -610,7 +610,7 @@
         "price": 36.4
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3962-3264-4161-b939-333839343439/-/resize/214x/-/format/webp/__.png.webp",
+    "image": "/products/poke-s-lososem-43.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -624,7 +624,7 @@
         "price": 23.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6631-6532-4561-b939-366238323739/-/resize/214x/-/format/webp/photo.png.webp",
+    "image": "/products/ovoschnoy-roll-s-lososem-44.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -638,7 +638,7 @@
         "price": 24.2
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6464-6365-4161-b038-303462313438/-/resize/226x/-/format/webp/_75.png.webp",
+    "image": "/products/ovoschnoy-roll-s-tuntsom-45.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -652,7 +652,7 @@
         "price": 33.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3433-3663-4263-a564-653362373735/-/resize/226x/-/format/webp/_79.png.webp",
+    "image": "/products/ovoschnoy-roll-s-ugryom-46.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -666,7 +666,7 @@
         "price": 23.1
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3431-3435-4133-b866-623031363233/-/resize/236x/-/format/webp/_80.png.webp",
+    "image": "/products/salat-s-baklazhanom-47.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -680,7 +680,7 @@
         "price": 20.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3361-6666-4039-b037-323636666238/-/resize/222x/-/format/webp/_1_5.png.webp",
+    "image": "/products/kurinyy-popkorn-48.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -694,7 +694,7 @@
         "price": 38.3
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3661-3236-4230-b031-613765393037/-/resize/218x/-/format/webp/_1_7.png.webp",
+    "image": "/products/tartar-iz-govyadiny-49.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -708,7 +708,7 @@
         "price": 14
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3063-3166-4266-a530-613638326334/-/resize/216x/-/format/webp/photo.png.webp",
+    "image": "/products/yablochnaya-tarta-s-morozhenym-50.webp",
     "categories": [
       "Десерты"
     ]
@@ -722,7 +722,7 @@
         "price": 13.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild6162-3030-4062-b736-383834373066/-/resize/222x/-/format/webp/_1_1.png.webp",
+    "image": "/products/desert-pavlova-51.webp",
     "categories": [
       "Десерты"
     ]
@@ -736,7 +736,7 @@
         "price": 12
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3066-3133-4164-b136-353033646237/-/resize/220x/-/format/webp/_1_11.png.webp",
+    "image": "/products/moti-karamelnyy-52.webp",
     "categories": [
       "Десерты"
     ]
@@ -750,7 +750,7 @@
         "price": 12
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3166-6134-4264-b732-343933343663/-/resize/222x/-/format/webp/_1_10.png.webp",
+    "image": "/products/moti-shokoladnyy-53.webp",
     "categories": [
       "Десерты"
     ]
@@ -764,7 +764,7 @@
         "price": 12
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3332-6566-4732-b839-336565303962/-/resize/218x/-/format/webp/_1_9.png.webp",
+    "image": "/products/moti-mango-54.webp",
     "categories": [
       "Десерты"
     ]
@@ -778,7 +778,7 @@
         "price": 14.7
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3435-3432-4865-a430-343433656464/-/resize/220x/-/format/webp/_1_13.png.webp",
+    "image": "/products/desert-semifredo-55.webp",
     "categories": [
       "Десерты"
     ],
@@ -993,7 +993,7 @@
         "price": 10
       },
       {
-        "price": 75.0,
+        "price": 75,
         "size": "Бутылка"
       }
     ],
@@ -1026,7 +1026,7 @@
     "prices": [
       {
         "size": "Бутылка",
-        "price": 102.00
+        "price": 102
       }
     ],
     "image": "",
@@ -1040,7 +1040,7 @@
     "prices": [
       {
         "size": "Бутылка",
-        "price": 112.60
+        "price": 112.6
       }
     ],
     "image": "",
@@ -1058,7 +1058,7 @@
       },
       {
         "size": "Бутылка",
-        "price": 54.00
+        "price": 54
       }
     ],
     "image": "",
@@ -1072,7 +1072,7 @@
     "prices": [
       {
         "size": "Бутылка",
-        "price": 69.00
+        "price": 69
       }
     ],
     "image": "",
@@ -1184,7 +1184,7 @@
     "prices": [
       {
         "size": "Бутылка 0,5л",
-        "price": 104.70
+        "price": 104.7
       }
     ],
     "image": "",
@@ -1738,7 +1738,7 @@
     "prices": [
       {
         "size": "120 мл",
-        "price": 5.0
+        "price": 5
       }
     ],
     "image": "",
@@ -1752,7 +1752,7 @@
     "prices": [
       {
         "size": "500 мл",
-        "price": 7.0
+        "price": 7
       }
     ],
     "image": "",
@@ -1822,10 +1822,10 @@
     "prices": [
       {
         "size": "400 мл",
-        "price": 4.0
+        "price": 4
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
+    "image": "/products/chay-v-chaynike-128.webp",
     "categories": [
       "Чай"
     ]
@@ -1839,7 +1839,7 @@
         "price": 4.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3930-6266-4465-b934-383465333136/-/resize/224x/-/format/webp/_2.png.webp",
+    "image": "/products/chay-v-chaynike-129.webp",
     "categories": [
       "Чай"
     ]
@@ -1853,7 +1853,7 @@
         "price": 5.5
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3431-6237-4865-b463-326232623034/-/resize/218x/-/format/webp/_2.png.webp",
+    "image": "/products/chay-imbirnyy-130.webp",
     "categories": [
       "Чай"
     ]
@@ -1867,7 +1867,7 @@
         "price": 7.6
       }
     ],
-    "image": "https://optim.tildacdn.biz/tild3562-3566-4665-b431-643436346534/-/resize/218x/-/format/webp/_3.png.webp",
+    "image": "/products/chay-oblepiha-apelsin-131.webp",
     "categories": [
       "Чай"
     ]
@@ -1920,7 +1920,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 12.0
+        "price": 12
       }
     ],
     "image": "",
@@ -1934,7 +1934,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 12.0
+        "price": 12
       }
     ],
     "image": "",
@@ -1948,7 +1948,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 12.0
+        "price": 12
       }
     ],
     "image": "",
@@ -1962,7 +1962,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 12.0
+        "price": 12
       }
     ],
     "image": "",
@@ -1976,7 +1976,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 12.0
+        "price": 12
       }
     ],
     "image": "",
@@ -1990,7 +1990,7 @@
     "prices": [
       {
         "size": "170 мл",
-        "price": 9.0
+        "price": 9
       }
     ],
     "image": "",
@@ -2004,7 +2004,7 @@
     "prices": [
       {
         "size": "120 мл",
-        "price": 20.50
+        "price": 20.5
       }
     ],
     "image": "",
@@ -2018,7 +2018,7 @@
     "prices": [
       {
         "size": "150 мл",
-        "price": 22.00
+        "price": 22
       }
     ],
     "image": "",
@@ -2032,7 +2032,7 @@
     "prices": [
       {
         "size": "200 мл",
-        "price": 14.40
+        "price": 14.4
       }
     ],
     "image": "",
@@ -2046,7 +2046,7 @@
     "prices": [
       {
         "size": "200 мл",
-        "price": 12.50
+        "price": 12.5
       }
     ],
     "image": "",
@@ -2060,7 +2060,7 @@
     "prices": [
       {
         "size": "135 мл",
-        "price": 20.50
+        "price": 20.5
       }
     ],
     "image": "",
@@ -2074,7 +2074,7 @@
     "prices": [
       {
         "size": "50 мл",
-        "price": 7.30
+        "price": 7.3
       }
     ],
     "image": "",
@@ -2088,7 +2088,7 @@
     "prices": [
       {
         "size": "50 мл",
-        "price": 7.30
+        "price": 7.3
       }
     ],
     "image": "",
@@ -2102,7 +2102,7 @@
     "prices": [
       {
         "size": "300 мл",
-        "price": 7.50
+        "price": 7.5
       }
     ],
     "image": "",
@@ -2116,7 +2116,7 @@
     "prices": [
       {
         "size": "330 мл",
-        "price": 4.00
+        "price": 4
       }
     ],
     "image": "",
@@ -2130,7 +2130,7 @@
     "prices": [
       {
         "size": "250 мл",
-        "price": 3.80
+        "price": 3.8
       }
     ],
     "image": "",
@@ -2144,7 +2144,7 @@
     "prices": [
       {
         "size": "350 мл",
-        "price": 8.50
+        "price": 8.5
       }
     ],
     "image": "",
