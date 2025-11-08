@@ -1,3 +1,3 @@
-import {Main} from "@/app-pages/main";
+import {MenuPage} from "@/app-pages/menu";
 
-export default Main;
+export default MenuPage;

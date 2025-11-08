@@ -1,16 +1,17 @@
-import { Box, SimpleGrid, Heading, Text } from "@chakra-ui/react";
-import { connectToDatabase } from "@/lib/mongoose";
-import { Product } from "@/models/product";
-import { Category } from "@/models/category";
-import { User } from "@/models/user";
-import { StatsGrid } from "./sats-grid";
+import {Box, SimpleGrid, Heading, Text} from "@chakra-ui/react";
+import {connectToDatabase} from "@/lib/mongoose";
+import {Product} from "@/models/product";
+import {Category} from "@/models/category";
+import {User} from "@/models/user";
+import {StatsGrid} from "./sats-grid";
 import {auth} from "@/lib/auth";
 
 export const Dashboard = async () => {
     await connectToDatabase();
 
-    const [productsCount, categoriesCount, usersCount] = await Promise.all([
-        Product.countDocuments({ hidden: false }),
+    const [productsCount, hiddenProductsCount,categoriesCount, usersCount] = await Promise.all([
+        Product.countDocuments(),
+        Product.countDocuments({hidden: true}),
         Category.countDocuments(),
         User.countDocuments(),
     ]);
@@ -21,9 +22,9 @@ export const Dashboard = async () => {
     const fullName = user ? `${user.name ?? ""} ${user.surname ?? ""} ${user.patronymic ?? ""}`.trim() : "";
 
     return (
-        <Box p={{ base: 4, md: 8 }}>
+        <Box p={{base: 4, md: 8}}>
             {fullName && (
-                <Heading mb={6} fontSize={{ base: "2xl", md: "3xl" }} color="teal.300">
+                <Heading mb={6} fontSize={{base: "2xl", md: "3xl"}} color="teal.300">
                     Добро пожаловать, {fullName}!
                 </Heading>
             )}
@@ -31,13 +32,14 @@ export const Dashboard = async () => {
             <StatsGrid
                 stats={{
                     products: productsCount,
+                    hiddenProducts: hiddenProductsCount,
                     categories: categoriesCount,
                     users: usersCount,
                 }}
             />
 
-            <Box mt={10} p={{ base: 4, md: 6 }} bg="gray.800" borderRadius="2xl" boxShadow="0 8px 24px rgba(0,0,0,0.3)">
-                <Heading mb={4} fontSize={{ base: "xl", md: "2xl" }} color="teal.300">
+            <Box mt={10} p={{base: 4, md: 6}} bg="gray.800" borderRadius="2xl" boxShadow="0 8px 24px rgba(0,0,0,0.3)">
+                <Heading mb={4} fontSize={{base: "xl", md: "2xl"}} color="teal.300">
                     О панели администратора
                 </Heading>
                 <Text mb={2} color="gray.300">
@@ -51,7 +53,7 @@ export const Dashboard = async () => {
                 </Text>
             </Box>
 
-            <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 4, md: 6 }} mt={8}>
+            <SimpleGrid columns={{base: 1, md: 3}} gap={{base: 4, md: 6}} mt={8}>
                 <Box p={4} bg="gray.700" borderRadius="xl" boxShadow="0 6px 18px rgba(0,0,0,0.25)">
                     <Heading fontSize="lg" color="teal.300" mb={2}>
                         Управление продуктами

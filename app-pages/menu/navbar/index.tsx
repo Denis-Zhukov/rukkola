@@ -17,7 +17,6 @@ export const Navbar = () => {
     const [items, setItems] = useState<Array<{ id: string; name: string }>>([]);
     const searchParams = useSearchParams();
 
-    // === ИЗМЕРЯЕМ ВЫСОТУ СРАЗУ ПРИ МОНТИРОВАНИИ ===
     useEffect(() => {
         const updateHeight = () => {
             if (navRef.current) {

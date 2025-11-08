@@ -1,6 +1,15 @@
 "use client";
 
-import { Box, Flex, Text, SimpleGrid, Icon } from "@chakra-ui/react";
+import {
+    Box,
+    Flex,
+    Text,
+    SimpleGrid,
+    Icon,
+    Stat,
+    FormatNumber,
+    Stack,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FiBox, FiLayers, FiUsers } from "react-icons/fi";
 
@@ -9,6 +18,7 @@ const MotionBox = motion(Box);
 interface StatsGridProps {
     stats: {
         products: number;
+        hiddenProducts?: number;
         categories: number;
         users: number;
     };
@@ -20,8 +30,9 @@ export const StatsGrid = ({ stats }: StatsGridProps) => {
             <StatBox
                 label="Товары"
                 value={stats.products}
+                hiddenValue={stats.hiddenProducts}
                 icon={FiBox}
-                helpText="Всего доступных товаров"
+                helpText="Всего товаров в системе"
             />
             <StatBox
                 label="Категории"
@@ -44,9 +55,16 @@ interface StatBoxProps {
     value: number;
     icon: React.ElementType;
     helpText?: string;
+    hiddenValue?: number;
 }
 
-const StatBox = ({ label, value, icon, helpText }: StatBoxProps) => (
+const StatBox = ({
+                     label,
+                     value,
+                     icon,
+                     helpText,
+                     hiddenValue,
+                 }: StatBoxProps) => (
     <MotionBox
         p={{ base: 5, md: 6 }}
         bg="gray.800"
@@ -59,15 +77,14 @@ const StatBox = ({ label, value, icon, helpText }: StatBoxProps) => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
     >
-        <Flex align="center" gap={{ base: 3, md: 4 }} mb={4} flexWrap="wrap">
+        <Flex align="center" gap={{ base: 3, md: 4 }} mb={4}>
             <Box
-                bg="rgba(56,178,172,0.06)"
+                bg="rgba(56,178,172,0.1)"
                 p={{ base: 3, md: 4 }}
                 borderRadius="md"
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
-                flexShrink={0}
             >
                 <Icon as={icon} boxSize={{ base: 6, md: 7 }} color="teal.300" />
             </Box>
@@ -76,35 +93,37 @@ const StatBox = ({ label, value, icon, helpText }: StatBoxProps) => (
                 fontSize={{ base: "md", md: "lg" }}
                 fontWeight="medium"
                 color="gray.300"
-                whiteSpace="normal"
-                wordBreak="break-word"
-                flex="1 1 auto"
             >
                 {label}
             </Text>
         </Flex>
 
-        <Text
-            fontSize={{ base: "2xl", md: "3xl" }}
-            fontWeight="bold"
-            color="white"
-            mb={1}
-            whiteSpace="nowrap"
-            overflow="hidden"
-            textOverflow="ellipsis"
-        >
-            {value}
-        </Text>
+        <Stat.Root>
+            <Stack gap={1} align="flex-start">
+                <Stat.ValueText
+                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontWeight="bold"
+                    color="white"
+                    lineHeight="1"
+                >
+                    <FormatNumber value={value} />
+                </Stat.ValueText>
 
-        {helpText && (
-            <Text
-                fontSize={{ base: "sm", md: "md" }}
-                color="gray.400"
-                whiteSpace="normal"
-                wordBreak="break-word"
-            >
-                {helpText}
-            </Text>
-        )}
+                {hiddenValue !== undefined && hiddenValue > 0 && (
+                    <Text fontSize="sm" color="gray.400">
+                        Скрыто:{" "}
+                        <Text as="span" color="orange.300" fontWeight="semibold">
+                            {hiddenValue}
+                        </Text>
+                    </Text>
+                )}
+            </Stack>
+
+            {helpText && (
+                <Stat.Label mt={hiddenValue ? 2 : 3} color="gray.500" fontSize="sm">
+                    {helpText}
+                </Stat.Label>
+            )}
+        </Stat.Root>
     </MotionBox>
 );
