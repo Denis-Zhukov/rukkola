@@ -1,10 +1,11 @@
-import mongoose, {Schema, Document, Model} from 'mongoose'
+import mongoose, {Types, Schema, Document, Model} from 'mongoose'
 
 export interface ICategory extends Document {
     name: string
     order: number
     isMenuItem: boolean
     showGroupTitle: boolean
+    parent?: Types.ObjectId | null
 }
 
 const CategorySchema = new Schema<ICategory>({
@@ -12,6 +13,7 @@ const CategorySchema = new Schema<ICategory>({
     order: {type: Number, required: true, unique: true},
     isMenuItem: {type: Boolean, required: true, unique: false},
     showGroupTitle: {type: Boolean, required: true, unique: false},
+    parent: { type: Schema.Types.ObjectId, ref: 'Category', default: null },
 })
 
 export const Category: Model<ICategory> =

@@ -13,8 +13,22 @@ import {Category} from "@/models/category";
 export const MenuPage = async () => {
     await connectToDatabase();
 
-    const categories = await Category.find({isMenuItem: true}).sort({order: 1}).lean();
-    const navItems = categories.map(({_id, name}) => ({id: _id.toString(), name}));
+    const categories = await Category.find()
+        .sort({ order: 1 })
+        .lean();
+
+    const navItems = categories
+        .filter(cat => !cat.parent)
+        .map(parent => ({
+            id: parent._id.toString(),
+            name: parent.name,
+            children: categories
+                .filter(c => c.parent?.toString() === parent._id.toString())
+                .map(sub => ({
+                    id: sub._id.toString(),
+                    name: sub.name,
+                })),
+        }));
 
     return (
         <Box

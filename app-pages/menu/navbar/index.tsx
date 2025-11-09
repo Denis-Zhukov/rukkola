@@ -4,13 +4,13 @@ import {useEffect, useRef, useState} from "react";
 import {HStack, Box} from "@chakra-ui/react";
 import {motion, AnimatePresence} from "framer-motion";
 import {useSearchParams} from "next/navigation";
-import {NavItem} from "./nav-item";
+import {NavbarItem, NavItem} from "./nav-item";
 import {CART_QUERY_KEY} from "@/app-pages/menu/config";
 
 const MotionBox = motion(Box);
 
 type NavbarProps = {
-    items: Array<{ id: string; name: string }>;
+    items: NavbarItem[];
 };
 
 export const Navbar = ({items}: NavbarProps) => {
@@ -82,13 +82,14 @@ export const Navbar = ({items}: NavbarProps) => {
                     transition={{duration: 0.4, ease: "easeOut"}}
                 >
                     <HStack wrap="wrap" justify="center">
-                        {items.map(({id, name}) => (
+                        {items.map(item => (
                             <NavItem
-                                key={id}
-                                id={id}
-                                title={name}
-                                isActive={active === id}
+                                key={item.id}
+                                id={item.id}
+                                title={item.name}
+                                isActive={active === item.id}
                                 onClick={handleClick}
+                                childrenItems={item.children}
                             />
                         ))}
                     </HStack>
