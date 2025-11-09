@@ -1,4 +1,5 @@
 "use client";
+
 import {
     Flex,
     Text,
@@ -11,15 +12,15 @@ import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
 import React, {useState, useEffect} from "react";
 import {FiCheck} from "react-icons/fi";
-import {IProduct} from "@/models/product";
 import {useRouter} from "next/navigation";
+import {addToCart} from "./config";
 
 type Price = {
     size: string;
     price: number;
 };
 
-type ProductProps = {
+export type ProductProps = {
     id: string;
     img: string | null;
     alt: string | null;
@@ -30,34 +31,6 @@ type ProductProps = {
 
 const MotionFlex = motion(Flex);
 const MotionButton = motion(Button);
-
-const CART_KEY = "localCart";
-const CART_TTL = 24 * 60 * 60 * 1000;
-
-const getCart = () => {
-    try {
-        const raw = localStorage.getItem(CART_KEY);
-        if (!raw) return [];
-        const data = JSON.parse(raw);
-        const now = Date.now();
-        const filtered = data.filter((item: any) => now - item.timestamp < CART_TTL);
-        localStorage.setItem(CART_KEY, JSON.stringify(filtered));
-        return filtered;
-    } catch {
-        return [];
-    }
-};
-
-const setCart = (items: any[]) => {
-    localStorage.setItem(CART_KEY, JSON.stringify(items));
-    window.dispatchEvent(new Event("storage"));
-};
-
-const addToCart = (product: Partial<IProduct> & { price?: number; size?: string }) => {
-    const cart = getCart();
-    cart.push({...product, timestamp: Date.now()});
-    setCart(cart);
-};
 
 export const Product = ({id, img, alt, title, description, prices}: ProductProps) => {
     const router = useRouter();
@@ -73,6 +46,7 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
 
     const handleConfirm = () => {
         if (!selectedPrice) return;
+
         addToCart({
             id,
             name: title,
@@ -80,6 +54,7 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
             price: selectedPrice.price,
             size: selectedPrice.size ?? "—",
         });
+
         setAdded(true);
         setSelecting(false);
         setSelectedPrice(null);

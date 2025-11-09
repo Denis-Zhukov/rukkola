@@ -42,7 +42,7 @@ export async function toggleProductVisibility(productId: string) {
 
     return {
         ...product.toObject(),
-        _id: (product._id as Types.ObjectId).toString(),
+        _id: product._id.toString(),
         createdAt: product.createdAt?.toISOString(),
         updatedAt: product.updatedAt?.toISOString(),
     };

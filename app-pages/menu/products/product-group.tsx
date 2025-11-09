@@ -25,7 +25,7 @@ export const ProductGroup = ({id, title, products}: ProductGroupProps) => {
                 </Heading>
             )}
 
-            <SimpleGrid gap={6} columns={[1, 2, 3]}>
+            <SimpleGrid gap={6} columns={{ base: 1, sm: 2, xl: 3 }}>
                 {products.map(({_id, image, name, description, prices}) => (
                     <Product
                         key={_id.toString()}
