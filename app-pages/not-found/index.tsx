@@ -1,8 +1,8 @@
 "use client";
 
-import { Box, Flex, Heading, Text, Button, Icon } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { FiHome, FiAlertTriangle } from "react-icons/fi";
+import {Box, Flex, Heading, Text, Button, Icon} from "@chakra-ui/react";
+import {motion} from "framer-motion";
+import {FiHome, FiAlertTriangle} from "react-icons/fi";
 import Link from "next/link";
 
 const MotionBox = motion(Box);
@@ -10,7 +10,7 @@ const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionButton = motion(Button);
 
-export const  NotFound=()=> {
+export const NotFound = () => {
     return (
         <Box
             minH="100vh"
@@ -71,9 +71,9 @@ export const  NotFound=()=> {
                 gap={6}
             >
                 <MotionBox
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                    initial={{scale: 0}}
+                    animate={{scale: 1}}
+                    transition={{type: "spring", stiffness: 200, damping: 10}}
                 >
                     <MotionBox
                         animate={{
@@ -88,7 +88,7 @@ export const  NotFound=()=> {
                     >
                         <Icon
                             as={FiAlertTriangle}
-                            boxSize={{ base: 16, md: 20 }}
+                            boxSize={{base: 16, md: 20}}
                             color="yellow.400"
                             filter="drop-shadow(0 0 20px rgba(251, 191, 36, 0.5))"
                         />
@@ -96,12 +96,12 @@ export const  NotFound=()=> {
                 </MotionBox>
 
                 <MotionHeading
-                    fontSize={{ base: "8xl", md: "9xl" }}
+                    fontSize={{base: "8xl", md: "9xl"}}
                     fontWeight="black"
                     letterSpacing="tight"
                     color="white"
-                    initial={{ y: -100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    initial={{y: -100, opacity: 0}}
+                    animate={{y: 0, opacity: 1}}
                     transition={{
                         type: "spring",
                         stiffness: 120,
@@ -133,23 +133,23 @@ export const  NotFound=()=> {
                 </MotionHeading>
 
                 <MotionHeading
-                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontSize={{base: "2xl", md: "3xl"}}
                     fontWeight="bold"
                     color="whiteAlpha.900"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{delay: 0.6}}
                 >
                     Ой! Эта страница улетела на орбиту
                 </MotionHeading>
 
                 <MotionText
-                    fontSize={{ base: "md", md: "lg" }}
+                    fontSize={{base: "md", md: "lg"}}
                     color="gray.300"
                     maxW="500px"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
+                    initial={{opacity: 0, y: 10}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: 0.7}}
                 >
                     Но не переживайте — мы вернём вас на Землю за один клик.
                 </MotionText>
@@ -159,7 +159,7 @@ export const  NotFound=()=> {
                     as={Link}
                     // @ts-expect-error - норм)
                     href="/"
-                    leftIcon={<FiHome />}
+                    leftIcon={<FiHome/>}
                     mt={4}
                     size="lg"
                     bgGradient="linear(to-r, teal.400, teal.600)"
@@ -177,10 +177,10 @@ export const  NotFound=()=> {
                     _active={{
                         transform: "translateY(-1px)",
                     }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-                    whileTap={{ scale: 0.95 }}
+                    initial={{opacity: 0, scale: 0.8}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{delay: 0.8, type: "spring", stiffness: 200}}
+                    whileTap={{scale: 0.95}}
                 >
                     Вернуться домой
                 </MotionButton>
@@ -190,9 +190,9 @@ export const  NotFound=()=> {
                     fontSize="sm"
                     color="gray.500"
                     mt={8}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{delay: 1}}
                 >
                     P.S. Даже пицца иногда теряется в доставке
                 </MotionText>

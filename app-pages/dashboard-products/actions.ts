@@ -40,12 +40,7 @@ export async function toggleProductVisibility(productId: string) {
 
     revalidatePath('/');
 
-    return {
-        ...product.toObject(),
-        _id: product._id.toString(),
-        createdAt: product.createdAt?.toISOString(),
-        updatedAt: product.updatedAt?.toISOString(),
-    };
+    return null;
 }
 
 export async function deleteProduct(productId: string) {
