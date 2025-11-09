@@ -1,4 +1,4 @@
-import {IProduct} from "@/models/product";
+import {ProductType} from "@/models/product";
 
 const CART_KEY = "localCart";
 const CART_TTL = 24 * 60 * 60 * 1000;
@@ -22,7 +22,7 @@ export const setCart = (items: any[]) => {
     window.dispatchEvent(new Event("storage"));
 };
 
-export const addToCart = (product: Partial<IProduct> & { price?: number; size?: string }) => {
+export const addToCart = (product: Partial<ProductType> & { price?: number; size?: string }) => {
     const cart = getCart();
     cart.push({...product, timestamp: Date.now()});
     setCart(cart);

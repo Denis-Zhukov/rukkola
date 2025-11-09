@@ -109,7 +109,12 @@ export const ProductRow = ({ p, onToggle, onDelete, loadingId, deletePending, ro
                         bgGradient="linear(to-r, blue.400, blue.500)"
                         color="white"
                         _hover={{ transform: 'scale(1.1)', bgGradient: 'linear(to-r, blue.500, blue.600)' }}
-                        onClick={() => router.push(`/products/edit/${p._id}`)}
+                        onClick={() => {
+                            const params = new URLSearchParams(window.location.search)
+                            params.set('edit', p._id)
+                            router.push(`?${params.toString()}`, { scroll: false })
+                        }}
+
                         flexShrink={0}
                     >
                         <FaEdit />

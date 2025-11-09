@@ -1,5 +1,5 @@
 import {Box} from "@chakra-ui/react";
-import {IProduct, Product as ProductDb} from "@/models/product";
+import {ProductType, Product as ProductDb} from "@/models/product";
 import {connectToDatabase} from "@/lib/mongoose";
 import {ProductGroup} from "./product-group";
 
@@ -25,7 +25,7 @@ export const Products = async () => {
 
     const productsWithoutCategory = await ProductDb.find({
         $or: [{ categories: { $exists: false } }, { categories: { $size: 0 } }],
-    }).lean<IProduct[]>();
+    }).lean<ProductType[]>();
 
     return (
         <Box color="white" minH="100vh" p={2}>

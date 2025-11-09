@@ -5,7 +5,7 @@ import fs from "fs";
 import mongoose, { Types } from "mongoose";
 import bcrypt from "bcryptjs";
 import { connectToDatabase } from "../lib/mongoose";
-import { Product, IProduct } from "../models/product";
+import { Product, ProductType } from "../models/product";
 import { Category } from "../models/category";
 import { User } from "../models/user";
 
@@ -75,7 +75,7 @@ async function seedDatabase() {
         await Product.deleteMany({});
         console.log("🗑️ Очищены коллекции Product");
 
-        const products: Omit<IProduct, "_id">[] = jsonProducts.map((item) => {
+        const products: Omit<ProductType, "_id">[] = jsonProducts.map((item) => {
             const name = item.name ?? "Unnamed Product";
             const prices: Price[] = item.prices?.map(({ size, price }) => ({ size, price })) || [];
 
@@ -90,7 +90,7 @@ async function seedDatabase() {
                 prices,
                 image: item.image,
                 categories: categoryIds,
-            } as Omit<IProduct, "_id">;
+            } as Omit<ProductType, "_id">;
         });
 
         await Product.insertMany(products);

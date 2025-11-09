@@ -1,12 +1,12 @@
 import mongoose, {Schema, Document, Model, Types} from 'mongoose'
 import './category';
 
-export interface PortionPrice {
+export type PortionPrice = {
     size: string
     price: number
 }
 
-export interface IProduct extends Document {
+export type ProductType = {
     _id: Types.ObjectId
     name: string
     description: string
@@ -16,7 +16,7 @@ export interface IProduct extends Document {
     hidden?: boolean
     createdAt?: Date
     updatedAt?: Date
-}
+} & Document;
 
 const PortionPriceSchema = new Schema<PortionPrice>(
     {
@@ -26,7 +26,7 @@ const PortionPriceSchema = new Schema<PortionPrice>(
     {_id: false}
 )
 
-const ProductSchema = new Schema<IProduct>(
+const ProductSchema = new Schema<ProductType>(
     {
         name: {type: String, required: true, trim: true},
         description: {type: String, required: false},
@@ -38,5 +38,5 @@ const ProductSchema = new Schema<IProduct>(
     {timestamps: true}
 )
 
-export const Product: Model<IProduct> =
-    mongoose.models.Product || mongoose.model<IProduct>('Product', ProductSchema)
+export const Product: Model<ProductType> =
+    mongoose.models.Product || mongoose.model<ProductType>('Product', ProductSchema)

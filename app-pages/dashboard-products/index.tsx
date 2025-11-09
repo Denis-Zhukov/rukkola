@@ -1,17 +1,18 @@
 'use client'
 
 import {Box, Flex, Spinner, Table, Heading, Card} from '@chakra-ui/react'
-import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query'
+import {useQuery, useMutation} from '@tanstack/react-query'
 import {useSearchParams, useRouter} from 'next/navigation'
 import {useState} from 'react'
 import {deleteProduct, getProducts, toggleProductVisibility} from './actions'
 import {ProductRow} from './product-row'
 import {Pagination} from './pagination'
+import {EditProductModal} from "@/app-pages/dashboard-products/edit-product-modal";
+import {ProductType} from "@/models/product";
 
 export const ProductsPage = () => {
     const searchParams = useSearchParams()
     const router = useRouter()
-    const queryClient = useQueryClient()
     const [loadingId, setLoadingId] = useState<string | null>(null)
     const [deletePending, setDeletePending] = useState<string | null>(null)
 
@@ -51,6 +52,8 @@ export const ProductsPage = () => {
 
     return (
         <Box minH="100vh">
+            <EditProductModal refetch={refetch}/>
+
             <Card.Root
                 w="100%"
                 borderRadius="2xl"
@@ -103,10 +106,10 @@ export const ProductsPage = () => {
                             </Table.Header>
 
                             <Table.Body>
-                                {products.map((p) => (
+                                {products.map((product: ProductType) => (
                                     <ProductRow
-                                        key={p._id}
-                                        p={p}
+                                        key={product._id}
+                                        p={product}
                                         router={router}
                                         onToggle={(id: string) => toggleVisibility.mutate(id)}
                                         onDelete={(id: string) => {
