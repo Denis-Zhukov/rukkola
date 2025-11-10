@@ -123,6 +123,7 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
                         src={img}
                         alt={alt ?? ""}
                         fill
+                        unoptimized
                         style={{
                             objectFit: "cover",
                             objectPosition: "center",

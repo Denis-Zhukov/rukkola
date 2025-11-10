@@ -53,30 +53,21 @@ export async function getProductById(id: string) {
 }
 
 export async function updateProduct(id: string, data: FormData) {
-    await connectToDatabase()
     const product = await Product.findById(id)
     if (!product) throw new Error('Product not found')
 
-    const name = data.get('name') as string;
-    const description = data.get('description') as string;
-    const prices = JSON.parse(data.get('prices') as string) as Array<{ size: string, price: string | number }>;
-    const categories = JSON.parse(data.get('categories') as string) as Array<string>;
-    const hidden = data.get('hidden') === 'true';
-    const file = data.get('image') as File;
-    let imagePath = product.image;
+    const name = data.get('name') as string
+    const description = data.get('description') as string
+    const prices = JSON.parse(data.get('prices') as string)
+    const categories = JSON.parse(data.get('categories') as string)
+    const hidden = data.get('hidden') === 'true'
+    const file = data.get('image') as File | null
 
-    console.log({
-        name,
-        description,
-        prices,
-        categories,
-        image: imagePath,
-        hidden
-    });
+    let imagePath = product.image
 
     if (file) {
-        const uploadDir = path.join(process.cwd(), 'public', 'products')
-        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, {recursive: true})
+        const uploadDir = path.join(process.cwd(), 'uploads', 'products')
+        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true })
 
         const ext = path.extname(file.name)
         const safeName = name.replace(/\s+/g, '-').toLowerCase()
@@ -84,14 +75,14 @@ export async function updateProduct(id: string, data: FormData) {
         const filePath = path.join(uploadDir, fileName)
 
         if (product.image) {
-            const oldPath = path.join(process.cwd(), 'public', product.image)
+            const oldPath = path.join(process.cwd(), 'uploads', 'products', path.basename(product.image))
             if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath)
         }
 
         const buffer = Buffer.from(await file.arrayBuffer())
         fs.writeFileSync(filePath, buffer)
 
-        imagePath = `/products/${fileName}`
+        imagePath = `/api/products/image/${fileName}`
     }
 
     const newObj = {
@@ -99,14 +90,15 @@ export async function updateProduct(id: string, data: FormData) {
         description,
         prices,
         categories,
+        hidden,
         image: imagePath,
-        hidden
-    };
+    }
 
     await Product.findByIdAndUpdate(id, newObj)
+    revalidatePath('/')
+
     return newObj
 }
-
 
 export async function deleteProduct(productId: string) {
     if (!Types.ObjectId.isValid(productId)) {

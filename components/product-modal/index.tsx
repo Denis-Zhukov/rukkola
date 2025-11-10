@@ -127,10 +127,8 @@ export const ProductModal = () => {
                         </Center>
                     )}
 
-                    {/* КОНТЕНТ */}
                     {product && !loading && !error && (
                         <Flex direction="column" h="100vh" w="100vw" overflow="hidden">
-                            {/* ИЗОБРАЖЕНИЕ — НА ВСЮ ДОСТУПНУЮ ВЫСОТУ */}
                             <Box flex="1" position="relative" minH="0" onClick={(e) => e.stopPropagation()}>
                                 {product.image ? (
                                     <Image
@@ -138,7 +136,6 @@ export const ProductModal = () => {
                                         alt={product.name}
                                         fill
                                         priority
-                                        unoptimized
                                         style={{
                                             objectFit: "contain",
                                             objectPosition: "center",

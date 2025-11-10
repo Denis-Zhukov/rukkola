@@ -8,7 +8,7 @@
         "price": 23.1
       }
     ],
-    "image": "/products/hachapuri-0.webp",
+    "image": "/api/products/image/hachapuri-0.webp",
     "categories": [
       "Пицца"
     ]
@@ -22,7 +22,7 @@
         "price": 29
       }
     ],
-    "image": "/products/myasnaya-1.webp",
+    "image": "/products/image/myasnaya-1.webp",
     "categories": [
       "Пицца"
     ]
@@ -36,7 +36,7 @@
         "price": 41.5
       }
     ],
-    "image": "/products/s-parmskoy-vetchinoy-i-burrato-2.webp",
+    "image": "/api/products/image/s-parmskoy-vetchinoy-i-burrato-2.webp",
     "categories": [
       "Пицца"
     ]
@@ -50,7 +50,7 @@
         "price": 43
       }
     ],
-    "image": "/products/s-burrato-i-tryufelnym-sousom-3.webp",
+    "image": "/api/products/image/s-burrato-i-tryufelnym-sousom-3.webp",
     "categories": [
       "Пицца"
     ]
@@ -64,7 +64,7 @@
         "price": 32.5
       }
     ],
-    "image": "/products/brezaolla-tryufel-4.webp",
+    "image": "/api/products/image/brezaolla-tryufel-4.webp",
     "categories": [
       "Пицца"
     ]
@@ -78,7 +78,7 @@
         "price": 36.4
       }
     ],
-    "image": "/products/pintsa-zhulen-5.webp",
+    "image": "/api/products/image/pintsa-zhulen-5.webp",
     "categories": [
       "Пицца"
     ]
@@ -92,7 +92,7 @@
         "price": 45.2
       }
     ],
-    "image": "/products/pintsa-s-govyadinoy-6.webp",
+    "image": "/api/products/image/pintsa-s-govyadinoy-6.webp",
     "categories": [
       "Пицца"
     ]
@@ -106,7 +106,7 @@
         "price": 43
       }
     ],
-    "image": "/products/tar-tar-7.webp",
+    "image": "/api/products/image/tar-tar-7.webp",
     "categories": [
       "Пицца"
     ]
@@ -120,7 +120,7 @@
         "price": 48
       }
     ],
-    "image": "/products/s-krevetkoy-i-syomgoy-8.webp",
+    "image": "/api/products/image/s-krevetkoy-i-syomgoy-8.webp",
     "categories": [
       "Пицца"
     ]
@@ -134,7 +134,7 @@
         "price": 39
       }
     ],
-    "image": "/products/roll-kaliforniya-s-krabom-9.webp",
+    "image": "/api/products/image/roll-kaliforniya-s-krabom-9.webp",
     "categories": [
       "Роллы"
     ]
@@ -148,7 +148,7 @@
         "price": 41
       }
     ],
-    "image": "/products/roll-s-krevetkoy-i-lososem-10.webp",
+    "image": "/api/products/image/roll-s-krevetkoy-i-lososem-10.webp",
     "categories": [
       "Роллы"
     ]
@@ -162,7 +162,7 @@
         "price": 37.2
       }
     ],
-    "image": "/products/roll-s-tar-tarom-iz-tuntsa-11.webp",
+    "image": "/api/products/image/roll-s-tar-tarom-iz-tuntsa-11.webp",
     "categories": [
       "Роллы"
     ]
@@ -176,7 +176,7 @@
         "price": 38.1
       }
     ],
-    "image": "/products/filadelfiya-12.webp",
+    "image": "/api/products/image/filadelfiya-12.webp",
     "categories": [
       "Роллы"
     ]
@@ -190,7 +190,7 @@
         "price": 25
       }
     ],
-    "image": "/products/osidzusi-s-lososem-13.webp",
+    "image": "/api/products/image/osidzusi-s-lososem-13.webp",
     "categories": [
       "Роллы"
     ]
@@ -204,7 +204,7 @@
         "price": 28.5
       }
     ],
-    "image": "/products/osidzusi-s-govyadinoy-14.webp",
+    "image": "/api/products/image/osidzusi-s-govyadinoy-14.webp",
     "categories": [
       "Роллы"
     ]
@@ -218,7 +218,7 @@
         "price": 28.4
       }
     ],
-    "image": "/products/osidzusi-s-ugrem-15.webp",
+    "image": "/api/products/image/osidzusi-s-ugrem-15.webp",
     "categories": [
       "Роллы"
     ]
@@ -232,7 +232,7 @@
         "price": 37.6
       }
     ],
-    "image": "/products/roll-tempura-s-krevetkoy-16.webp",
+    "image": "/api/products/image/roll-tempura-s-krevetkoy-16.webp",
     "categories": [
       "Роллы"
     ]
@@ -246,7 +246,7 @@
         "price": 29.2
       }
     ],
-    "image": "/products/roll-zapechennyy-bonito-17.webp",
+    "image": "/api/products/image/roll-zapechennyy-bonito-17.webp",
     "categories": [
       "Роллы"
     ]
@@ -260,7 +260,7 @@
         "price": 39.7
       }
     ],
-    "image": "/products/roll-zapech-s-ugrem-i-krabom-18.webp",
+    "image": "/api/products/image/roll-zapech-s-ugrem-i-krabom-18.webp",
     "categories": [
       "Роллы"
     ]
@@ -274,7 +274,7 @@
         "price": 22.5
       }
     ],
-    "image": "/products/roll-s-tuntsom-i-tar-tarom-iz-ogurtsa-19.webp",
+    "image": "/api/products/image/roll-s-tuntsom-i-tar-tarom-iz-ogurtsa-19.webp",
     "categories": [
       "Роллы"
     ]
@@ -288,7 +288,7 @@
         "price": 31.5
       }
     ],
-    "image": "/products/roll-tempura-s-tuntsom-20.webp",
+    "image": "/api/products/image/roll-tempura-s-tuntsom-20.webp",
     "categories": [
       "Роллы"
     ]
@@ -302,7 +302,7 @@
         "price": 13.8
       }
     ],
-    "image": "/products/hend-roll-s-lososem-21.webp",
+    "image": "/api/products/image/hend-roll-s-lososem-21.webp",
     "categories": [
       "Роллы"
     ]
@@ -316,7 +316,7 @@
         "price": 12.6
       }
     ],
-    "image": "/products/hend-roll-s-krevetkoy-22.webp",
+    "image": "/api/products/image/hend-roll-s-krevetkoy-22.webp",
     "categories": [
       "Роллы"
     ]
@@ -330,7 +330,7 @@
         "price": 18
       }
     ],
-    "image": "/products/hend-roll-s-ugrem-23.webp",
+    "image": "/api/products/image/hend-roll-s-ugrem-23.webp",
     "categories": [
       "Роллы"
     ]
@@ -344,7 +344,7 @@
         "price": 19.5
       }
     ],
-    "image": "/products/onigiri-s-tuntsom-24.webp",
+    "image": "/api/products/image/onigiri-s-tuntsom-24.webp",
     "categories": [
       "Роллы"
     ]
@@ -358,7 +358,7 @@
         "price": 19.5
       }
     ],
-    "image": "/products/onigiri-s-krevetkoy-25.webp",
+    "image": "/api/products/image/onigiri-s-krevetkoy-25.webp",
     "categories": [
       "Роллы"
     ]
@@ -372,7 +372,7 @@
         "price": 19.5
       }
     ],
-    "image": "/products/onigiri-s-semgoy-26.webp",
+    "image": "/api/products/image/onigiri-s-semgoy-26.webp",
     "categories": [
       "Роллы"
     ]
@@ -386,7 +386,7 @@
         "price": 34.7
       }
     ],
-    "image": "/products/govyadina-s-ovoschami-v-perechnom-souse-27.webp",
+    "image": "/api/products/image/govyadina-s-ovoschami-v-perechnom-souse-27.webp",
     "categories": [
       "Горячее"
     ]
@@ -400,7 +400,7 @@
         "price": 23.5
       }
     ],
-    "image": "/products/karri-s-zharenym-risom-28.webp",
+    "image": "/api/products/image/karri-s-zharenym-risom-28.webp",
     "categories": [
       "Горячее"
     ]
@@ -414,7 +414,7 @@
         "price": 39
       }
     ],
-    "image": "/products/slivochnyy-karri-s-krevetkoy-29.webp",
+    "image": "/api/products/image/slivochnyy-karri-s-krevetkoy-29.webp",
     "categories": [
       "Горячее"
     ]
@@ -428,7 +428,7 @@
         "price": 30.8
       }
     ],
-    "image": "/products/krevetki-tempura-30.webp",
+    "image": "/api/products/image/krevetki-tempura-30.webp",
     "categories": [
       "Горячее"
     ]
@@ -442,7 +442,7 @@
         "price": 23.1
       }
     ],
-    "image": "/products/zharenyy-tofu-31.webp",
+    "image": "/api/products/image/zharenyy-tofu-31.webp",
     "categories": [
       "Горячее"
     ]
@@ -456,7 +456,7 @@
         "price": 33.9
       }
     ],
-    "image": "/products/pasta-s-krevetkoy-i-semgoy-32.webp",
+    "image": "/api/products/image/pasta-s-krevetkoy-i-semgoy-32.webp",
     "categories": [
       "Горячее"
     ]
@@ -470,7 +470,7 @@
         "price": 26.7
       }
     ],
-    "image": "/products/char-siu-s-bitymi-ogurtsami-33.webp",
+    "image": "/api/products/image/char-siu-s-bitymi-ogurtsami-33.webp",
     "categories": [
       "Горячее"
     ]
@@ -484,7 +484,7 @@
         "price": 26.7
       }
     ],
-    "image": "/products/pad-tay-s-kuritsey-34.webp",
+    "image": "/api/products/image/pad-tay-s-kuritsey-34.webp",
     "categories": [
       "Горячее"
     ]
@@ -498,7 +498,7 @@
         "price": 39.9
       }
     ],
-    "image": "/products/pad-tay-s-krevetkoy-35.webp",
+    "image": "/api/products/image/pad-tay-s-krevetkoy-35.webp",
     "categories": [
       "Горячее"
     ]
@@ -512,7 +512,7 @@
         "price": 33.6
       }
     ],
-    "image": "/products/tokpokki-s-kolbaskami-36.webp",
+    "image": "/api/products/image/tokpokki-s-kolbaskami-36.webp",
     "categories": [
       "Горячее"
     ]
@@ -526,7 +526,7 @@
         "price": 30.6
       }
     ],
-    "image": "/products/tokpokki-karbonara-37.webp",
+    "image": "/api/products/image/tokpokki-karbonara-37.webp",
     "categories": [
       "Горячее"
     ]
@@ -540,7 +540,7 @@
         "price": 23.8
       }
     ],
-    "image": "/products/sup-ramen-38.webp",
+    "image": "/api/products/image/sup-ramen-38.webp",
     "categories": [
       "Супы"
     ]
@@ -554,7 +554,7 @@
         "price": 31.8
       }
     ],
-    "image": "/products/sup-ramen-s-moreproduktami-39.webp",
+    "image": "/api/products/image/sup-ramen-s-moreproduktami-39.webp",
     "categories": [
       "Супы"
     ]
@@ -568,7 +568,7 @@
         "price": 10
       }
     ],
-    "image": "/products/mini-zakuska-olivki-kim-chi-40.webp",
+    "image": "/api/products/image/mini-zakuska-olivki-kim-chi-40.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -582,7 +582,7 @@
         "price": 7.5
       }
     ],
-    "image": "/products/mini-zakuska-bitye-ogurtsy-41.webp",
+    "image": "/api/products/image/mini-zakuska-bitye-ogurtsy-41.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -596,7 +596,7 @@
         "price": 26.6
       }
     ],
-    "image": "/products/poke-s-kuritsey-teriyaki-42.webp",
+    "image": "/api/products/image/poke-s-kuritsey-teriyaki-42.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -610,7 +610,7 @@
         "price": 36.4
       }
     ],
-    "image": "/products/poke-s-lososem-43.webp",
+    "image": "/api/products/image/poke-s-lososem-43.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -624,7 +624,7 @@
         "price": 23.7
       }
     ],
-    "image": "/products/ovoschnoy-roll-s-lososem-44.webp",
+    "image": "/api/products/image/ovoschnoy-roll-s-lososem-44.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -638,7 +638,7 @@
         "price": 24.2
       }
     ],
-    "image": "/products/ovoschnoy-roll-s-tuntsom-45.webp",
+    "image": "/api/products/image/ovoschnoy-roll-s-tuntsom-45.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -652,7 +652,7 @@
         "price": 33.7
       }
     ],
-    "image": "/products/ovoschnoy-roll-s-ugryom-46.webp",
+    "image": "/api/products/image/ovoschnoy-roll-s-ugryom-46.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -666,7 +666,7 @@
         "price": 23.1
       }
     ],
-    "image": "/products/salat-s-baklazhanom-47.webp",
+    "image": "/api/products/image/salat-s-baklazhanom-47.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -680,7 +680,7 @@
         "price": 20.5
       }
     ],
-    "image": "/products/kurinyy-popkorn-48.webp",
+    "image": "/api/products/image/kurinyy-popkorn-48.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -694,7 +694,7 @@
         "price": 38.3
       }
     ],
-    "image": "/products/tartar-iz-govyadiny-49.webp",
+    "image": "/api/products/image/tartar-iz-govyadiny-49.webp",
     "categories": [
       "Закуски и салаты"
     ]
@@ -708,7 +708,7 @@
         "price": 14
       }
     ],
-    "image": "/products/yablochnaya-tarta-s-morozhenym-50.webp",
+    "image": "/api/products/image/yablochnaya-tarta-s-morozhenym-50.webp",
     "categories": [
       "Десерты"
     ]
@@ -722,7 +722,7 @@
         "price": 13.6
       }
     ],
-    "image": "/products/desert-pavlova-51.webp",
+    "image": "/api/products/image/desert-pavlova-51.webp",
     "categories": [
       "Десерты"
     ]
@@ -736,7 +736,7 @@
         "price": 12
       }
     ],
-    "image": "/products/moti-karamelnyy-52.webp",
+    "image": "/api/products/image/moti-karamelnyy-52.webp",
     "categories": [
       "Десерты"
     ]
@@ -750,7 +750,7 @@
         "price": 12
       }
     ],
-    "image": "/products/moti-shokoladnyy-53.webp",
+    "image": "/api/products/image/moti-shokoladnyy-53.webp",
     "categories": [
       "Десерты"
     ]
@@ -764,7 +764,7 @@
         "price": 12
       }
     ],
-    "image": "/products/moti-mango-54.webp",
+    "image": "/api/products/image/moti-mango-54.webp",
     "categories": [
       "Десерты"
     ]
@@ -778,7 +778,7 @@
         "price": 14.7
       }
     ],
-    "image": "/products/desert-semifredo-55.webp",
+    "image": "/api/products/image/desert-semifredo-55.webp",
     "categories": [
       "Десерты"
     ],
@@ -793,7 +793,7 @@
         "price": 7.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -807,7 +807,7 @@
         "price": 20.4
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -821,7 +821,7 @@
         "price": 14.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -835,7 +835,7 @@
         "price": 23.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -849,7 +849,7 @@
         "price": 14.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -863,7 +863,7 @@
         "price": 21.6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -877,7 +877,7 @@
         "price": 19
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -891,7 +891,7 @@
         "price": 16.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -905,7 +905,7 @@
         "price": 17
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -919,7 +919,7 @@
         "price": 17.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -933,7 +933,7 @@
         "price": 16.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -947,7 +947,7 @@
         "price": 18
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -961,7 +961,7 @@
         "price": 3.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Коктейли"
     ]
@@ -979,7 +979,7 @@
         "price": 52.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -997,7 +997,7 @@
         "size": "Бутылка"
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1015,7 +1015,7 @@
         "price": 172.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1029,7 +1029,7 @@
         "price": 102
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1043,7 +1043,7 @@
         "price": 112.6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1061,7 +1061,7 @@
         "price": 54
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1075,7 +1075,7 @@
         "price": 69
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1089,7 +1089,7 @@
         "price": 13.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1103,7 +1103,7 @@
         "price": 8.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1117,7 +1117,7 @@
         "price": 17.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1131,7 +1131,7 @@
         "price": 8.9
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1145,7 +1145,7 @@
         "price": 8.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1159,7 +1159,7 @@
         "price": 9.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1173,7 +1173,7 @@
         "price": 115.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1187,7 +1187,7 @@
         "price": 104.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1201,7 +1201,7 @@
         "price": 12.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Вино"
     ]
@@ -1215,7 +1215,7 @@
         "price": 2.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1229,7 +1229,7 @@
         "price": 6.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1243,7 +1243,7 @@
         "price": 6.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1257,7 +1257,7 @@
         "price": 7.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1271,7 +1271,7 @@
         "price": 29
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1285,7 +1285,7 @@
         "price": 9.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1299,7 +1299,7 @@
         "price": 23.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1313,7 +1313,7 @@
         "price": 33.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1327,7 +1327,7 @@
         "price": 11.3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1341,7 +1341,7 @@
         "price": 6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1355,7 +1355,7 @@
         "price": 19.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1369,7 +1369,7 @@
         "price": 23.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1383,7 +1383,7 @@
         "price": 9
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1397,7 +1397,7 @@
         "price": 7.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1411,7 +1411,7 @@
         "price": 7.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1425,7 +1425,7 @@
         "price": 9.9
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1439,7 +1439,7 @@
         "price": 25.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1453,7 +1453,7 @@
         "price": 13.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1467,7 +1467,7 @@
         "price": 10
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Водка"
     ]
@@ -1485,7 +1485,7 @@
         "price": 5.4
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1503,7 +1503,7 @@
         "price": 8.6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1517,7 +1517,7 @@
         "price": 7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1531,7 +1531,7 @@
         "price": 7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1545,7 +1545,7 @@
         "price": 7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1559,7 +1559,7 @@
         "price": 6.7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1573,7 +1573,7 @@
         "price": 7.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1587,7 +1587,7 @@
         "price": 12.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1601,7 +1601,7 @@
         "price": 7.1
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1615,7 +1615,7 @@
         "price": 12.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1629,7 +1629,7 @@
         "price": 9.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Пиво"
     ]
@@ -1643,7 +1643,7 @@
         "price": 3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1657,7 +1657,7 @@
         "price": 3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1671,7 +1671,7 @@
         "price": 6.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1685,7 +1685,7 @@
         "price": 6.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1699,7 +1699,7 @@
         "price": 11.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1713,7 +1713,7 @@
         "price": 10.3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1727,7 +1727,7 @@
         "price": 11.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1741,7 +1741,7 @@
         "price": 5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1755,7 +1755,7 @@
         "price": 7
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1769,7 +1769,7 @@
         "price": 13.2
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1783,7 +1783,7 @@
         "price": 14.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1797,7 +1797,7 @@
         "price": 11.6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1811,7 +1811,7 @@
         "price": 1.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Кофе"
     ]
@@ -1825,7 +1825,7 @@
         "price": 4
       }
     ],
-    "image": "/products/chay-v-chaynike-128.webp",
+    "image": "/api/products/image/chay-v-chaynike-128.webp",
     "categories": [
       "Чай"
     ]
@@ -1839,7 +1839,7 @@
         "price": 4.5
       }
     ],
-    "image": "/products/chay-v-chaynike-129.webp",
+    "image": "/api/products/image/chay-v-chaynike-129.webp",
     "categories": [
       "Чай"
     ]
@@ -1853,7 +1853,7 @@
         "price": 5.5
       }
     ],
-    "image": "/products/chay-imbirnyy-130.webp",
+    "image": "/api/products/image/chay-imbirnyy-130.webp",
     "categories": [
       "Чай"
     ]
@@ -1867,7 +1867,7 @@
         "price": 7.6
       }
     ],
-    "image": "/products/chay-oblepiha-apelsin-131.webp",
+    "image": "/api/products/image/chay-oblepiha-apelsin-131.webp",
     "categories": [
       "Чай"
     ]
@@ -1881,7 +1881,7 @@
         "price": 4.1
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1895,7 +1895,7 @@
         "price": 5.6
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1909,7 +1909,7 @@
         "price": 8.3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1923,7 +1923,7 @@
         "price": 12
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1937,7 +1937,7 @@
         "price": 12
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1951,7 +1951,7 @@
         "price": 12
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1965,7 +1965,7 @@
         "price": 12
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1979,7 +1979,7 @@
         "price": 12
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -1993,7 +1993,7 @@
         "price": 9
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2007,7 +2007,7 @@
         "price": 20.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2021,7 +2021,7 @@
         "price": 22
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2035,7 +2035,7 @@
         "price": 14.4
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2049,7 +2049,7 @@
         "price": 12.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2063,7 +2063,7 @@
         "price": 20.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2077,7 +2077,7 @@
         "price": 7.3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2091,7 +2091,7 @@
         "price": 7.3
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2105,7 +2105,7 @@
         "price": 7.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2119,7 +2119,7 @@
         "price": 4
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2133,7 +2133,7 @@
         "price": 3.8
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
@@ -2147,7 +2147,7 @@
         "price": 8.5
       }
     ],
-    "image": "",
+    "image": "/api",
     "categories": [
       "Другие напитки"
     ]
