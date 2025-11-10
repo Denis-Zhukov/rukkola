@@ -1,5 +1,4 @@
 'use client'
-
 import {
     Dialog,
     Checkbox,
@@ -16,12 +15,14 @@ import {
     Text,
     Separator,
     Image,
+    Alert,
 } from '@chakra-ui/react'
 import {useSearchParams, useRouter} from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {useQuery, useMutation} from '@tanstack/react-query'
 import {getProductById, updateProductData, getCategories} from './actions'
 import {FaTrash} from 'react-icons/fa'
+import {FiAlertCircle} from 'react-icons/fi'
 import {useForm, useFieldArray, Controller} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {productSchema, ProductFormValues} from "@/app-pages/dashboard-products/validation";
@@ -36,29 +37,28 @@ export async function uploadProductImage(productId: string, file: File) {
     const formData = new FormData();
     formData.append('id', productId);
     formData.append('file', file);
-
     const res = await fetch('/api/products/upload', {
         method: 'POST',
         body: formData,
     });
-
     if (!res.ok) {
         const error = await res.json();
         throw new Error(error?.error || 'Failed to upload image');
     }
-
     return res.json();
 }
-
 
 export const EditProductModal = ({refetch}: EditProductModalProps) => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const [isDragOver, setIsDragOver] = useState(false)
-
-
     const productId = searchParams.get('edit')
     const isOpen = !!productId
+
+    // Состояния загрузки и ошибок
+    const [isUploadingImage, setIsUploadingImage] = useState(false)
+    const [imageError, setImageError] = useState<string | null>(null)
+    const [dataError, setDataError] = useState<string | null>(null)
 
     const {data: product, isLoading} = useQuery({
         queryKey: ['product', productId],
@@ -107,6 +107,8 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                 categories: product.categories?.map(({_id}: CategoryType) => _id) || [],
                 hidden: product.hidden || false,
             })
+            setImageError(null)
+            setDataError(null)
         }
     }, [product, reset])
 
@@ -120,13 +122,23 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
         }),
         onSuccess: () => {
             refetch();
+            setDataError(null)
         },
+        onError: (error: any) => {
+            setDataError(error?.message || 'Не удалось сохранить данные')
+        }
     });
 
     const {mutateAsync: uploadImage} = useMutation({
         mutationFn: (file: File) => uploadProductImage(productId!, file),
         onSuccess: () => {
             refetch();
+            setIsUploadingImage(false)
+            setImageError(null)
+        },
+        onError: (error: any) => {
+            setIsUploadingImage(false)
+            setImageError(error?.message || 'Не удалось загрузить изображение')
         },
     });
 
@@ -137,8 +149,10 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
     }
 
     const onSubmit = async () => {
-        const values = getValues();
+        setDataError(null)
+        setImageError(null)
 
+        const values = getValues();
         const formattedData = {
             ...values,
             prices: values.prices.map(p => ({
@@ -147,13 +161,22 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
             }))
         };
 
-        await updateData(formattedData);
-
-        if (imageFile && productId) {
-            await uploadImage(imageFile);
+        try {
+            await updateData(formattedData);
+        } catch (err) {
+            return
         }
 
-        handleClose();
+        if (imageFile && productId) {
+            setIsUploadingImage(true)
+            try {
+                await uploadImage(imageFile);
+            } catch (err) {
+                // Ошибка уже в onError
+            }
+        } else {
+            handleClose();
+        }
     };
 
     const cardBg = 'rgba(20, 20, 25, 0.9)'
@@ -195,7 +218,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                     color="gray.400"
                                     _hover={{bg: 'gray.700', color: 'teal.200'}}
                                 >
-                                    ✕
+                                    X
                                 </Button>
                             </Dialog.CloseTrigger>
                         </Flex>
@@ -203,12 +226,28 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
 
                     <Dialog.Body p={6}>
                         {isLoading ? (
-                            <Flex justify="center" py={10}>
+                            <Flex direction="column" align="center" py={10} gap={3}>
                                 <Spinner size="lg" color="teal.300"/>
+                                <Text color="gray.400" fontSize="sm">Загрузка данных товара...</Text>
                             </Flex>
                         ) : (
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Stack gap={5}>
+
+                                    {/* Ошибка сохранения данных */}
+                                    {dataError && (
+                                        <Alert.Root status="error" variant="subtle">
+                                            <Alert.Indicator asChild>
+                                                <FiAlertCircle color="red.400" />
+                                            </Alert.Indicator>
+                                            <Alert.Content>
+                                                <Alert.Description fontSize="sm">
+                                                    {dataError}
+                                                </Alert.Description>
+                                            </Alert.Content>
+                                        </Alert.Root>
+                                    )}
+
                                     {/* Название */}
                                     <Box>
                                         <Heading mb={1} size="sm" color="teal.200">
@@ -216,6 +255,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         </Heading>
                                         <Input
                                             {...register('name')}
+                                            p={2}
                                             placeholder="Введите название"
                                             bg={inputBg}
                                             border="1px solid"
@@ -256,10 +296,12 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
 
                                     <Separator borderColor="gray.700"/>
 
+                                    {/* Изображение */}
                                     <Box>
                                         <Heading size="sm" mb={2} color="teal.200">
                                             Изображение
                                         </Heading>
+
                                         <Box
                                             border="2px dashed"
                                             borderColor={imageFile ? 'teal.400' : 'gray.600'}
@@ -282,36 +324,69 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                                 e.preventDefault()
                                                 setIsDragOver(false)
                                                 const file = e.dataTransfer.files[0]
-                                                if (file) setImageFile(file)
+                                                if (file && file.type.startsWith('image/')) {
+                                                    setImageFile(file)
+                                                    setImageError(null)
+                                                }
                                             }}
                                         >
                                             {imageFile ? (
-                                                <Image
-                                                    src={URL.createObjectURL(imageFile)}
-                                                    alt="preview"
-                                                    borderRadius="md"
-                                                    maxH="160px"
-                                                    objectFit="cover"
-                                                    mb={2}
-                                                />
+                                                <Flex direction="column" align="center" gap={2}>
+                                                    <Image
+                                                        src={URL.createObjectURL(imageFile)}
+                                                        alt="preview"
+                                                        borderRadius="md"
+                                                        maxH="160px"
+                                                        objectFit="cover"
+                                                    />
+                                                    {isUploadingImage ? (
+                                                        <Flex align="center" gap={2} color="teal.300">
+                                                            <Spinner size="xs"/>
+                                                            <Text fontSize="xs">Загрузка изображения...</Text>
+                                                        </Flex>
+                                                    ) : (
+                                                        <Text fontSize="xs" color="gray.400">
+                                                            {imageFile.name}
+                                                        </Text>
+                                                    )}
+                                                </Flex>
                                             ) : (
                                                 <Text color="gray.400" fontSize="sm">
                                                     Перетащите файл сюда или нажмите для выбора
                                                 </Text>
                                             )}
                                         </Box>
+
                                         <Input
                                             id="product-image-input"
                                             type="file"
                                             accept="image/*"
                                             onChange={(e) => {
                                                 const file = e.target.files?.[0]
-                                                if (file) setImageFile(file)
+                                                if (file && file.type.startsWith('image/')) {
+                                                    setImageFile(file)
+                                                    setImageError(null)
+                                                }
                                             }}
                                             display="none"
                                         />
+
+                                        {/* Ошибка загрузки изображения */}
+                                        {imageError && (
+                                            <Alert.Root status="error" variant="subtle" mt={2}>
+                                                <Alert.Indicator asChild>
+                                                    <FiAlertCircle color="red.400" />
+                                                </Alert.Indicator>
+                                                <Alert.Content>
+                                                    <Alert.Description fontSize="xs">
+                                                        {imageError}
+                                                    </Alert.Description>
+                                                </Alert.Content>
+                                            </Alert.Root>
+                                        )}
                                     </Box>
 
+                                    {/* Цены */}
                                     <Box>
                                         <Heading size="sm" mb={2} color="teal.200">
                                             Цены
@@ -355,7 +430,6 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                                             input.value = input.value.replace(/[^0-9.,]/g, '')
                                                         }}
                                                     />
-
                                                     <IconButton
                                                         aria-label="Удалить"
                                                         color="red.400"
@@ -385,6 +459,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         </Stack>
                                     </Box>
 
+                                    {/* Категории */}
                                     <Box>
                                         <Heading size="sm" mb={2} color="teal.200">
                                             Категории
@@ -445,6 +520,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         </Flex>
                                     </Box>
 
+                                    {/* Скрыт */}
                                     <Controller
                                         name="hidden"
                                         control={control}
@@ -546,6 +622,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         _active={{bg: 'teal.600'}}
                                         type="submit"
                                         loading={isSubmitting}
+                                        loadingText="Сохранение..."
                                     >
                                         Сохранить
                                     </Button>
