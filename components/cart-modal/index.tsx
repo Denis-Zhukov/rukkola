@@ -164,7 +164,7 @@ export const CartModal = () => {
                                             <Flex align="center" gap={3}>
                                                 <Text color="teal.300" fontWeight="semibold" fontSize="sm">
                                                     {item.price != null
-                                                        ? `${item.price?.toFixed(2).replace(".", ",")} ₽`
+                                                        ? `${item.price?.toFixed(2).replace(".", ",")} руб.`
                                                         : "—"}
                                                 </Text>
                                                 <Button
@@ -200,7 +200,7 @@ export const CartModal = () => {
                                     </Text>
                                     <Flex align="center" gap={3}>
                                         <Text color="teal.300" fontWeight="bold">
-                                            {total.toFixed(2).replace(".", ",")} ₽
+                                            {total.toFixed(2).replace(".", ",")} руб.
                                         </Text>
                                         <Button
                                             size="sm"

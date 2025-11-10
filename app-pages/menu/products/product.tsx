@@ -167,7 +167,7 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
                                             }}
                                             onClick={() => setSelectedPrice(p)}
                                         >
-                                            {p.size} — {p.price.toFixed(2).replace(".", ",")} ₽
+                                            {p.size} — {p.price.toFixed(2).replace(".", ",")} руб.
                                         </Button>
                                     ))}
                                     <Flex justify="space-between" mt={2}>
@@ -190,7 +190,7 @@ export const Product = ({id, img, alt, title, description, prices}: ProductProps
                                         <Flex key={size} justifyContent="space-between" align="center">
                                             <Text fontSize="sm" color="gray.400">{size}</Text>
                                             <Text fontSize="md" fontWeight="semibold" color="teal.300">
-                                                {price.toFixed(2).replace(".", ",")} ₽
+                                                {price.toFixed(2).replace(".", ",")} руб.
                                             </Text>
                                         </Flex>
                                     ))}

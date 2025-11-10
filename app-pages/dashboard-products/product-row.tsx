@@ -37,7 +37,7 @@ export const ProductRow = ({ p, onToggle, onDelete, loadingId, deletePending, ro
                         <Flex key={price.size} justify="space-between" borderBottom="1px dashed" borderColor="gray.700" pb="1">
                             <Text color="gray.400">{price.size}</Text>
                             <Text color="teal.400" fontWeight="semibold">
-                                {price.price} ₽
+                                {price.price} руб.
                             </Text>
                         </Flex>
                     ))}
