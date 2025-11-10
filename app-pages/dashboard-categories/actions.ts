@@ -22,13 +22,16 @@ export async function moveCategory(id: string, direction: 'up' | 'down') {
     const current = await Category.findById(id)
     if (!current) return
 
-    const all = await Category.find().sort({order: 1})
-    const index = all.findIndex((c) => c._id.equals(current._id))
+    const siblings = await Category.find({parent: current.parent})
+        .sort({order: 1})
+        .lean()
+
+    const index = siblings.findIndex((c) => c._id.toString() === current._id.toString())
     const swapIndex = direction === 'up' ? index - 1 : index + 1
 
-    if (swapIndex < 0 || swapIndex >= all.length) return
+    if (swapIndex < 0 || swapIndex >= siblings.length) return
 
-    const target = all[swapIndex]
+    const target = siblings[swapIndex]
 
     const temp = current.order
     await Category.updateOne({_id: current._id}, {$set: {order: -1}})
@@ -36,8 +39,25 @@ export async function moveCategory(id: string, direction: 'up' | 'down') {
     await Category.updateOne({_id: target._id}, {$set: {order: temp}})
     await Category.updateOne({_id: current._id}, {$set: {order: target.order}})
 
-    revalidatePath('/dashboard/categories');
-    revalidatePath('/');
+    await adjustChildrenOrders(current._id.toString(), temp, direction)
+
+    revalidatePath('/dashboard/categories')
+    revalidatePath('/')
+}
+
+async function adjustChildrenOrders(parentId: string, baseOrder: number, direction: 'up' | 'down') {
+    const children = await Category.find({parent: parentId}).sort({order: 1}).lean()
+    if (!children.length) return
+
+    const shift = direction === 'up' ? -0.001 : 0.001
+
+    for (const [i, child] of children.entries()) {
+        await Category.updateOne(
+            {_id: child._id},
+            {$set: {order: baseOrder + (i + 1) * shift}}
+        )
+        await adjustChildrenOrders(child._id.toString(), baseOrder + (i + 1) * shift, direction)
+    }
 }
 
 export async function updateCategoryName(id: string, name: string) {
@@ -81,7 +101,7 @@ export async function createCategory({
 
     const parent = parentId ? parentId : null
 
-    const top = await Category.find().sort({ order: -1 }).limit(1).lean()
+    const top = await Category.find().sort({order: -1}).limit(1).lean()
     const nextOrder = top && top.length ? top[0].order + 1 : 1
 
     const cat = new Category({
