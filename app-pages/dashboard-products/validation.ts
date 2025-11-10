@@ -2,7 +2,7 @@ import {z} from "zod";
 
 export const priceSchema = z.object({
     size: z.string().nonempty('Размер обязателен'),
-    price: z.number().or(z.string()),
+    price: z.number(),
 })
 
 export const productSchema = z.object({

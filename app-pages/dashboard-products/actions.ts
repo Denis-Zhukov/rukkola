@@ -52,53 +52,55 @@ export async function getProductById(id: string) {
     return JSON.parse(JSON.stringify(product))
 }
 
-export async function updateProduct(id: string, data: FormData) {
-    const product = await Product.findById(id)
-    if (!product) throw new Error('Product not found')
+type UpdateProductDataPayload = {
+    name: string;
+    description: string;
+    prices: { size: string; price: number }[];
+    categories: string[];
+    hidden: boolean;
+};
 
-    const name = data.get('name') as string
-    const description = data.get('description') as string
-    const prices = JSON.parse(data.get('prices') as string)
-    const categories = JSON.parse(data.get('categories') as string)
-    const hidden = data.get('hidden') === 'true'
-    const file = data.get('image') as File | null
-
-    let imagePath = product.image
-
-    if (file) {
-        const uploadDir = path.join(process.cwd(), 'uploads', 'products')
-        if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true })
-
-        const ext = path.extname(file.name)
-        const safeName = name.replace(/\s+/g, '-').toLowerCase()
-        const fileName = `${safeName}${ext}`
-        const filePath = path.join(uploadDir, fileName)
-
-        if (product.image) {
-            const oldPath = path.join(process.cwd(), 'uploads', 'products', path.basename(product.image))
-            if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath)
-        }
-
-        const buffer = Buffer.from(await file.arrayBuffer())
-        fs.writeFileSync(filePath, buffer)
-
-        imagePath = `/api/products/image/${fileName}`
-    }
+export async function updateProductData(id: string, data: UpdateProductDataPayload) {
+    const product = await Product.findById(id);
+    if (!product) throw new Error('Product not found');
 
     const newObj = {
-        name,
-        description,
-        prices,
-        categories,
-        hidden,
-        image: imagePath,
+        ...data,
+        image: product.image,
+    };
+
+    await Product.findByIdAndUpdate(id, newObj);
+    revalidatePath('/');
+
+    return newObj;
+}
+
+export async function uploadProductImage(id: string, file: File) {
+    const product = await Product.findById(id);
+    if (!product) throw new Error('Product not found');
+
+    const uploadDir = path.join(process.cwd(), 'uploads', 'products');
+    if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
+    const ext = path.extname(file.name);
+    const safeName = product.name.replace(/\s+/g, '-').toLowerCase();
+    const fileName = `${safeName}${ext}`;
+    const filePath = path.join(uploadDir, fileName);
+
+    if (product.image) {
+        const oldPath = path.join(uploadDir, path.basename(product.image));
+        if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
     }
 
-    await Product.findByIdAndUpdate(id, newObj)
-    revalidatePath('/')
+    const buffer = Buffer.from(await file.arrayBuffer());
+    fs.writeFileSync(filePath, buffer);
 
-    return newObj
+    const imagePath = `/api/products/image/${fileName}`;
+    await Product.findByIdAndUpdate(id, { image: imagePath });
+
+    return { image: imagePath };
 }
+
 
 export async function deleteProduct(productId: string) {
     if (!Types.ObjectId.isValid(productId)) {

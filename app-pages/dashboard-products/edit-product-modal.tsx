@@ -19,8 +19,8 @@ import {
 } from '@chakra-ui/react'
 import {useSearchParams, useRouter} from 'next/navigation'
 import {useEffect, useState} from 'react'
-import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query'
-import {getProductById, updateProduct, getCategories} from './actions'
+import {useQuery, useMutation} from '@tanstack/react-query'
+import {getProductById, updateProductData, uploadProductImage, getCategories} from './actions'
 import {FaTrash} from 'react-icons/fa'
 import {useForm, useFieldArray, Controller} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
@@ -91,17 +91,25 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
         }
     }, [product, reset])
 
-    const {mutateAsync, isPending} = useMutation({
-        mutationFn: (formData: FormData) => {
-            console.log(productId);
-            console.log(formData);
-            return updateProduct(productId!, formData);
-        },
+    const {mutateAsync: updateData} = useMutation({
+        mutationFn: (data: ProductFormValues) => updateProductData(productId!, {
+            name: data.name,
+            description: data.description,
+            prices: data.prices,
+            categories: data.categories,
+            hidden: data.hidden
+        }),
         onSuccess: () => {
             refetch();
-            handleClose()
         },
-    })
+    });
+
+    const {mutateAsync: uploadImage} = useMutation({
+        mutationFn: (file: File) => uploadProductImage(productId!, file),
+        onSuccess: () => {
+            refetch();
+        },
+    });
 
     const handleClose = () => {
         const params = new URLSearchParams(window.location.search)
@@ -112,27 +120,22 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
     const onSubmit = async () => {
         const values = getValues();
 
-        const formData = new FormData()
         const formattedData = {
             ...values,
             prices: values.prices.map(p => ({
                 ...p,
                 price: parseFloat(String(p.price).replace(',', '.')) || 0
             }))
+        };
+
+        await updateData(formattedData);
+
+        if (imageFile) {
+            await uploadImage(imageFile);
         }
 
-        Object.entries(formattedData).forEach(([key, value]) => {
-            if (key === 'categories' || key === 'prices') {
-                formData.append(key, JSON.stringify(value))
-            } else {
-                formData.append(key, value as string)
-            }
-        })
-
-        if (imageFile) formData.append('image', imageFile)
-
-        await mutateAsync(formData)
-    }
+        handleClose();
+    };
 
     const cardBg = 'rgba(20, 20, 25, 0.9)'
     const inputBg = 'rgba(30, 30, 35, 0.9)'
@@ -523,7 +526,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         }}
                                         _active={{bg: 'teal.600'}}
                                         type="submit"
-                                        loading={isSubmitting || isPending}
+                                        loading={isSubmitting}
                                     >
                                         Сохранить
                                     </Button>
