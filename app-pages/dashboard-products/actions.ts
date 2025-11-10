@@ -75,33 +75,6 @@ export async function updateProductData(id: string, data: UpdateProductDataPaylo
     return newObj;
 }
 
-export async function uploadProductImage(id: string, file: File) {
-    const product = await Product.findById(id);
-    if (!product) throw new Error('Product not found');
-
-    const uploadDir = path.join(process.cwd(), 'uploads', 'products');
-    if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-
-    const ext = path.extname(file.name);
-    const safeName = product.name.replace(/\s+/g, '-').toLowerCase();
-    const fileName = `${safeName}${ext}`;
-    const filePath = path.join(uploadDir, fileName);
-
-    if (product.image) {
-        const oldPath = path.join(uploadDir, path.basename(product.image));
-        if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-    }
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    fs.writeFileSync(filePath, buffer);
-
-    const imagePath = `/api/products/image/${fileName}`;
-    await Product.findByIdAndUpdate(id, { image: imagePath });
-
-    return { image: imagePath };
-}
-
-
 export async function deleteProduct(productId: string) {
     if (!Types.ObjectId.isValid(productId)) {
         throw new Error("Invalid product ID");

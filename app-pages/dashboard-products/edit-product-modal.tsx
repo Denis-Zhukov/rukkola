@@ -20,7 +20,7 @@ import {
 import {useSearchParams, useRouter} from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {useQuery, useMutation} from '@tanstack/react-query'
-import {getProductById, updateProductData, uploadProductImage, getCategories} from './actions'
+import {getProductById, updateProductData, getCategories} from './actions'
 import {FaTrash} from 'react-icons/fa'
 import {useForm, useFieldArray, Controller} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
@@ -31,6 +31,25 @@ import {CategoryType} from "@/models/category";
 type EditProductModalProps = {
     refetch: VoidFunction
 }
+
+export async function uploadProductImage(productId: string, file: File) {
+    const formData = new FormData();
+    formData.append('id', productId);
+    formData.append('file', file);
+
+    const res = await fetch('/api/products/upload', {
+        method: 'POST',
+        body: formData,
+    });
+
+    if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error?.error || 'Failed to upload image');
+    }
+
+    return res.json();
+}
+
 
 export const EditProductModal = ({refetch}: EditProductModalProps) => {
     const searchParams = useSearchParams();
@@ -130,7 +149,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
 
         await updateData(formattedData);
 
-        if (imageFile) {
+        if (imageFile && productId) {
             await uploadImage(imageFile);
         }
 
