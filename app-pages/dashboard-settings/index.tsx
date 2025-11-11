@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useTransition, useState } from 'react'
+import React, {useTransition, useState} from 'react'
 import {
     Box,
     Input,
@@ -12,12 +12,12 @@ import {
     Flex,
     IconButton,
 } from '@chakra-ui/react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { FiAlertTriangle, FiCheckCircle, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
-import { updatePassword } from './actions'
-import { useSession } from 'next-auth/react'
+import {useForm} from 'react-hook-form'
+import {z} from 'zod'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {FiAlertTriangle, FiCheckCircle, FiLock, FiEye, FiEyeOff} from 'react-icons/fi'
+import {updatePassword} from './actions'
+import {useSession} from 'next-auth/react'
 
 // Zod схема
 const passwordSchema = z
@@ -34,7 +34,7 @@ const passwordSchema = z
 type PasswordFormData = z.infer<typeof passwordSchema>
 
 export const DashboardSettingsPage = () => {
-    const { data } = useSession()
+    const {data} = useSession()
     const [isPending, startTransition] = useTransition()
     const [serverError, setServerError] = useState('')
     const [serverSuccess, setServerSuccess] = useState('')
@@ -46,7 +46,7 @@ export const DashboardSettingsPage = () => {
         register,
         handleSubmit,
         reset,
-        formState: { errors },
+        formState: {errors},
     } = useForm<PasswordFormData>({
         resolver: zodResolver(passwordSchema),
     })
@@ -72,18 +72,7 @@ export const DashboardSettingsPage = () => {
         errors[fieldName] ? String(errors[fieldName]?.message) : ''
 
     return (
-        <Box
-            bg="linear-gradient(180deg, black 0%, #041414 100%)"
-            p={10}
-            rounded="2xl"
-            boxShadow="0 0 30px rgba(0, 128, 128, 0.2)"
-            border="1px solid"
-            borderColor="teal.800"
-            maxW="600px"
-            mx="auto"
-            mt={14}
-            transition="all 0.3s ease"
-        >
+        <Box>
             <Flex align="center" gap={3} mb={6}>
                 <Box
                     bg="teal.700"
@@ -91,7 +80,7 @@ export const DashboardSettingsPage = () => {
                     rounded="full"
                     boxShadow="0 0 15px rgba(56,178,172,0.6)"
                 >
-                    <FiLock size={20} color="black" />
+                    <FiLock size={20} color="black"/>
                 </Box>
                 <Text
                     fontSize="2xl"
@@ -102,11 +91,10 @@ export const DashboardSettingsPage = () => {
                 </Text>
             </Flex>
 
-            <Separator borderColor="teal.800" mb={6} />
+            <Separator borderColor="teal.800" mb={6}/>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <VStack gap={5} align="stretch">
-                    {/* old password */}
+                <VStack gap={5} align="stretch" maxW={600}>
                     <Box>
                         <Text mb={2} color="teal.200" fontWeight="medium">
                             Текущий пароль
@@ -124,7 +112,7 @@ export const DashboardSettingsPage = () => {
                                         ? '0 0 8px rgba(255,90,90,0.14)'
                                         : '0 0 10px rgba(56,178,172,0.4)',
                                 }}
-                                _hover={{ borderColor: 'teal.600' }}
+                                _hover={{borderColor: 'teal.600'}}
                                 rounded="lg"
                                 size="md"
                                 {...register('oldPassword')}
@@ -139,8 +127,8 @@ export const DashboardSettingsPage = () => {
                                 transform="translateY(-50%)"
                                 onClick={() => setShowOld((s) => !s)}
                                 color="teal.200"
-                                _hover={{ bg: 'blackAlpha.400' }}>
-                                {showOld ? <FiEyeOff /> : <FiEye />}
+                                _hover={{bg: 'blackAlpha.400'}}>
+                                {showOld ? <FiEyeOff/> : <FiEye/>}
                             </IconButton>
                         </Box>
                         {fieldErrorText('oldPassword') ? (
@@ -168,7 +156,7 @@ export const DashboardSettingsPage = () => {
                                         ? '0 0 8px rgba(255,90,90,0.14)'
                                         : '0 0 10px rgba(56,178,172,0.4)',
                                 }}
-                                _hover={{ borderColor: 'teal.600' }}
+                                _hover={{borderColor: 'teal.600'}}
                                 rounded="lg"
                                 size="md"
                                 {...register('newPassword')}
@@ -183,8 +171,8 @@ export const DashboardSettingsPage = () => {
                                 transform="translateY(-50%)"
                                 onClick={() => setShowNew((s) => !s)}
                                 color="teal.200"
-                                _hover={{ bg: 'blackAlpha.400' }}>
-                                {showNew ? <FiEyeOff /> : <FiEye />}
+                                _hover={{bg: 'blackAlpha.400'}}>
+                                {showNew ? <FiEyeOff/> : <FiEye/>}
                             </IconButton>
                         </Box>
                         {fieldErrorText('newPassword') ? (
@@ -216,7 +204,7 @@ export const DashboardSettingsPage = () => {
                                         ? '0 0 8px rgba(255,90,90,0.14)'
                                         : '0 0 10px rgba(56,178,172,0.4)',
                                 }}
-                                _hover={{ borderColor: 'teal.600' }}
+                                _hover={{borderColor: 'teal.600'}}
                                 rounded="lg"
                                 size="md"
                                 {...register('confirmPassword')}
@@ -231,8 +219,8 @@ export const DashboardSettingsPage = () => {
                                 transform="translateY(-50%)"
                                 onClick={() => setShowConfirm((s) => !s)}
                                 color="teal.200"
-                                _hover={{ bg: 'blackAlpha.400' }}>
-                                {showConfirm ? <FiEyeOff /> : <FiEye />}
+                                _hover={{bg: 'blackAlpha.400'}}>
+                                {showConfirm ? <FiEyeOff/> : <FiEye/>}
                             </IconButton>
                         </Box>
                         {fieldErrorText('confirmPassword') ? (
@@ -254,7 +242,7 @@ export const DashboardSettingsPage = () => {
                             borderColor="red.700"
                         >
                             <Alert.Indicator>
-                                <FiAlertTriangle />
+                                <FiAlertTriangle/>
                             </Alert.Indicator>
                             <Alert.Content>
                                 <Alert.Title fontWeight="bold">Ошибка</Alert.Title>
@@ -274,7 +262,7 @@ export const DashboardSettingsPage = () => {
                             borderColor="teal.700"
                         >
                             <Alert.Indicator>
-                                <FiCheckCircle />
+                                <FiCheckCircle/>
                             </Alert.Indicator>
                             <Alert.Content>
                                 <Alert.Title fontWeight="bold">Успех</Alert.Title>
@@ -284,24 +272,24 @@ export const DashboardSettingsPage = () => {
                     )}
 
                     <Button
-                        mt={4}
+                        mt={2}
                         size="md"
-                        colorScheme="teal"
                         type="submit"
                         loading={isPending}
                         loadingText="Сохранение..."
-                        fontWeight="bold"
-                        bgGradient="linear(to-r, teal.600, teal.400)"
+                        fontWeight="semibold"
+                        bg="teal.500"
+                        color="black"
                         _hover={{
-                            bgGradient: 'linear(to-r, teal.500, teal.300)',
+                            bg: 'teal.400',
+                            boxShadow: '0 0 20px rgba(56,178,172,0.4)',
                             transform: 'translateY(-2px)',
-                            boxShadow: '0 0 15px rgba(56,178,172,0.5)',
                         }}
-                        _active={{ transform: 'scale(0.98)' }}
-                        rounded="lg"
+                        _active={{transform: 'scale(0.98)'}}
+                        rounded="xl"
                         transition="all 0.2s ease"
                     >
-                        Изменить пароль
+                        Сохранить изменения
                     </Button>
                 </VStack>
             </form>
