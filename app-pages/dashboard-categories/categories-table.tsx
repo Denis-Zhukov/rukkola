@@ -1,45 +1,83 @@
 'use client'
 
-import React, {useTransition, useState} from 'react'
+import React, {useState} from 'react'
 import {
-    Table,
-    IconButton,
     Box,
-    Text,
-    Checkbox,
+    Card,
+    Flex,
+    IconButton,
     Input,
+    Table,
+    Text,
+    Spinner,
+    Checkbox,
 } from '@chakra-ui/react'
-import {FiArrowUp, FiArrowDown, FiEdit, FiTrash2} from 'react-icons/fi'
+import {useMutation, useQueryClient} from '@tanstack/react-query'
+import {
+    FiArrowUp,
+    FiArrowDown,
+    FiEdit,
+    FiTrash2,
+    FiCheck,
+    FiX,
+} from 'react-icons/fi'
 import {CategoryType} from '@/models/category'
-import {toggleCategoryField, moveCategory, updateCategoryName, deleteCategory} from './actions'
+import {
+    toggleCategoryField,
+    moveCategory,
+    updateCategoryName,
+    deleteCategory,
+} from './actions'
+import {Tooltip} from '@/components/tooltip'
 
 type Props = { categories: CategoryType[] }
 
-export default function CategoriesTable({categories}: Props) {
-    const [isPending, startTransition] = useTransition()
+export default function CategoriesTable({categories: initialCategories}: Props) {
+    const queryClient = useQueryClient()
     const [editingId, setEditingId] = useState<string | null>(null)
     const [tempName, setTempName] = useState('')
 
-    const handleToggle = (id: string, field: 'isMenuItem' | 'showGroupTitle') =>
-        startTransition(() => toggleCategoryField(id, field))
+    // Mutations
+    const toggleMutation = useMutation({
+        mutationFn: ({id, field}: { id: string; field: 'isMenuItem' | 'showGroupTitle' }) =>
+            toggleCategoryField(id, field),
+        onSuccess: () => queryClient.invalidateQueries({queryKey: ['categories']}),
+    })
 
-    const handleMove = (id: string, dir: 'up' | 'down') =>
-        startTransition(() => moveCategory(id, dir))
+    const moveMutation = useMutation({
+        mutationFn: ({id, dir}: { id: string; dir: 'up' | 'down' }) => moveCategory(id, dir),
+        onSuccess: () => queryClient.invalidateQueries({queryKey: ['categories']}),
+    })
 
-    const handleEditClick = (category: CategoryType) => {
+    const updateNameMutation = useMutation({
+        mutationFn: ({id, name}: { id: string; name: string }) => updateCategoryName(id, name),
+        onSuccess: () => {
+            setEditingId(null)
+            queryClient.invalidateQueries({queryKey: ['categories']})
+        },
+    })
+
+    const deleteMutation = useMutation({
+        mutationFn: deleteCategory,
+        onSuccess: () => queryClient.invalidateQueries({queryKey: ['categories']}),
+    })
+
+    const handleEditStart = (category: CategoryType) => {
         setEditingId(category._id.toString())
         setTempName(category.name)
     }
 
-    const handleNameSubmit = async (id: string) => {
+    const handleNameSave = (id: string) => {
         if (!tempName.trim()) return
-        startTransition(async () => {
-            await updateCategoryName(id, tempName.trim())
-            setEditingId(null)
-        })
+        updateNameMutation.mutate({id, name: tempName.trim()})
     }
 
-    const groupedCategories = categories.reduce<Record<string, CategoryType[]>>(
+    const handleNameCancel = () => {
+        setEditingId(null)
+        setTempName('')
+    }
+
+    const groupedCategories = initialCategories.reduce<Record<string, CategoryType[]>>(
         (acc, cat) => {
             const key = cat.parent ? cat.parent.toString() : 'root'
             if (!acc[key]) acc[key] = []
@@ -50,214 +88,327 @@ export default function CategoriesTable({categories}: Props) {
     )
 
     const renderRow = (category: CategoryType, depth = 0): React.ReactNode => {
-        const childCategories = categories.filter(
-            (c) => c.parent?.toString() === category._id.toString(),
-        )
-
         const parentKey = category.parent ? category.parent.toString() : 'root'
         const group = groupedCategories[parentKey].sort((a, b) => a.order - b.order)
         const indexInGroup = group.findIndex((c) => c._id === category._id)
         const isFirst = indexInGroup === 0
         const isLast = indexInGroup === group.length - 1
 
+        const isEditing = editingId === category._id.toString()
+        const isMoving = moveMutation.isPending && moveMutation.variables?.id === category._id.toString()
+        const isToggling = toggleMutation.isPending && toggleMutation.variables?.id === category._id.toString()
+        const isDeleting = deleteMutation.isPending && deleteMutation.variables === category._id.toString()
+
         return (
             <React.Fragment key={category._id.toString()}>
                 <Table.Row
-                    _hover={{bg: 'gray.800', transition: 'background 0.2s ease'}}
-                    bg={depth % 2 ? 'gray.900' : 'blackAlpha.900'}
+                    bg={depth % 2 === 0 ? 'gray.900' : 'gray.850'}
+                    borderBottom="1px solid"
+                    borderColor="gray.700"
+                    _hover={{bg: 'gray.800', transition: '0.2s ease'}}
                 >
-                    <Table.Cell px={2}>
-                        <Box pl={depth * 8} display="flex" alignItems="center" gap={2}>
+                    <Table.Cell p={4}>
+                        <Flex align="center" gap={3} pl={depth * 6}>
                             {depth > 0 && (
                                 <Box
-                                    borderLeft="2px dashed teal"
+                                    borderLeft="2px dashed"
+                                    borderColor="teal.600"
                                     height="20px"
-                                    mr={1}
-                                    opacity={0.6}
+                                    opacity={0.5}
                                 />
                             )}
 
-                            {editingId === category._id.toString() ? (
+                            {isEditing ? (
                                 <Input
                                     size="sm"
                                     value={tempName}
                                     onChange={(e) => setTempName(e.target.value)}
-                                    onBlur={() => handleNameSubmit(category._id.toString())}
                                     onKeyDown={(e) => {
-                                        if (e.key === 'Enter') handleNameSubmit(category._id.toString())
-                                        if (e.key === 'Escape') setEditingId(null)
+                                        if (e.key === 'Enter') handleNameSave(category._id.toString())
+                                        if (e.key === 'Escape') handleNameCancel()
                                     }}
                                     autoFocus
                                     bg="gray.700"
-                                    color="teal.200"
+                                    color="teal.300"
+                                    borderColor="teal.500"
+                                    _focus={{borderColor: 'teal.400', boxShadow: '0 0 0 1px teal.400'}}
+                                    width="250px"
                                 />
                             ) : (
+                                <Text fontWeight="semibold" color="teal.400" flex={1}>
+                                    {category.name}
+                                </Text>
+                            )}
+                        </Flex>
+                    </Table.Cell>
+
+                    <Table.Cell p={4} textAlign="center">
+                        <Tooltip content={category.isMenuItem ? 'Отображается в меню' : 'Скрыто из меню'}
+                                 openDelay={400}>
+                            <Box display="inline-flex">
+                                <Checkbox.Root
+                                    checked={category.isMenuItem}
+                                    onCheckedChange={() =>
+                                        toggleMutation.mutate({id: category._id.toString(), field: 'isMenuItem'})
+                                    }
+                                    disabled={isToggling}
+                                >
+                                    <Checkbox.HiddenInput/>
+                                    <Checkbox.Control
+                                        bg="gray.700"
+                                        borderColor="teal.500"
+                                        _checked={{
+                                            bg: 'teal.500',
+                                            borderColor: 'teal.400',
+                                            boxShadow: '0 0 6px 1px rgba(56,178,172,0.5)',
+                                        }}
+                                        _hover={{borderColor: 'teal.400'}}
+                                        transition="all 0.2s"
+                                    >
+                                        <Checkbox.Indicator color="black"/>
+                                    </Checkbox.Control>
+                                </Checkbox.Root>
+                            </Box>
+                        </Tooltip>
+                    </Table.Cell>
+
+                    {/* Показывать заголовок — Checkbox */}
+                    <Table.Cell p={4} textAlign="center">
+                        <Tooltip content={category.showGroupTitle ? 'Заголовок виден' : 'Заголовок скрыт'}
+                                 openDelay={400}>
+                            <Box display="inline-flex">
+                                <Checkbox.Root
+                                    checked={category.showGroupTitle}
+                                    onCheckedChange={() =>
+                                        toggleMutation.mutate({id: category._id.toString(), field: 'showGroupTitle'})
+                                    }
+                                    disabled={isToggling}
+                                >
+                                    <Checkbox.HiddenInput/>
+                                    <Checkbox.Control
+                                        bg="gray.700"
+                                        borderColor="teal.500"
+                                        _checked={{
+                                            bg: 'teal.500',
+                                            borderColor: 'teal.400',
+                                            boxShadow: '0 0 6px 1px rgba(56,178,172,0.5)',
+                                        }}
+                                        _hover={{borderColor: 'teal.400'}}
+                                        transition="all 0.2s"
+                                    >
+                                        <Checkbox.Indicator color="black"/>
+                                    </Checkbox.Control>
+                                </Checkbox.Root>
+                            </Box>
+                        </Tooltip>
+                    </Table.Cell>
+
+                    {/* Действия */}
+                    <Table.Cell p={4}>
+                        <Flex gap={2} align="center" justify="center" alignSelf="center">
+                            {isEditing ? (
                                 <>
-                                    <Text fontWeight="medium" color="teal.200" flex={1}>
-                                        {category.name}
-                                    </Text>
+                                    <Tooltip content="Сохранить" openDelay={400}>
+                                        <IconButton
+                                            aria-label="Сохранить"
+                                            size="sm"
+                                            borderRadius="xl"
+                                            bgGradient="linear(to-r, green.400, green.500)"
+                                            color="white"
+                                            _hover={{
+                                                transform: 'scale(1.1)',
+                                                bgGradient: 'linear(to-r, green.500, green.600)',
+                                            }}
+                                            onClick={() => handleNameSave(category._id.toString())}
+                                            loading={updateNameMutation.isPending}
+                                        >
+                                            <FiCheck/>
+                                        </IconButton>
+                                    </Tooltip>
+
+                                    <Tooltip content="Отмена" openDelay={400}>
+                                        <IconButton
+                                            aria-label="Отмена"
+                                            size="sm"
+                                            borderRadius="xl"
+                                            bgGradient="linear(to-r, gray.500, gray.600)"
+                                            color="white"
+                                            _hover={{
+                                                transform: 'scale(1.1)',
+                                                bgGradient: 'linear(to-r, gray.600, gray.700)',
+                                            }}
+                                            onClick={handleNameCancel}
+                                        >
+                                            <FiX/>
+                                        </IconButton>
+                                    </Tooltip>
+                                </>
+                            ) : (
+                                <Tooltip content="Редактировать" openDelay={400}>
                                     <IconButton
-                                        aria-label="Edit name"
-                                        size="xs"
-                                        variant="ghost"
-                                        color="teal.300"
-                                        _hover={{bg: 'teal.600', color: 'black'}}
-                                        onClick={() => handleEditClick(category)}>
+                                        aria-label="Редактировать"
+                                        size="sm"
+                                        borderRadius="xl"
+                                        bgGradient="linear(to-r, blue.400, blue.500)"
+                                        color="white"
+                                        _hover={{
+                                            transform: 'scale(1.1)',
+                                            bgGradient: 'linear(to-r, blue.500, blue.600)',
+                                        }}
+                                        onClick={() => handleEditStart(category)}
+                                    >
                                         <FiEdit/>
                                     </IconButton>
-                                </>
+                                </Tooltip>
                             )}
-                        </Box>
-                    </Table.Cell>
 
-                    <Table.Cell textAlign="center">
-                        <Checkbox.Root
-                            checked={category.isMenuItem}
-                            onCheckedChange={() =>
-                                handleToggle(category._id.toString(), 'isMenuItem')
-                            }
-                            disabled={isPending}
-                        >
-                            <Checkbox.HiddenInput/>
-                            <Checkbox.Control
-                                bg="gray.700"
-                                borderColor="teal.500"
-                                _checked={{
-                                    bg: 'teal.500',
-                                    borderColor: 'teal.300',
-                                    boxShadow: '0 0 6px 1px rgba(56,178,172,0.6)',
-                                }}
-                            >
-                                <Checkbox.Indicator color="black"/>
-                            </Checkbox.Control>
-                        </Checkbox.Root>
-                    </Table.Cell>
+                            <Tooltip content="Вверх" openDelay={400}>
+                                <IconButton
+                                    aria-label="Вверх"
+                                    size="sm"
+                                    borderRadius="xl"
+                                    bgGradient="linear(to-r, teal.400, teal.500)"
+                                    color="white"
+                                    _hover={{
+                                        transform: 'scale(1.1)',
+                                        bgGradient: 'linear(to-r, teal.500, teal.600)',
+                                    }}
+                                    onClick={() => moveMutation.mutate({id: category._id.toString(), dir: 'up'})}
+                                    disabled={isFirst || isMoving}
+                                    loading={isMoving}
+                                >
+                                    <FiArrowUp/>
+                                </IconButton>
+                            </Tooltip>
 
-                    <Table.Cell textAlign="center">
-                        <Checkbox.Root
-                            checked={category.showGroupTitle}
-                            onCheckedChange={() =>
-                                handleToggle(category._id.toString(), 'showGroupTitle')
-                            }
-                            disabled={isPending}
-                        >
-                            <Checkbox.HiddenInput/>
-                            <Checkbox.Control
-                                bg="gray.700"
-                                borderColor="teal.500"
-                                _checked={{
-                                    bg: 'teal.500',
-                                    borderColor: 'teal.300',
-                                    boxShadow: '0 0 6px 1px rgba(56,178,172,0.6)',
-                                }}
-                            >
-                                <Checkbox.Indicator color="black"/>
-                            </Checkbox.Control>
-                        </Checkbox.Root>
-                    </Table.Cell>
+                            <Tooltip content="Вниз" openDelay={400}>
+                                <IconButton
+                                    aria-label="Вниз"
+                                    size="sm"
+                                    borderRadius="xl"
+                                    bgGradient="linear(to-r, teal.400, teal.500)"
+                                    color="white"
+                                    _hover={{
+                                        transform: 'scale(1.1)',
+                                        bgGradient: 'linear(to-r, teal.500, teal.600)',
+                                    }}
+                                    onClick={() => moveMutation.mutate({id: category._id.toString(), dir: 'down'})}
+                                    disabled={isLast || isMoving}
+                                    loading={isMoving}
+                                >
+                                    <FiArrowDown/>
+                                </IconButton>
+                            </Tooltip>
 
-                    <Table.Cell display="flex" gap={2} justifyContent="center">
-                        <IconButton
-                            aria-label="Move up"
-                            color="teal.300"
-                            variant="ghost"
-                            size="sm"
-                            _hover={{bg: 'teal.600', color: 'black', transform: 'translateY(-1px)'}}
-                            _active={{bg: 'teal.700'}}
-                            onClick={() => handleMove(category._id.toString(), 'up')}
-                            disabled={isPending || isFirst}
-                        >
-                            <FiArrowUp/>
-                        </IconButton>
-
-                        <IconButton
-                            aria-label="Move down"
-                            color="teal.300"
-                            variant="ghost"
-                            size="sm"
-                            _hover={{bg: 'teal.600', color: 'black', transform: 'translateY(1px)'}}
-                            _active={{bg: 'teal.700'}}
-                            onClick={() => handleMove(category._id.toString(), 'down')}
-                            disabled={isPending || isLast}
-                        >
-                            <FiArrowDown/>
-                        </IconButton>
-
-                        <IconButton
-                            aria-label="Delete category"
-                            color="red.400"
-                            variant="ghost"
-                            size="sm"
-                            _hover={{bg: 'red.600', color: 'black'}}
-                            _active={{bg: 'red.700'}}
-                            onClick={() => {
-                                if (window.confirm('Вы точно хотите удалить категорию?')) {
-                                    startTransition(async () => {
-                                        await deleteCategory(category._id.toString())
-                                    })
-                                }
-                            }}
-                            disabled={isPending}
-                        >
-                            <FiTrash2/>
-                        </IconButton>
+                            <Tooltip content="Удалить" openDelay={400}>
+                                <IconButton
+                                    aria-label="Удалить"
+                                    size="sm"
+                                    borderRadius="xl"
+                                    bgGradient="linear(to-r, red.500, red.600)"
+                                    color="white"
+                                    _hover={{
+                                        transform: 'scale(1.1)',
+                                        bgGradient: 'linear(to-r, red.600, red.700)',
+                                    }}
+                                    onClick={() => {
+                                        if (window.confirm('Вы точно хотите удалить категорию?')) {
+                                            deleteMutation.mutate(category._id.toString())
+                                        }
+                                    }}
+                                    loading={isDeleting}
+                                >
+                                    <FiTrash2/>
+                                </IconButton>
+                            </Tooltip>
+                        </Flex>
                     </Table.Cell>
                 </Table.Row>
 
-                {childCategories.map((child) => renderRow(child, depth + 1))}
+                {initialCategories
+                    .filter((c) => c.parent?.toString() === category._id.toString())
+                    .map((child) => renderRow(child, depth + 1))}
             </React.Fragment>
         )
     }
 
-    const rootCategories = categories.filter((c) => !c.parent)
+    const rootCategories = initialCategories.filter((c) => !c.parent)
 
     return (
-        <Box
-            bg="black"
-            p={6}
-            rounded="xl"
-            boxShadow="lg"
-            border="1px solid"
-            borderColor="teal.800"
-        >
-            <Text
-                fontSize="xl"
-                fontWeight="bold"
-                color="teal.300"
-                mb={4}
-                borderBottom="1px solid"
-                borderColor="teal.700"
-                pb={2}
+        <Box minH="100vh">
+            <Card.Root
+                w="100%"
+                borderRadius="2xl"
+                shadow="xl"
+                border="1px solid"
+                borderColor="gray.700"
+                bg="gray.900"
             >
-                Изменение категорий
-            </Text>
+                <Card.Header
+                    bg="teal.500"
+                    borderTopRadius="2xl"
+                    py={3}
+                    textAlign="center"
+                    color="white"
+                >
+                    <Text fontSize="lg" fontWeight="semibold">
+                        Изменение категорий
+                    </Text>
+                </Card.Header>
 
-            <Table.Root
-                size="md"
-                variant="outline"
-                borderColor="teal.800"
-                bg="black"
-                colorPalette="teal"
-            >
-                <Table.Header bg="teal.900">
-                    <Table.Row>
-                        <Table.ColumnHeader color="teal.200" fontWeight="bold">
-                            Название
-                        </Table.ColumnHeader>
-                        <Table.ColumnHeader color="teal.200" textAlign="center">
-                            В меню
-                        </Table.ColumnHeader>
-                        <Table.ColumnHeader color="teal.200" textAlign="center">
-                            Показывать заголовок
-                        </Table.ColumnHeader>
-                        <Table.ColumnHeader color="teal.200" textAlign="center">
-                            Порядок
-                        </Table.ColumnHeader>
-                    </Table.Row>
-                </Table.Header>
+                <Card.Body px={0} py={0}>
+                    <Box overflowX="auto" position="relative">
+                        {(toggleMutation.isPending ||
+                            moveMutation.isPending ||
+                            updateNameMutation.isPending ||
+                            deleteMutation.isPending) && (
+                            <Flex
+                                position="absolute"
+                                top={0}
+                                left={0}
+                                right={0}
+                                bottom={0}
+                                justify="center"
+                                align="center"
+                                bg="rgba(0,0,0,0.3)"
+                                zIndex={10}
+                                borderRadius="xl"
+                            >
+                                <Spinner size="xl" color="teal.400"/>
+                            </Flex>
+                        )}
 
-                <Table.Body>{rootCategories.map((cat) => renderRow(cat))}</Table.Body>
-            </Table.Root>
+                        <Table.Root size="md" variant="outline" w="100%">
+                            <Table.Header bg="gray.800">
+                                <Table.Row>
+                                    {['Название', 'В меню', 'Заголовок', 'Действия'].map((col) => (
+                                        <Table.ColumnHeader
+                                            key={col}
+                                            textAlign={col === "Название" ? "left" : "center"}
+                                            color="gray.200"
+                                            p={4}
+                                            fontWeight="semibold">
+                                            {col}
+                                        </Table.ColumnHeader>
+                                    ))}
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                {rootCategories.length > 0 ? (
+                                    rootCategories.map((cat) => renderRow(cat))
+                                ) : (
+                                    <Table.Row>
+                                        <Table.Cell colSpan={4} textAlign="center" color="gray.500" py={8}>
+                                            Нет категорий
+                                        </Table.Cell>
+                                    </Table.Row>
+                                )}
+                            </Table.Body>
+                        </Table.Root>
+                    </Box>
+                </Card.Body>
+            </Card.Root>
         </Box>
     )
 }
