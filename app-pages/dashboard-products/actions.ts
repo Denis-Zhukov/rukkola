@@ -5,18 +5,38 @@ import {PortionPrice, Product} from '@/models/product'
 import {Types} from "mongoose";
 import {revalidatePath} from "next/cache";
 import {Category} from "@/models/category";
-import {type ProductFormValues} from "./validation";
+import { ObjectId } from 'mongodb'
 
-export async function getProducts(page: number = 1, limit: number = 10) {
+export async function getProducts(page = 1, limit = 10, search?: string, category?: string) {
     await connectToDatabase()
 
     const skip = (page - 1) * limit
-    const total = await Product.countDocuments()
-    const products = await Product.find()
-        .populate('categories')
-        .skip(skip)
-        .limit(limit)
-        .lean()
+    const filter: any = {}
+    if (search) filter.name = { $regex: search, $options: 'i' }
+    if (category) filter.categories = new ObjectId(category)
+
+    const total = await Product.countDocuments(filter)
+
+    const products = await Product.aggregate([
+        { $match: filter },
+        {
+            $lookup: {
+                from: 'categories',
+                localField: 'categories',
+                foreignField: '_id',
+                as: 'categories'
+            }
+        },
+        {
+            $addFields: {
+                minCategoryOrder: { $min: '$categories.order' }
+            }
+        },
+        { $sort: { minCategoryOrder: 1 } },
+        { $skip: skip },
+        { $limit: limit },
+        { $project: { minCategoryOrder: 0 } }
+    ])
 
     return {
         products: JSON.parse(JSON.stringify(products)),
