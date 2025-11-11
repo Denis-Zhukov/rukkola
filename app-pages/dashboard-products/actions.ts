@@ -1,12 +1,11 @@
 'use server'
 
 import {connectToDatabase} from '@/lib/mongoose'
-import {Product} from '@/models/product'
+import {PortionPrice, Product} from '@/models/product'
 import {Types} from "mongoose";
 import {revalidatePath} from "next/cache";
 import {Category} from "@/models/category";
-import path from 'path';
-import * as fs from 'fs'
+import {type ProductFormValues} from "./validation";
 
 export async function getProducts(page: number = 1, limit: number = 10) {
     await connectToDatabase()
@@ -104,4 +103,30 @@ export async function getCategories() {
     const categories = await Category.find().lean()
 
     return JSON.parse(JSON.stringify(categories))
+}
+
+export type CreateProductInput = {
+    name: string
+    description?: string
+    prices: PortionPrice[]
+    categories: string[]
+    hidden?: boolean
+}
+
+export async function createProduct(data: CreateProductInput) {
+    await connectToDatabase()
+
+    const product = new Product({
+        name: data.name,
+        description: data.description ?? '',
+        prices: data.prices ?? [],
+        categories: data.categories ?? [],
+        hidden: !!data.hidden,
+    })
+
+    await product.save()
+
+    revalidatePath('/dashboard/products')
+
+    return product.toObject()
 }
