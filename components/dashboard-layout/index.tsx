@@ -10,6 +10,7 @@ import {
     FiLogOut,
     FiMenu,
 } from "react-icons/fi";
+import { MdDashboard } from "react-icons/md";
 import {useRouter, usePathname} from "next/navigation";
 import {signOut} from "next-auth/react";
 import {useState} from "react";
@@ -35,7 +36,6 @@ export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
 
     return (
         <Flex minH="100vh" bg="gray.900" color="white" flexDir={{base: "column", md: "row"}}>
-            {/* Mobile topbar */}
             <Flex
                 display={{base: "flex", md: "none"}}
                 justify="space-between"
@@ -45,9 +45,12 @@ export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
                 py={3}
                 borderBottom={`1px solid ${dividerColor}`}
             >
-                <Text fontWeight="bold" fontSize="lg" color="teal.300">
-                    🍕 Admin Panel
-                </Text>
+                <Flex align="center" gap={2}>
+                    <Icon as={MdDashboard} color="teal.300" boxSize={5} />
+                    <Text fontWeight="bold" fontSize="lg" color="teal.300">
+                        Админ панель
+                    </Text>
+                </Flex>
                 <IconButton
                     aria-label="Menu"
                     variant="ghost"
@@ -69,6 +72,12 @@ export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
                 initial={{x: -40, opacity: 0}}
                 animate={{x: 0, opacity: 1}}
                 transition={{duration: 0.4}}
+                position={{ md: "fixed" }}
+                top={{ md: 0 }}
+                left={{ md: 0 }}
+                height={{ md: "100vh" }}
+                overflowY={{ md: "auto" }}
+                zIndex={{ md: 10 }}
             >
                 <VStack align="stretch">
                     <Box
@@ -79,7 +88,12 @@ export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
                         color="teal.300"
                         mb={6}
                     >
-                        🍕 Admin Panel
+                        <Flex justify="center" align="center" gap={2}>
+                            <Icon as={MdDashboard} color="teal.300" boxSize={6} />
+                            <Text fontWeight="bold" fontSize="xl" color="teal.300">
+                                Админ панель
+                            </Text>
+                        </Flex>
                     </Box>
 
                     <VStack align="stretch">
@@ -135,8 +149,7 @@ export const DashboardLayout = ({children}: { children: React.ReactNode }) => {
                 </Box>
             </MotionBox>
 
-            {/* Content */}
-            <Box flex="1" p={{base: 4, md: 10}} overflowX="auto">
+            <Box flex="1" p={{base: 4, md: 10}} overflowX="auto" ml={{ md: "260px" }}>
                 {children}
             </Box>
         </Flex>
