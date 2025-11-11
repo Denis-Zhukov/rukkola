@@ -110,6 +110,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
             setImageError(null)
             setDataError(null)
         }
+        return () => setImageFile(null);
     }, [product, reset])
 
     const {mutateAsync: updateData} = useMutation({
@@ -238,7 +239,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                     {dataError && (
                                         <Alert.Root status="error" variant="subtle">
                                             <Alert.Indicator asChild>
-                                                <FiAlertCircle color="red.400" />
+                                                <FiAlertCircle color="red.400"/>
                                             </Alert.Indicator>
                                             <Alert.Content>
                                                 <Alert.Description fontSize="sm">
@@ -375,7 +376,7 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         {imageError && (
                                             <Alert.Root status="error" variant="subtle" mt={2}>
                                                 <Alert.Indicator asChild>
-                                                    <FiAlertCircle color="red.400" />
+                                                    <FiAlertCircle color="red.400"/>
                                                 </Alert.Indicator>
                                                 <Alert.Content>
                                                     <Alert.Description fontSize="xs">
