@@ -22,7 +22,7 @@ export const Dashboard = async () => {
     const fullName = user ? `${user.name ?? ""} ${user.surname ?? ""} ${user.patronymic ?? ""}`.trim() : "";
 
     return (
-        <Box p={{base: 4, md: 8}}>
+        <Box>
             {fullName && (
                 <Heading mb={6} fontSize={{base: "2xl", md: "3xl"}} color="teal.300">
                     Добро пожаловать, {fullName}!
