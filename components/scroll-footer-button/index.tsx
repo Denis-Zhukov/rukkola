@@ -1,11 +1,10 @@
 'use client';
 
-import {Flex, Text, Button, Icon} from "@chakra-ui/react";
+import {Flex, Button, Icon} from "@chakra-ui/react";
 import {FiChevronDown} from "react-icons/fi";
 import {motion} from "framer-motion";
 
 const MotionIcon = motion(Icon);
-const MotionText = motion(Text);
 const MotionButton = motion(Button);
 
 export const ScrollToFooterButton = () => {
@@ -19,16 +18,6 @@ export const ScrollToFooterButton = () => {
             align="center"
             gap={{base: 3, md: 4}}
         >
-            <MotionText
-                fontSize={{base: "sm", md: "md"}}
-                color="gray.200"
-                initial={{opacity: 0, y: 15}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.4}}
-            >
-                Адрес, телефон, часы работы — всё в одном месте
-            </MotionText>
-
             <MotionButton
                 onClick={handleClick}
                 px={{base: 6, md: 8}}
@@ -49,7 +38,7 @@ export const ScrollToFooterButton = () => {
                         ease: "easeInOut",
                     }}
                 />
-                Показать
+                Адрес, телефон, часы работы
                 <MotionIcon
                     as={FiChevronDown}
                     boxSize={5}
