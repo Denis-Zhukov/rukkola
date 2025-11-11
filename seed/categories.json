@@ -44,49 +44,49 @@
   {
     "name": "Коктейли",
     "order": 7,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Вино",
     "order": 8,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Водка",
     "order": 9,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Пиво",
     "order": 10,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Кофе",
     "order": 11,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Чай",
     "order": 12,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   },
   {
     "name": "Другие напитки",
     "order": 13,
-    "isMenuItem": false,
+    "isMenuItem": true,
     "showGroupTitle": true,
     "parent": "Напитки"
   }

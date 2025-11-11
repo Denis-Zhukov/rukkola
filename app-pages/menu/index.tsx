@@ -13,7 +13,7 @@ import {Category} from "@/models/category";
 export const MenuPage = async () => {
     await connectToDatabase();
 
-    const categories = await Category.find()
+    const categories = await Category.find({isMenuItem: true})
         .sort({ order: 1 })
         .lean();
 
