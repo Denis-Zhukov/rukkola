@@ -30,7 +30,7 @@ export const Navbar = ({items}: NavbarProps) => {
     useEffect(() => {
         const handleScroll = () => {
             const y = window.scrollY;
-            const threshold = 300;
+            const threshold = 260;
             setIsFixed(y > threshold);
 
             const scrollPos = y + window.innerHeight / 3;
