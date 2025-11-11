@@ -52,11 +52,9 @@ async function seedDatabase() {
             }))
         );
 
-        // 2️⃣ Строим карту для быстрого доступа по имени
         const categoryMap = new Map<string, Types.ObjectId>();
         createdCategories.forEach((cat) => categoryMap.set(cat.name, cat._id as Types.ObjectId));
 
-        // 3️⃣ Обновляем parent, если он есть
         for (const cat of jsonCategories) {
             if (cat.parent && categoryMap.has(cat.parent)) {
                 await Category.updateOne(
@@ -68,7 +66,6 @@ async function seedDatabase() {
 
         console.log(`📂 Добавлено категорий: ${createdCategories.length}`);
 
-        // === Продукты ===
         const rawProductData = fs.readFileSync("./seed/products.json", "utf-8");
         const jsonProducts: ProductSeedInput[] = JSON.parse(rawProductData);
 

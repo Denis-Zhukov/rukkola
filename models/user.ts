@@ -15,7 +15,7 @@ const UserSchema = new Schema<IUser>({
     name: { type: String, required: true },
     surname: String,
     patronymic: String,
-    role: { type: String, enum: ['admin'], default: 'admin' }
+    role: { type: String, enum: ['admin', 'moderator'], default: 'moderator' }
 })
 
 export const User = mongoose.models.User || mongoose.model<IUser>('User', UserSchema)

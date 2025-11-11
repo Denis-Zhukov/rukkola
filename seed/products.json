@@ -22,7 +22,7 @@
         "price": 29
       }
     ],
-    "image": "/products/image/myasnaya-1.webp",
+    "image": "/api/products/image/myasnaya-1.webp",
     "categories": [
       "Пицца"
     ]
