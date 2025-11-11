@@ -9,6 +9,7 @@ import {ProductRow} from './product-row'
 import {Pagination} from './pagination'
 import {EditProductModal} from "@/app-pages/dashboard-products/edit-product-modal";
 import {ProductType} from "@/models/product";
+import {SkeletonRows} from "@/app-pages/dashboard-products/skeleton-rows";
 
 export const ProductsPage = () => {
     const searchParams = useSearchParams()
@@ -18,7 +19,7 @@ export const ProductsPage = () => {
 
     const page = Math.max(Number(searchParams.get('page')) || 1, 1)
 
-    const {data, isFetching, refetch} = useQuery({
+    const {data, isFetching, isPending, refetch} = useQuery({
         queryKey: ['products', page],
         queryFn: () => getProducts(page, 10),
         placeholderData: (prev) => prev,
@@ -97,7 +98,12 @@ export const ProductsPage = () => {
                                 <Table.Row>
                                     {['Фото', 'Название', 'Описание', 'Цены', 'Категории', 'Действия'].map(
                                         (col) => (
-                                            <Table.ColumnHeader key={col} color="gray.200" p={4}>
+                                            <Table.ColumnHeader
+                                                key={col}
+                                                minW={col === 'Фото' ? undefined : 200}
+                                                color="gray.200"
+                                                p={4}
+                                            >
                                                 {col}
                                             </Table.ColumnHeader>
                                         ),
@@ -120,6 +126,7 @@ export const ProductsPage = () => {
                                     />
                                 ))}
                             </Table.Body>
+                            {!products?.length && isPending && <SkeletonRows/>}
                         </Table.Root>
                     </Box>
                 </Card.Body>

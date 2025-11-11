@@ -73,6 +73,7 @@ export const ProductRow = ({ p, onToggle, onDelete, loadingId, deletePending, ro
             <Flex gap={2} align="center" whiteSpace="nowrap">
                 <Tooltip content={p.hidden ? 'Сейчас товар скрыт' : 'Сейчас товар отображается'} openDelay={400}>
                     <Button
+                        minW={128}
                         size="sm"
                         borderRadius="xl"
                         bgGradient={

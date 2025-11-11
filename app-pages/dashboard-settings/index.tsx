@@ -13,25 +13,12 @@ import {
     IconButton,
 } from '@chakra-ui/react'
 import {useForm} from 'react-hook-form'
-import {z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {FiAlertTriangle, FiCheckCircle, FiLock, FiEye, FiEyeOff} from 'react-icons/fi'
 import {updatePassword} from './actions'
 import {useSession} from 'next-auth/react'
+import {passwordSchema, type PasswordFormData} from './validation';
 
-// Zod схема
-const passwordSchema = z
-    .object({
-        oldPassword: z.string().min(1, 'Введите текущий пароль'),
-        newPassword: z.string().min(6, 'Минимум 6 символов'),
-        confirmPassword: z.string().min(1, 'Подтвердите пароль'),
-    })
-    .refine((data) => data.newPassword === data.confirmPassword, {
-        message: 'Пароли не совпадают',
-        path: ['confirmPassword'],
-    })
-
-type PasswordFormData = z.infer<typeof passwordSchema>
 
 export const DashboardSettingsPage = () => {
     const {data} = useSession()
@@ -62,8 +49,8 @@ export const DashboardSettingsPage = () => {
                 await updatePassword(data.user.id, values.oldPassword, values.newPassword)
                 setServerSuccess('Пароль успешно изменён')
                 reset()
-            } catch (e: any) {
-                setServerError(e.message || 'Ошибка при изменении пароля')
+            } catch (e: unknown) {
+                setServerError((e as { message: string })?.message || 'Ошибка при изменении пароля')
             }
         })
     }
@@ -80,7 +67,7 @@ export const DashboardSettingsPage = () => {
                     rounded="full"
                     boxShadow="0 0 15px rgba(56,178,172,0.6)"
                 >
-                    <FiLock size={20} color="black"/>
+                    <FiLock size={20} color="white"/>
                 </Box>
                 <Text
                     fontSize="2xl"
@@ -138,7 +125,6 @@ export const DashboardSettingsPage = () => {
                         ) : null}
                     </Box>
 
-                    {/* new password */}
                     <Box>
                         <Text mb={2} color="teal.200" fontWeight="medium">
                             Новый пароль
@@ -186,7 +172,6 @@ export const DashboardSettingsPage = () => {
                         )}
                     </Box>
 
-                    {/* confirm password */}
                     <Box>
                         <Text mb={2} color="teal.200" fontWeight="medium">
                             Подтвердите новый пароль
@@ -210,8 +195,8 @@ export const DashboardSettingsPage = () => {
                                 {...register('confirmPassword')}
                             />
                             <IconButton
-                                aria-label={showConfirm ? 'Hide password' : 'Show password'}
                                 size="sm"
+                                aria-label={showConfirm ? 'Скрыть пароль' : 'Показать пароль'}
                                 variant="ghost"
                                 position="absolute"
                                 right={2}
@@ -230,7 +215,6 @@ export const DashboardSettingsPage = () => {
                         ) : null}
                     </Box>
 
-                    {/* server alerts */}
                     {serverError && (
                         <Alert.Root
                             p={4}
@@ -277,13 +261,11 @@ export const DashboardSettingsPage = () => {
                         type="submit"
                         loading={isPending}
                         loadingText="Сохранение..."
-                        fontWeight="semibold"
                         bg="teal.500"
-                        color="black"
+                        color="whitesmoke"
                         _hover={{
                             bg: 'teal.400',
                             boxShadow: '0 0 20px rgba(56,178,172,0.4)',
-                            transform: 'translateY(-2px)',
                         }}
                         _active={{transform: 'scale(0.98)'}}
                         rounded="xl"
