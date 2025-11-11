@@ -13,8 +13,8 @@ import {motion, AnimatePresence} from "framer-motion";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
-import {signIn} from "next-auth/react";
-import {useState} from "react";
+import {signIn, useSession} from "next-auth/react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 
 const MotionBox = motion(Box);
@@ -28,10 +28,16 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export const LoginPage = () => {
+    const {status} = useSession();
+
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
     const router = useRouter();
+
+    useEffect(() => {
+        if (status === 'authenticated') router.push("/dashboard");
+    }, [status]);
 
     const {
         register,
@@ -185,7 +191,8 @@ export const LoginPage = () => {
 
                     <Flex as="form" direction="column" gap={6} w="full" onSubmit={handleSubmit(onSubmit)}>
                         {/* ЛОГИН */}
-                        <MotionBox initial={{opacity: 0, x: -50}} animate={{opacity: 1, x: 0}} transition={{delay: 0.3}}>
+                        <MotionBox initial={{opacity: 0, x: -50}} animate={{opacity: 1, x: 0}}
+                                   transition={{delay: 0.3}}>
                             <Flex direction="column" gap={2}>
                                 <Box position="relative">
                                     <Box position="absolute" left={4} top="50%" transform="translateY(-50%)"
