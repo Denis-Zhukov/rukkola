@@ -1,12 +1,12 @@
 'use server'
 
 import {Lunch} from '@/models/lunch'
-import mongoose from 'mongoose'
 import {revalidatePath} from "next/cache";
 import {connectToDatabase} from "@/lib/mongoose";
 
 export const getAllLunches = async () => {
-    await mongoose.connect(process.env.MONGODB_URI!)
+    await connectToDatabase();
+
     const lunches = await Lunch.find().sort({createdAt: -1}).lean()
     return JSON.parse(JSON.stringify(lunches))
 }

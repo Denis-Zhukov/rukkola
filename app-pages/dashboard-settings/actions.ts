@@ -1,25 +1,22 @@
-'use server'
+'use server';
 
-import {connectToDatabase} from '@/lib/mongoose'
-import {User} from '@/models/user'
-import bcrypt from 'bcryptjs';
-import {revalidatePath} from 'next/cache'
+import {connectToDatabase} from "@/lib/mongoose";
+import {User, UserType} from '@/models/user'
 
-export async function updatePassword(userId: string, oldPassword: string, newPassword: string) {
-    await connectToDatabase()
+export async function getUsers() {
+    await connectToDatabase();
 
-    const user = await User.findById(userId);
-    if (!user) {
-        throw new Error('Пользователь не найден')
-    }
+    return User.find().lean().exec();
+}
 
-    const isValid = await bcrypt.compare(oldPassword, user.password)
-    if (!isValid) {
-        throw new Error('Неверный текущий пароль')
-    }
+export async function updateUser(id: string, data: Partial<UserType>) {
+    await connectToDatabase();
 
-    user.password = await bcrypt.hash(newPassword, 10)
-    await user.save()
+    return User.findByIdAndUpdate(id, data).lean().exec();
+}
 
-    return {success: true}
+export async function deleteUser(id: string) {
+    await connectToDatabase();
+
+    return User.findByIdAndDelete(id).lean().exec();
 }

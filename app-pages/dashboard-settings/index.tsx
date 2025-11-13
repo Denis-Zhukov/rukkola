@@ -1,280 +1,354 @@
 'use client'
 
-import React, {useTransition, useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
     Box,
-    Input,
-    Button,
-    Text,
-    VStack,
-    Alert,
-    Separator,
+    Card,
     Flex,
     IconButton,
+    Input,
+    Table,
+    Text,
+    Spinner,
 } from '@chakra-ui/react'
-import {useForm} from 'react-hook-form'
-import {zodResolver} from '@hookform/resolvers/zod'
-import {FiAlertTriangle, FiCheckCircle, FiLock, FiEye, FiEyeOff} from 'react-icons/fi'
-import {updatePassword} from './actions'
-import {useSession} from 'next-auth/react'
-import {passwordSchema, type PasswordFormData} from './validation';
+import {FiEdit, FiTrash2, FiCheck, FiX} from 'react-icons/fi'
+import {getUsers, updateUser, deleteUser} from './actions'
+import {UserType} from '@/models/user'
+import {Tooltip} from '@/components/tooltip'
 
+type TempUser = {
+    username?: string
+    name?: string
+    surname?: string
+    patronymic?: string
+    role?: string
+}
 
 export const DashboardSettingsPage = () => {
-    const {data} = useSession()
-    const [isPending, startTransition] = useTransition()
-    const [serverError, setServerError] = useState('')
-    const [serverSuccess, setServerSuccess] = useState('')
-    const [showOld, setShowOld] = useState(false)
-    const [showNew, setShowNew] = useState(false)
-    const [showConfirm, setShowConfirm] = useState(false)
+    const [users, setUsers] = useState<UserType[]>([])
+    const [loading, setLoading] = useState(true)
+    const [editingId, setEditingId] = useState<string | null>(null)
+    const [tempUser, setTempUser] = useState<TempUser>({})
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: {errors},
-    } = useForm<PasswordFormData>({
-        resolver: zodResolver(passwordSchema),
-    })
-
-    const onSubmit = (values: PasswordFormData) => {
-        setServerError('')
-        setServerSuccess('')
-
-        startTransition(async () => {
-            if (!data) return
-
+    useEffect(() => {
+        ;(async () => {
             try {
-                await updatePassword(data.user.id, values.oldPassword, values.newPassword)
-                setServerSuccess('Пароль успешно изменён')
-                reset()
-            } catch (e: unknown) {
-                setServerError((e as { message: string })?.message || 'Ошибка при изменении пароля')
+                const data = await getUsers()
+                setUsers(data as unknown as UserType[]);
+            } finally {
+                setLoading(false)
             }
+        })()
+    }, [])
+
+    const handleDelete = async (id: string) => {
+        if (!window.confirm('Вы уверены, что хотите удалить пользователя?')) return
+        try {
+            await deleteUser(id) // server action
+            setUsers((prev) => prev.filter((u) => u._id.toString() !== id))
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const handleEditStart = (user: UserType) => {
+        setEditingId(user._id.toString())
+        setTempUser({
+            username: user.username,
+            name: user.name,
+            surname: user.surname || '',
+            patronymic: user.patronymic || '',
+            role: user.role || 'admin',
         })
     }
 
-    const fieldErrorText = (fieldName: keyof PasswordFormData) =>
-        errors[fieldName] ? String(errors[fieldName]?.message) : ''
+    const handleEditCancel = () => {
+        setEditingId(null)
+        setTempUser({})
+    }
+
+    const handleEditSave = async (id: string) => {
+        if (!tempUser.username || !tempUser.name) return
+        try {
+            await updateUser(id, tempUser as UserType);
+            setUsers((prev) =>
+                prev.map((u) =>
+                    u._id.toString() === id
+                        ? {...u, ...tempUser, role: tempUser.role as 'admin'} as UserType
+                        : u
+                )
+            )
+            setEditingId(null)
+            setTempUser({})
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return (
-        <Box>
-            <Flex align="center" gap={3} mb={6}>
-                <Box
-                    bg="teal.700"
-                    p={3}
-                    rounded="full"
-                    boxShadow="0 0 15px rgba(56,178,172,0.6)"
+        <Box minH="100vh" p={4}>
+            <Card.Root
+                w="100%"
+                borderRadius="2xl"
+                shadow="xl"
+                border="1px solid"
+                borderColor="gray.700"
+                bg="gray.900"
+            >
+                <Card.Header
+                    bg="teal.500"
+                    borderTopRadius="2xl"
+                    py={3}
+                    textAlign="center"
+                    color="white"
                 >
-                    <FiLock size={20} color="white"/>
-                </Box>
-                <Text
-                    fontSize="2xl"
-                    fontWeight="bold"
-                    bgGradient="linear(to-r, teal.300, teal.100)"
-                >
-                    Настройки безопасности
-                </Text>
-            </Flex>
+                    <Text fontSize="lg" fontWeight="semibold">
+                        Пользователи
+                    </Text>
+                </Card.Header>
 
-            <Separator borderColor="teal.800" mb={6}/>
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <VStack gap={5} align="stretch" maxW={600}>
-                    <Box>
-                        <Text mb={2} color="teal.200" fontWeight="medium">
-                            Текущий пароль
-                        </Text>
-                        <Box position="relative">
-                            <Input
-                                p={2}
-                                type={showOld ? 'text' : 'password'}
-                                bg="gray.900"
-                                color="teal.200"
-                                borderColor={fieldErrorText('oldPassword') ? 'red.700' : 'teal.700'}
-                                _focus={{
-                                    borderColor: fieldErrorText('oldPassword') ? 'red.600' : 'teal.400',
-                                    boxShadow: fieldErrorText('oldPassword')
-                                        ? '0 0 8px rgba(255,90,90,0.14)'
-                                        : '0 0 10px rgba(56,178,172,0.4)',
-                                }}
-                                _hover={{borderColor: 'teal.600'}}
-                                rounded="lg"
-                                size="md"
-                                {...register('oldPassword')}
-                            />
-                            <IconButton
-                                aria-label={showOld ? 'Hide password' : 'Show password'}
-                                size="sm"
-                                variant="ghost"
+                <Card.Body px={0} py={0}>
+                    <Box overflowX="auto" position="relative">
+                        {loading && (
+                            <Flex
                                 position="absolute"
-                                right={2}
-                                top="50%"
-                                transform="translateY(-50%)"
-                                onClick={() => setShowOld((s) => !s)}
-                                color="teal.200"
-                                _hover={{bg: 'blackAlpha.400'}}>
-                                {showOld ? <FiEyeOff/> : <FiEye/>}
-                            </IconButton>
-                        </Box>
-                        {fieldErrorText('oldPassword') ? (
-                            <Text mt={2} color="red.300" fontSize="sm">
-                                {fieldErrorText('oldPassword')}
-                            </Text>
-                        ) : null}
-                    </Box>
-
-                    <Box>
-                        <Text mb={2} color="teal.200" fontWeight="medium">
-                            Новый пароль
-                        </Text>
-                        <Box position="relative">
-                            <Input
-                                p={2}
-                                type={showNew ? 'text' : 'password'}
-                                bg="gray.900"
-                                color="teal.200"
-                                borderColor={fieldErrorText('newPassword') ? 'red.700' : 'teal.700'}
-                                _focus={{
-                                    borderColor: fieldErrorText('newPassword') ? 'red.600' : 'teal.400',
-                                    boxShadow: fieldErrorText('newPassword')
-                                        ? '0 0 8px rgba(255,90,90,0.14)'
-                                        : '0 0 10px rgba(56,178,172,0.4)',
-                                }}
-                                _hover={{borderColor: 'teal.600'}}
-                                rounded="lg"
-                                size="md"
-                                {...register('newPassword')}
-                            />
-                            <IconButton
-                                aria-label={showNew ? 'Hide password' : 'Show password'}
-                                size="sm"
-                                variant="ghost"
-                                position="absolute"
-                                right={2}
-                                top="50%"
-                                transform="translateY(-50%)"
-                                onClick={() => setShowNew((s) => !s)}
-                                color="teal.200"
-                                _hover={{bg: 'blackAlpha.400'}}>
-                                {showNew ? <FiEyeOff/> : <FiEye/>}
-                            </IconButton>
-                        </Box>
-                        {fieldErrorText('newPassword') ? (
-                            <Text mt={2} color="red.300" fontSize="sm">
-                                {fieldErrorText('newPassword')}
-                            </Text>
-                        ) : (
-                            <Text mt={2} color="teal.300" fontSize="sm">
-                                Минимум 6 символов
-                            </Text>
+                                top={0}
+                                left={0}
+                                right={0}
+                                bottom={0}
+                                justify="center"
+                                align="center"
+                                bg="rgba(0,0,0,0.3)"
+                                zIndex={10}
+                                borderRadius="xl"
+                            >
+                                <Spinner size="xl" color="teal.400"/>
+                            </Flex>
                         )}
+
+                        <Table.Root size="md" variant="outline" w="100%">
+                            <Table.Header bg="gray.800">
+                                <Table.Row>
+                                    {['Логин', 'Имя', 'Фамилия', 'Отчество', 'Роль', 'Действия'].map(
+                                        (col) => (
+                                            <Table.ColumnHeader
+                                                key={col}
+                                                textAlign={col === 'Логин' ? 'left' : 'center'}
+                                                color="white"
+                                                p={4}
+                                                fontWeight="semibold"
+                                            >
+                                                {col}
+                                            </Table.ColumnHeader>
+                                        )
+                                    )}
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                {users.length > 0 ? (
+                                    users.map((user) => {
+                                        const isEditing = editingId === user._id.toString()
+                                        return (
+                                            <Table.Row
+                                                key={user._id.toString()}
+                                                bg="gray.900"
+                                                borderBottom="1px solid"
+                                                borderColor="gray.700"
+                                                _hover={{bg: 'gray.800', transition: '0.2s ease'}}
+                                            >
+                                                <Table.Cell p={4}>
+                                                    {isEditing ? (
+                                                        <Input
+                                                            size="sm"
+                                                            value={tempUser.username}
+                                                            onChange={(e) =>
+                                                                setTempUser((prev) => ({
+                                                                    ...prev,
+                                                                    username: e.target.value,
+                                                                }))
+                                                            }
+                                                            bg="gray.700"
+                                                            color="white"
+                                                        />
+                                                    ) : (
+                                                        <Text color="white">{user.username}</Text>
+                                                    )}
+                                                </Table.Cell>
+
+                                                <Table.Cell p={4} textAlign="center">
+                                                    {isEditing ? (
+                                                        <Input
+                                                            size="sm"
+                                                            value={tempUser.name}
+                                                            onChange={(e) =>
+                                                                setTempUser((prev) => ({
+                                                                    ...prev,
+                                                                    name: e.target.value,
+                                                                }))
+                                                            }
+                                                            bg="gray.700"
+                                                            color="white"
+                                                        />
+                                                    ) : (
+                                                        <Text color="white">{user.name}</Text>
+                                                    )}
+                                                </Table.Cell>
+
+                                                <Table.Cell p={4} textAlign="center">
+                                                    {isEditing ? (
+                                                        <Input
+                                                            size="sm"
+                                                            value={tempUser.surname}
+                                                            onChange={(e) =>
+                                                                setTempUser((prev) => ({
+                                                                    ...prev,
+                                                                    surname: e.target.value,
+                                                                }))
+                                                            }
+                                                            bg="gray.700"
+                                                            color="white"
+                                                        />
+                                                    ) : (
+                                                        <Text color="white">{user.surname || '-'}</Text>
+                                                    )}
+                                                </Table.Cell>
+
+                                                <Table.Cell p={4} textAlign="center">
+                                                    {isEditing ? (
+                                                        <Input
+                                                            size="sm"
+                                                            value={tempUser.patronymic}
+                                                            onChange={(e) =>
+                                                                setTempUser((prev) => ({
+                                                                    ...prev,
+                                                                    patronymic: e.target.value,
+                                                                }))
+                                                            }
+                                                            bg="gray.700"
+                                                            color="white"
+                                                        />
+                                                    ) : (
+                                                        <Text color="white">{user.patronymic || '-'}</Text>
+                                                    )}
+                                                </Table.Cell>
+
+                                                <Table.Cell p={4} textAlign="center">
+                                                    {isEditing ? (
+                                                        <Input
+                                                            size="sm"
+                                                            value={tempUser.role}
+                                                            onChange={(e) =>
+                                                                setTempUser((prev) => ({
+                                                                    ...prev,
+                                                                    role: e.target.value,
+                                                                }))
+                                                            }
+                                                            bg="gray.700"
+                                                            color="white"
+                                                        />
+                                                    ) : (
+                                                        <Text color="white">{user.role || '-'}</Text>
+                                                    )}
+                                                </Table.Cell>
+
+                                                <Table.Cell p={4}>
+                                                    <Flex justify="center" gap={2}>
+                                                        {isEditing ? (
+                                                            <>
+                                                                <Tooltip content="Сохранить">
+                                                                    <IconButton
+                                                                        aria-label="Сохранить"
+                                                                        size="sm"
+                                                                        borderRadius="xl"
+                                                                        bgGradient="linear(to-r, green.400, green.500)"
+                                                                        color="white"
+                                                                        _hover={{
+                                                                            transform: 'scale(1.1)',
+                                                                            bgGradient:
+                                                                                'linear(to-r, green.500, green.600)',
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleEditSave(user._id.toString())
+                                                                        }
+                                                                    >
+                                                                        <FiCheck/>
+                                                                    </IconButton>
+                                                                </Tooltip>
+                                                                <Tooltip content="Отмена">
+                                                                    <IconButton
+                                                                        aria-label="Отмена"
+                                                                        size="sm"
+                                                                        borderRadius="xl"
+                                                                        bgGradient="linear(to-r, gray.500, gray.600)"
+                                                                        color="white"
+                                                                        _hover={{
+                                                                            transform: 'scale(1.1)',
+                                                                            bgGradient:
+                                                                                'linear(to-r, gray.600, gray.700)',
+                                                                        }}
+                                                                        onClick={handleEditCancel}
+                                                                    >
+                                                                        <FiX/>
+                                                                    </IconButton>
+                                                                </Tooltip>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <Tooltip content="Редактировать">
+                                                                    <IconButton
+                                                                        aria-label="Редактировать"
+                                                                        size="sm"
+                                                                        borderRadius="xl"
+                                                                        bgGradient="linear(to-r, blue.400, blue.500)"
+                                                                        color="white"
+                                                                        _hover={{
+                                                                            transform: 'scale(1.1)',
+                                                                            bgGradient:
+                                                                                'linear(to-r, blue.500, blue.600)',
+                                                                        }}
+                                                                        onClick={() => handleEditStart(user)}
+                                                                    >
+                                                                        <FiEdit/>
+                                                                    </IconButton>
+                                                                </Tooltip>
+
+                                                                <Tooltip content="Удалить">
+                                                                    <IconButton
+                                                                        aria-label="Удалить"
+                                                                        size="sm"
+                                                                        borderRadius="xl"
+                                                                        bgGradient="linear(to-r, red.500, red.600)"
+                                                                        color="white"
+                                                                        _hover={{
+                                                                            transform: 'scale(1.1)',
+                                                                            bgGradient:
+                                                                                'linear(to-r, red.600, red.700)',
+                                                                        }}
+                                                                        onClick={() => handleDelete(user._id.toString())}
+                                                                    >
+                                                                        <FiTrash2/>
+                                                                    </IconButton>
+                                                                </Tooltip>
+                                                            </>
+                                                        )}
+                                                    </Flex>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                        )
+                                    })
+                                ) : (
+                                    <Table.Row>
+                                        <Table.Cell colSpan={6} textAlign="center" color="gray.500" py={8}>
+                                            Нет пользователей
+                                        </Table.Cell>
+                                    </Table.Row>
+                                )}
+                            </Table.Body>
+                        </Table.Root>
                     </Box>
-
-                    <Box>
-                        <Text mb={2} color="teal.200" fontWeight="medium">
-                            Подтвердите новый пароль
-                        </Text>
-                        <Box position="relative">
-                            <Input
-                                p={2}
-                                type={showConfirm ? 'text' : 'password'}
-                                bg="gray.900"
-                                color="teal.200"
-                                borderColor={fieldErrorText('confirmPassword') ? 'red.700' : 'teal.700'}
-                                _focus={{
-                                    borderColor: fieldErrorText('confirmPassword') ? 'red.600' : 'teal.400',
-                                    boxShadow: fieldErrorText('confirmPassword')
-                                        ? '0 0 8px rgba(255,90,90,0.14)'
-                                        : '0 0 10px rgba(56,178,172,0.4)',
-                                }}
-                                _hover={{borderColor: 'teal.600'}}
-                                rounded="lg"
-                                size="md"
-                                {...register('confirmPassword')}
-                            />
-                            <IconButton
-                                size="sm"
-                                aria-label={showConfirm ? 'Скрыть пароль' : 'Показать пароль'}
-                                variant="ghost"
-                                position="absolute"
-                                right={2}
-                                top="50%"
-                                transform="translateY(-50%)"
-                                onClick={() => setShowConfirm((s) => !s)}
-                                color="teal.200"
-                                _hover={{bg: 'blackAlpha.400'}}>
-                                {showConfirm ? <FiEyeOff/> : <FiEye/>}
-                            </IconButton>
-                        </Box>
-                        {fieldErrorText('confirmPassword') ? (
-                            <Text mt={2} color="red.300" fontSize="sm">
-                                {fieldErrorText('confirmPassword')}
-                            </Text>
-                        ) : null}
-                    </Box>
-
-                    {serverError && (
-                        <Alert.Root
-                            p={4}
-                            status="error"
-                            bg="red.900"
-                            color="red.200"
-                            rounded="lg"
-                            border="1px solid"
-                            borderColor="red.700"
-                        >
-                            <Alert.Indicator>
-                                <FiAlertTriangle/>
-                            </Alert.Indicator>
-                            <Alert.Content>
-                                <Alert.Title fontWeight="bold">Ошибка</Alert.Title>
-                                <Alert.Description>{serverError}</Alert.Description>
-                            </Alert.Content>
-                        </Alert.Root>
-                    )}
-
-                    {serverSuccess && (
-                        <Alert.Root
-                            p={4}
-                            status="success"
-                            bg="teal.900"
-                            color="teal.100"
-                            rounded="lg"
-                            border="1px solid"
-                            borderColor="teal.700"
-                        >
-                            <Alert.Indicator>
-                                <FiCheckCircle/>
-                            </Alert.Indicator>
-                            <Alert.Content>
-                                <Alert.Title fontWeight="bold">Успех</Alert.Title>
-                                <Alert.Description>{serverSuccess}</Alert.Description>
-                            </Alert.Content>
-                        </Alert.Root>
-                    )}
-
-                    <Button
-                        mt={2}
-                        size="md"
-                        type="submit"
-                        loading={isPending}
-                        loadingText="Сохранение..."
-                        bg="teal.500"
-                        color="whitesmoke"
-                        _hover={{
-                            bg: 'teal.400',
-                            boxShadow: '0 0 20px rgba(56,178,172,0.4)',
-                        }}
-                        _active={{transform: 'scale(0.98)'}}
-                        rounded="xl"
-                        transition="all 0.2s ease"
-                    >
-                        Сохранить изменения
-                    </Button>
-                </VStack>
-            </form>
+                </Card.Body>
+            </Card.Root>
         </Box>
     )
 }
