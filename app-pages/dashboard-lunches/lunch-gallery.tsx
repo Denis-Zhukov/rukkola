@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useTransition } from 'react'
+import React, {useState, useTransition} from 'react'
 import {
     Box,
     Button,
@@ -9,11 +9,12 @@ import {
     VStack,
     SimpleGrid,
     Flex,
-    Spinner
+    Spinner,
+    Dialog,
+    Portal,
 } from '@chakra-ui/react'
-import { FiUpload, FiStar } from 'react-icons/fi'
-import { toggleActiveLunch } from './actions'
-import {useColorModeValue} from "@chakra-ui/color-mode";
+import {FiUpload, FiStar, FiTrash2} from 'react-icons/fi'
+import {toggleActiveLunch, deleteLunch} from './actions'
 
 type Lunch = {
     _id: string
@@ -21,13 +22,16 @@ type Lunch = {
     active: boolean
 }
 
-export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) => {
+export const LunchGallery = ({initialLunches}: { initialLunches: Lunch[] }) => {
     const [lunches, setLunches] = useState(initialLunches)
     const [file, setFile] = useState<File | null>(null)
     const [loading, setLoading] = useState(false)
     const [isDragOver, setIsDragOver] = useState(false)
     const [isPending, startTransition] = useTransition()
+    const [deleting, setDeleting] = useState<string | null>(null)
+    const [confirmingId, setConfirmingId] = useState<string | null>(null)
 
+    // --- Upload new image ---
     const handleUpload = async () => {
         if (!file) return
         setLoading(true)
@@ -36,10 +40,10 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
         formData.append('file', file)
 
         try {
-            const res = await fetch('/api/lunches/upload', { method: 'POST', body: formData })
+            const res = await fetch('/api/lunches/upload', {method: 'POST', body: formData})
             if (res.ok) {
                 const data = await res.json()
-                setLunches((prev) => [{ _id: data.id, image: data.image, active: false }, ...prev])
+                setLunches((prev) => [{_id: data.id, image: data.image, active: false}, ...prev])
             }
         } finally {
             setLoading(false)
@@ -47,18 +51,30 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
         }
     }
 
+    // --- Toggle active image ---
     const handleToggle = (id: string) => {
         startTransition(async () => {
             await toggleActiveLunch(id)
             setLunches((prev) =>
                 prev.map((l) =>
-                    l._id === id ? { ...l, active: !l.active } : { ...l, active: false }
+                    l._id === id ? {...l, active: !l.active} : {...l, active: false}
                 )
             )
         })
     }
 
-    const borderColor = useColorModeValue('teal.600', 'teal.400')
+    // --- Delete image ---
+    const handleDelete = async (id: string) => {
+        setDeleting(id)
+        try {
+            await deleteLunch(id)
+            setLunches((prev) => prev.filter((l) => l._id !== id))
+        } finally {
+            setDeleting(null)
+            setConfirmingId(null)
+        }
+    }
+
     const hoverShadow = '0 0 12px rgba(56,178,172,0.3)'
     const activeShadow = '0 0 18px rgba(56,178,172,0.5)'
 
@@ -79,7 +95,7 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
             </Text>
 
             <VStack gap={5} align="stretch">
-                {/* Drag & Drop Upload */}
+                {/* --- Drag & Drop Upload --- */}
                 <Box
                     border="2px dashed"
                     borderColor={file ? 'teal.400' : 'gray.600'}
@@ -90,8 +106,14 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                     cursor="pointer"
                     transition="all 0.2s ease"
                     onClick={() => document.getElementById('lunch-image-input')?.click()}
-                    onDragOver={(e) => { e.preventDefault(); setIsDragOver(true) }}
-                    onDragLeave={(e) => { e.preventDefault(); setIsDragOver(false) }}
+                    onDragOver={(e) => {
+                        e.preventDefault()
+                        setIsDragOver(true)
+                    }}
+                    onDragLeave={(e) => {
+                        e.preventDefault()
+                        setIsDragOver(false)
+                    }}
                     onDrop={(e) => {
                         e.preventDefault()
                         setIsDragOver(false)
@@ -105,7 +127,7 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                         id="lunch-image-input"
                         type="file"
                         accept="image/*"
-                        style={{ display: 'none' }}
+                        style={{display: 'none'}}
                         onChange={(e) => setFile(e.target.files?.[0] || null)}
                     />
 
@@ -120,7 +142,7 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                             />
                             {loading ? (
                                 <Flex align="center" gap={2} color="teal.300">
-                                    <Spinner size="xs" />
+                                    <Spinner size="xs"/>
                                     <Text fontSize="xs">Загрузка...</Text>
                                 </Flex>
                             ) : (
@@ -145,18 +167,23 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                     px={6}
                     fontWeight="bold"
                     bgGradient="linear(to-r, teal.500, teal.300)"
-                    _hover={{ bgGradient: 'linear(to-r, teal.400, teal.200)', transform: 'translateY(-1px)', boxShadow: hoverShadow }}
-                    _active={{ transform: 'scale(0.97)' }}
+                    _hover={{
+                        bgGradient: 'linear(to-r, teal.400, teal.200)',
+                        transform: 'translateY(-1px)',
+                        boxShadow: hoverShadow,
+                    }}
+                    _active={{transform: 'scale(0.97)'}}
                 >
-                    <FiUpload style={{ marginRight: 6 }} /> Загрузить
+                    <FiUpload style={{marginRight: 6}}/> Загрузить
                 </Button>
 
                 {isPending && (
                     <Flex justify="center" align="center" py={4}>
-                        <Spinner color="teal.400" />
+                        <Spinner color="teal.400"/>
                     </Flex>
                 )}
 
+                {/* --- Gallery Grid --- */}
                 <SimpleGrid columns={[2, 3, 4]} gap={4} mt={4}>
                     {lunches.map((lunch) => (
                         <Box
@@ -168,7 +195,7 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                             boxShadow={lunch.active ? activeShadow : hoverShadow}
                             transition="all 0.25s ease"
                             cursor="pointer"
-                            _hover={{ transform: 'scale(1.05)', boxShadow: activeShadow }}
+                            _hover={{transform: 'scale(1.05)', boxShadow: activeShadow}}
                             onClick={() => handleToggle(lunch._id)}
                         >
                             <Image
@@ -179,6 +206,7 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                                 h="160px"
                                 borderRadius="md"
                             />
+
                             {lunch.active && (
                                 <Flex
                                     position="absolute"
@@ -191,13 +219,68 @@ export const LunchGallery = ({ initialLunches }: { initialLunches: Lunch[] }) =>
                                     justify="center"
                                     boxShadow="0 0 10px rgba(56,178,172,0.7)"
                                 >
-                                    <FiStar color="black" size={18} />
+                                    <FiStar color="black" size={18}/>
                                 </Flex>
                             )}
+
+                            <Button
+                                p={2}
+                                size="xs"
+                                position="absolute"
+                                bottom={2}
+                                right={2}
+                                colorScheme="red"
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    setConfirmingId(lunch._id)
+                                }}
+                                loading={deleting === lunch._id}
+                            >
+                                <FiTrash2/> Удалить
+                            </Button>
                         </Box>
                     ))}
                 </SimpleGrid>
             </VStack>
+
+            {/* --- Confirm Delete Dialog --- */}
+            <Dialog.Root open={!!confirmingId} onOpenChange={() => setConfirmingId(null)}>
+                <Portal>
+                    <Dialog.Backdrop bg="blackAlpha.700"/>
+                    <Dialog.Positioner>
+                        <Dialog.Content
+                            bg="gray.900"
+                            border="1px solid"
+                            borderColor="teal.700"
+                            rounded="xl"
+                            p={6}
+                            color="white"
+                            shadow="xl"
+                        >
+                            <Dialog.Header>
+                                <Dialog.Title color="teal.300">Удалить изображение?</Dialog.Title>
+                            </Dialog.Header>
+                            <Dialog.Body>
+                                <Text color="gray.300" mb={4}>
+                                    Это действие нельзя будет отменить. Вы уверены, что хотите удалить ланч?
+                                </Text>
+                                <Flex justify="flex-end" gap={3}>
+                                    <Button variant="outline" onClick={() => setConfirmingId(null)}>
+                                        Отмена
+                                    </Button>
+                                    <Button
+                                        colorScheme="red"
+                                        onClick={() => confirmingId && handleDelete(confirmingId)}
+                                        loading={deleting === confirmingId}
+                                    >
+                                        Удалить
+                                    </Button>
+                                </Flex>
+                            </Dialog.Body>
+                        </Dialog.Content>
+                    </Dialog.Positioner>
+                </Portal>
+            </Dialog.Root>
         </Box>
     )
 }
