@@ -235,7 +235,6 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Stack gap={5}>
 
-                                    {/* Ошибка сохранения данных */}
                                     {dataError && (
                                         <Alert.Root status="error" variant="subtle">
                                             <Alert.Indicator asChild>
@@ -249,7 +248,6 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         </Alert.Root>
                                     )}
 
-                                    {/* Название */}
                                     <Box>
                                         <Heading mb={1} size="sm" color="teal.200">
                                             Название
@@ -272,7 +270,6 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
                                         )}
                                     </Box>
 
-                                    {/* Описание */}
                                     <Box>
                                         <Heading mb={1} size="sm" color="teal.200">
                                             Описание
@@ -297,7 +294,6 @@ export const EditProductModal = ({refetch}: EditProductModalProps) => {
 
                                     <Separator borderColor="gray.700"/>
 
-                                    {/* Изображение */}
                                     <Box>
                                         <Heading size="sm" mb={2} color="teal.200">
                                             Изображение

@@ -21,6 +21,7 @@ const menuItems = [
     {label: "Главная", icon: FiHome, path: "/dashboard"},
     {label: "Товары", icon: FiBox, path: "/dashboard/products"},
     {label: "Категории", icon: FiUsers, path: "/dashboard/categories"},
+    {label: "Обеды", icon: FiUsers, path: "/dashboard/lunches"},
     {label: "Настройки", icon: FiSettings, path: "/dashboard/settings"},
 ];
 
