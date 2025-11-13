@@ -2,8 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import {connectToDatabase} from "../mongoose";
-import {User} from "@/models/user";
-import type {IUser} from "@/models/user";
+import {User, UserType} from "@/models/user";
 
 export const authConfig = {
     providers: [
@@ -20,7 +19,7 @@ export const authConfig = {
 
                 const user = (await User.findOne({
                     username: credentials.username,
-                }).exec()) as IUser | null;
+                }).exec()) as UserType | null;
 
                 if (!user) return null;
 
