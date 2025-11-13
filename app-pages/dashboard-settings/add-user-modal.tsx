@@ -8,9 +8,9 @@ import {
     Stack,
     Input,
     Text,
-    Heading,
-    Select, createListCollection, Portal
+    Heading
 } from '@chakra-ui/react'
+import { Select, createListCollection } from '@chakra-ui/react'
 import { useForm, Controller } from 'react-hook-form'
 import { UserType } from '@/models/user'
 import { createUser } from './actions'
@@ -112,9 +112,11 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                 )}
 
                                 <Input
+                                    p={2}
                                     placeholder="Логин"
                                     bg="gray.700"
                                     color="white"
+                                    autoFocus
                                     {...register('username', { required: 'Логин обязателен' })}
                                 />
                                 {errors.username && (
@@ -124,11 +126,12 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                 )}
 
                                 <Input
+                                    p={2}
                                     placeholder="Пароль"
                                     type="password"
                                     bg="gray.700"
                                     color="white"
-                                    {...register('password', { required: 'Пароль обязателен' })}
+                                    {...register('password', { required: 'Пароль обязателен', minLength: { value: 6, message: 'Минимум 6 символов' } })}
                                 />
                                 {errors.password && (
                                     <Text color="red.400" fontSize="sm">
@@ -137,6 +140,7 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                 )}
 
                                 <Input
+                                    p={2}
                                     placeholder="Имя"
                                     bg="gray.700"
                                     color="white"
@@ -149,6 +153,7 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                 )}
 
                                 <Input
+                                    p={2}
                                     placeholder="Фамилия"
                                     bg="gray.700"
                                     color="white"
@@ -156,6 +161,7 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                 />
 
                                 <Input
+                                    p={2}
                                     placeholder="Отчество"
                                     bg="gray.700"
                                     color="white"
@@ -166,42 +172,59 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                     name="role"
                                     control={control}
                                     render={({ field }) => (
-                                        <Select.Root
-                                            collection={roles}
-                                            {...field}
-                                            value={[field.value]}
-                                            positioning={{ strategy: 'fixed', hideWhenDetached: true }}
-                                        >
-                                            <Select.HiddenSelect />
-                                            <Select.Control>
-                                                <Select.Trigger>
-                                                    <Select.ValueText placeholder="Выберите роль" />
-                                                </Select.Trigger>
-                                                <Select.IndicatorGroup>
-                                                    <Select.Indicator />
-                                                </Select.IndicatorGroup>
-                                            </Select.Control>
-                                            <Portal>
-                                                <Select.Positioner>
-                                                    <Select.Content>
-                                                        {roles.items.map((item) => (
-                                                            <Select.Item key={item.value} item={item}>
-                                                                {item.label}
-                                                                <Select.ItemIndicator />
-                                                            </Select.Item>
-                                                        ))}
-                                                    </Select.Content>
-                                                </Select.Positioner>
-                                            </Portal>
-                                        </Select.Root>
+                                        <>
+                                            <Select.Root
+                                                collection={roles}
+                                                value={[field.value]}
+                                                positioning={{ strategy: 'fixed', hideWhenDetached: true }}
+                                                onValueChange={(item) => {
+                                                    field.onChange(item.value[0])
+                                                }}
+                                            >
+                                                <Select.HiddenSelect />
+                                                <Select.Control>
+                                                    <Select.Trigger
+                                                        p={2}
+                                                        bg="gray.800"
+                                                        color="teal.200"
+                                                        borderColor="teal.600"
+                                                        height="40px"
+                                                        _hover={{ borderColor: 'teal.500' }}
+                                                    >
+                                                        <Select.ValueText placeholder="Выберите роль" />
+                                                    </Select.Trigger>
+                                                    <Select.IndicatorGroup>
+                                                        <Select.Indicator />
+                                                    </Select.IndicatorGroup>
+                                                </Select.Control>
+
+                                                    <Select.Positioner>
+                                                        <Select.Content bg="gray.800" borderColor="teal.600" border="1px solid">
+                                                            {roles.items.map((item) => (
+                                                                <Select.Item key={item.value} item={item}>
+                                                                    {item.label}
+                                                                    <Select.ItemIndicator />
+                                                                </Select.Item>
+                                                            ))}
+                                                        </Select.Content>
+                                                    </Select.Positioner>
+                                            </Select.Root>
+
+                                            {errors.role && (
+                                                <Text color="red.400" fontSize="sm">
+                                                    {errors.role.message}
+                                                </Text>
+                                            )}
+                                        </>
                                     )}
                                 />
                             </Stack>
 
-                            <Dialog.Footer mt={6} borderTop="1px solid" borderColor="gray.700">
+                            <Dialog.Footer mt={6} borderColor="gray.700">
                                 <Button
+                                    p={2}
                                     variant="outline"
-                                    colorScheme="gray"
+                                    color="gray.400"
                                     size="sm"
                                     mr={2}
                                     onClick={onClose}
@@ -210,8 +233,11 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                     Отмена
                                 </Button>
                                 <Button
+                                    p={2}
+                                    variant="outline"
                                     type="submit"
-                                    colorScheme="teal"
+                                    color="teal.300"
+                                    borderColor="teal.300"
                                     size="sm"
                                     loading={loading}
                                 >
