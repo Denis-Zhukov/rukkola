@@ -1,5 +1,5 @@
-import { auth } from "@/lib/auth"
-import { NextResponse } from "next/server"
+import {auth} from "@/lib/auth"
+import {NextResponse} from "next/server"
 
 export default auth((req) => {
     const user = req.auth?.user
@@ -8,7 +8,7 @@ export default auth((req) => {
         return NextResponse.redirect(new URL("/login", req.url))
     }
 
-    if (req.nextUrl.pathname.startsWith("/dashboard") && user.role !== "admin") {
+    if (req.nextUrl.pathname.startsWith("/dashboard") && !['admin', 'moderator'].includes(user.role!)) {
         return NextResponse.redirect(new URL("/", req.url))
     }
 
