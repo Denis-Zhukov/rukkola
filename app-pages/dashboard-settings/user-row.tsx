@@ -28,8 +28,8 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
 
     const handleSave = async () => {
         try {
-            await updateUser(user._id, tempUser)
-            onUserUpdate({...user, ...tempUser})
+            await updateUser(user._id.toString(), tempUser)
+            onUserUpdate({...user, ...tempUser} as UserType)
             setEditing(false)
         } catch (err) {
             console.error(err)
@@ -58,7 +58,7 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
                     <Input
                         size="sm"
                         value={tempUser.username ?? ''}
-                        onChange={(e) => setTempUser({...tempUser, username: e.target.value})}
+                        onChange={(e) => setTempUser({...tempUser, username: e.target.value} as UserType)}
                         bg="gray.700"
                         color="white"
                     />
@@ -72,7 +72,7 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
                     <Input
                         size="sm"
                         value={tempUser.name ?? ''}
-                        onChange={(e) => setTempUser({...tempUser, name: e.target.value})}
+                        onChange={(e) => setTempUser({...tempUser, name: e.target.value} as UserType)}
                         bg="gray.700"
                         color="white"
                     />
@@ -86,7 +86,7 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
                     <Input
                         size="sm"
                         value={tempUser.surname ?? ''}
-                        onChange={(e) => setTempUser({...tempUser, surname: e.target.value})}
+                        onChange={(e) => setTempUser({...tempUser, surname: e.target.value}as UserType)}
                         bg="gray.700"
                         color="white"
                     />
@@ -100,7 +100,7 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
                     <Input
                         size="sm"
                         value={tempUser.patronymic ?? ''}
-                        onChange={(e) => setTempUser({...tempUser, patronymic: e.target.value})}
+                        onChange={(e) => setTempUser({...tempUser, patronymic: e.target.value}as UserType)}
                         bg="gray.700"
                         color="white"
                     />
@@ -114,7 +114,7 @@ export const UserRow = ({user, onUserUpdate, onUserDelete}: UserRowProps) => {
                     <Select.Root
                         collection={roles}
                         value={[tempUser.role ?? 'moderator']}
-                        onValueChange={(val) => setTempUser({...tempUser, role: val})}
+                        onValueChange={(val) => setTempUser({...tempUser, role: val.value as unknown as "admin" | "moderator"} as UserType)}
                     >
                         <Select.HiddenSelect/>
                         <Select.Control>

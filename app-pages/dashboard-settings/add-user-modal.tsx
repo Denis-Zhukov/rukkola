@@ -169,6 +169,7 @@ export const AddUserModal = ({ isOpen, onClose, onUserAdded }: AddUserModalProps
                                         <Select.Root
                                             collection={roles}
                                             {...field}
+                                            value={[field.value]}
                                             positioning={{ strategy: 'fixed', hideWhenDetached: true }}
                                         >
                                             <Select.HiddenSelect />
