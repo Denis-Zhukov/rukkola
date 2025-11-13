@@ -18,19 +18,29 @@ export const Navbar = ({items}: NavbarProps) => {
     const [isFixed, setIsFixed] = useState(false);
     const [active, setActive] = useState<string | null>(null);
     const [navHeight, setNavHeight] = useState(0);
+    const [threshold, setThreshold] = useState(0);
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        const updateHeight = () => navRef.current && setNavHeight(navRef.current.offsetHeight);
-        updateHeight();
-        window.addEventListener("resize", updateHeight);
-        return () => window.removeEventListener("resize", updateHeight);
-    }, []);
+        const updateNavHeightAndThreshold = () => {
+            if (!navRef.current) return;
+            const height = navRef.current.offsetHeight;
+            setNavHeight(height);
+
+            const firstSection = document.getElementById(items[0].id);
+            if (!firstSection) return;
+
+            setThreshold(firstSection.offsetTop - height - 10);
+        };
+
+        updateNavHeightAndThreshold();
+        window.addEventListener("resize", updateNavHeightAndThreshold);
+        return () => window.removeEventListener("resize", updateNavHeightAndThreshold);
+    }, [items]);
 
     useEffect(() => {
         const handleScroll = () => {
             const y = window.scrollY;
-            const threshold = 260;
             setIsFixed(y > threshold);
 
             const scrollPos = y + window.innerHeight / 3;
@@ -45,14 +55,14 @@ export const Navbar = ({items}: NavbarProps) => {
         window.addEventListener("scroll", handleScroll, {passive: true});
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [items]);
+    }, [items, threshold]);
 
     const handleClick = (id: string) => {
         const section = document.getElementById(id);
         if (!section || !navRef.current) return;
 
         window.scrollTo({
-            top: section.offsetTop - (navRef.current.offsetHeight + navHeight),
+            top: section.offsetTop - navHeight,
             behavior: "smooth",
         });
     };
@@ -61,6 +71,7 @@ export const Navbar = ({items}: NavbarProps) => {
 
     return (
         <Box position="relative" zIndex="10">
+            {/* Пустой блок для предотвращения прыжка контента */}
             {isFixed && <Box height={navHeight}/>}
             <AnimatePresence>
                 <MotionBox
@@ -82,7 +93,7 @@ export const Navbar = ({items}: NavbarProps) => {
                     transition={{duration: 0.4, ease: "easeOut"}}
                 >
                     <HStack wrap="wrap" justify="center">
-                        {items.map(item => (
+                        {items.map((item) => (
                             <NavItem
                                 key={item.id}
                                 id={item.id}
