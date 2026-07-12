@@ -132,7 +132,7 @@ export function ClosureNotice() {
                 <VStack align="stretch" gap={3}>
                     <Text color="white" fontSize="md" fontWeight="700">
                         А пока ждём вас в нашем ресторане{' '}
-                        <Text as="span" color="orange.300">La Salute</Text>
+                        <Text as="span" color="orange.300">La&nbsp;Salute</Text>
                     </Text>
 
                     <HStack gap={2} align="center" flexWrap="wrap">
