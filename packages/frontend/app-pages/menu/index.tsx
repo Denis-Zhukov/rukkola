@@ -5,6 +5,7 @@ import {Suspense} from "react";
 import {MenuLoader} from "@/app-pages/menu/menu-loader";
 import {ProductsServer} from "./products-server";
 import {CookieNotice} from "@/components/cookie-notice";
+import {ClosureNotice} from "@/components/closure-notice";
 import {serverFetch} from "@/lib/api/server-fetch";
 import type {MenuCategory, MenuLunch} from "@/lib/api/menu";
 import type {SiteSettingsData} from "@/lib/api/site-settings";
@@ -73,6 +74,9 @@ export const MenuPage = async ({token}: MenuPageProps) => {
             }}
         >
             <CookieNotice/>
+            <Box mb={{base: 6, md: 8}}>
+                <ClosureNotice/>
+            </Box>
 
             <h1 id="page-title" aria-label="Меню кафе Руккола в Гомеле — Пицца, суши и роллы" style={{margin: 0}}>
                 <Box mx="auto" w={{base: "80%", sm: "60%", md: "400px"}} maxW="90vw" mb={{base: 4, md: 6}}>
