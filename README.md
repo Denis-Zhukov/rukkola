@@ -25,4 +25,4 @@ cp .env.example .env
 yarn install
 ```
 
-Local services are orchestrated via `docker/docker-compose.yaml` — per-service Dockerfiles for the backend and frontend are included in `docker/`.
+Local services are orchestrated via `docker/docker-compose.yaml`; per-service Dockerfiles for the backend and frontend are included in `docker/`.
